@@ -1,0 +1,6 @@
+# Python
+*.pyc
+*.pyo
+
+# Secret file
+secret.py

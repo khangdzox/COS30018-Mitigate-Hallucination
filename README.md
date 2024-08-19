@@ -19,3 +19,24 @@ pip install transformers datasets evaluate accelerate
 ```bash
 pip install gradio
 ```
+4. IPython for Jupyter Notebook in VSCode
+```bash
+pip install ipython ipywidgets
+```
+
+## Hugging Face Access Token
+
+Llama 3 is a private model, and you need to have access to it.
+
+1. Go to the Hugging Face website and create an account.
+
+2. Go to the Llama 3 model page and request access.
+
+3. Once you have access, go to your user settings and create a new access token (read token is enough).
+
+4. Copy the access token and save it in a `secret.py` file in the root directory.
+
+```python
+# secret.py
+HF_TOKEN = "your_access_token"
+```
