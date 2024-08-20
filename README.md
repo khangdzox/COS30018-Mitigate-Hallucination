@@ -7,19 +7,28 @@ Developers are advised to use a virtual environment to install the required pack
 
 This project requires Python 3.12 or later.
 
-1. PyTorch for backend framework
+### 1. PyTorch for backend framework
+Using `pip`
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 ```
-2. 🤗 Transformers for high-level APIs
+Or using `conda`
+```bash
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+```
+Verify that you install PyTorch correctly with CUDA support by running the following line and receive `True`:
+```bash
+python -c "import torch; print(torch.cuda.is_available())"
+```
+### 2. 🤗 Transformers for high-level APIs
 ```bash
 pip install transformers datasets evaluate accelerate
 ```
-3. Gradio for web interface
+### 3. Gradio for web interface
 ```bash
 pip install gradio
 ```
-4. IPython for Jupyter Notebook in VSCode
+### 4. IPython for Jupyter Notebook in VSCode
 ```bash
 pip install ipython ipywidgets
 ```
