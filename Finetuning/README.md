@@ -15,7 +15,9 @@ Freeze all of the model structure and parameter then add a little of trainable d
 
 ## Requirements
 
-Library: Huggingface, PyTorch
+Framework: Huggingface, PyTorch
+
+Library: transformers, peft
 
 Dataset: 
 
