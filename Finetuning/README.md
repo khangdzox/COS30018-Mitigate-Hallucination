@@ -12,4 +12,4 @@ How to use the code.
 
 ## Results
 
-Results of the experiments. test
+Results of the experiments.
