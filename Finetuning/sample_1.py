@@ -13,10 +13,10 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
     streamer = TextStreamer(tokenizer) # type: ignore
 
-    input_text = 'Ayyo whatsup bro ?'
+    input_text = 'Where and when Warrent Buffet was born ?'
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
 
-    output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=10, do_sample=True, top_p=0.8)
+    output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
     return output_tokens
 
 if __name__ == "__main__":
