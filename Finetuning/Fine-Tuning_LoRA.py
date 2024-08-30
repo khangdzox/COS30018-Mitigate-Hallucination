@@ -13,6 +13,7 @@ import evaluate
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
     
+    # Set the device to GPU if avaiable
     def get_device_map() -> str:
         return 'cuda' if torch.cuda.is_available() else 'cpu'
     
@@ -20,9 +21,9 @@ def main():
 
     # load base model
     model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
-    
     model = AutoModelForCausalLM.from_pretrained(model_id, device_map=device, torch_dtype=torch.bfloat16)
     
+    # load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right" # Fix weird overflow issue with fp16 training
@@ -57,29 +58,36 @@ def main():
         task_type="CAUSAL_LM"
     )
     
+    # Load the model with the adapter
     model = get_peft_model(model, config)
     print_trainable_parameters(model)
     
     # Load the dataset
     dataset = load_dataset("mlabonne/guanaco-llama2-1k", split="train")
     
+    # Tokenize the dataset
     def tokenize_function(examples):
-        return tokenizer(examples["text"])
+        tokenizer(examples['text'], padding='max_length', truncation=True, max_length=512)
     
     tokenized_dataset = dataset.map(
         tokenize_function,
         batched=True,
         num_proc=4,
-        remove_columns=["text"]
+    )
+    
+    # Data collator
+    data_collator = DataCollatorForLanguageModeling(
+        tokenizer=tokenizer, mlm=False, mlm_probability=0.15
     )
     
     # Training hyperparameters
-    training_args = TrainingArguments(output_dir="test_trainer")
+    training_args = TrainingArguments(output_dir="LLaMA-3-8B-Instruct-LoRA", remove_unused_columns=False)
     
     #training
     trainer = Trainer(
         model=model,
         train_dataset=tokenized_dataset,
+        data_collator=data_collator,
         args=training_args,
     )
     trainer.train()
