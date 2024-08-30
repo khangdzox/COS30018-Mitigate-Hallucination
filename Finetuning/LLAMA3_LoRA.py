@@ -29,6 +29,7 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     EOS_TOKEN = tokenizer.eos_token
     tokenizer.pad_token = tokenizer.eos_token
+    
     # Freezing the original weights
     for param in model.parameters():
         param.requires_grad = False #freeze the model - train adapters later
@@ -66,6 +67,7 @@ def main():
     # Load the dataset
     dataset = load_dataset("yahma/alpaca-cleaned", split="train")
     
+    # Create the prompt
     alpaca_prompt = "Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the task."
     
     # Tokenize the dataset
@@ -81,15 +83,8 @@ def main():
         return {"text": texts}
     tokenized_dataset = dataset.map(tokenize_function,batched=True,)
     
-    #training
-    trainer = SFTTrainer(
-        model = model,
-        tokenizer = tokenizer,
-        train_dataset = tokenized_dataset,
-        dataset_text_field = "text",
-        dataset_num_proc = 2,
-        packing = False, # Can make training 5x faster for short sequences.
-        args = TrainingArguments(
+    # Config arguments for the training process
+    training_args = TrainingArguments(
             per_device_train_batch_size = 2,
             gradient_accumulation_steps = 4,
             warmup_steps = 5,
@@ -103,8 +98,20 @@ def main():
             lr_scheduler_type = "linear",
             seed = 3407,
             output_dir = "LLaMA-3-8B-Instruct-LoRA",
-        ),
+        )
+    
+    #training setup
+    trainer = SFTTrainer(
+        model = model,
+        tokenizer = tokenizer,
+        train_dataset = tokenized_dataset,
+        dataset_text_field = "text",
+        dataset_num_proc = 2,
+        packing = False, # Can make training 5x faster for short sequences.
+        args = training_args,
     )
+    
+    # Start training
     trainer.train()
 
 if __name__ == "__main__":
