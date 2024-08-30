@@ -1,0 +1,874 @@
+2024-08-31 09:17:59,886 INFO    StreamThr :10560 [internal.py:wandb_internal():85] W&B internal server running at pid: 10560, started at: 2024-08-31 09:17:59.885796
+2024-08-31 09:17:59,887 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status
+2024-08-31 09:17:59,889 INFO    WriterThread:10560 [datastore.py:open_for_write():87] open: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\run-8ynb9c51.wandb
+2024-08-31 09:17:59,890 DEBUG   SenderThread:10560 [sender.py:send():391] send: header
+2024-08-31 09:17:59,920 DEBUG   SenderThread:10560 [sender.py:send():391] send: run
+2024-08-31 09:18:00,450 INFO    SenderThread:10560 [dir_watcher.py:__init__():211] watching files in: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files
+2024-08-31 09:18:00,450 INFO    SenderThread:10560 [sender.py:_start_run_threads():1200] run started: 8ynb9c51 with start time 1725059879.887796
+2024-08-31 09:18:00,458 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: run_start
+2024-08-31 09:18:00,476 DEBUG   HandlerThread:10560 [system_info.py:__init__():26] System info init
+2024-08-31 09:18:00,476 DEBUG   HandlerThread:10560 [system_info.py:__init__():41] System info init done
+2024-08-31 09:18:00,476 INFO    HandlerThread:10560 [system_monitor.py:start():194] Starting system monitor
+2024-08-31 09:18:00,476 INFO    SystemMonitor:10560 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-31 09:18:00,477 INFO    HandlerThread:10560 [system_monitor.py:probe():214] Collecting system info
+2024-08-31 09:18:00,480 INFO    SystemMonitor:10560 [interfaces.py:start():188] Started cpu monitoring
+2024-08-31 09:18:00,481 INFO    SystemMonitor:10560 [interfaces.py:start():188] Started disk monitoring
+2024-08-31 09:18:00,481 INFO    SystemMonitor:10560 [interfaces.py:start():188] Started gpu monitoring
+2024-08-31 09:18:00,481 INFO    SystemMonitor:10560 [interfaces.py:start():188] Started memory monitoring
+2024-08-31 09:18:00,489 INFO    SystemMonitor:10560 [interfaces.py:start():188] Started network monitoring
+2024-08-31 09:18:00,500 DEBUG   HandlerThread:10560 [system_info.py:probe():152] Probing system
+2024-08-31 09:18:00,500 DEBUG   HandlerThread:10560 [system_info.py:_probe_git():137] Probing git
+2024-08-31 09:18:00,552 DEBUG   HandlerThread:10560 [system_info.py:_probe_git():145] Probing git done
+2024-08-31 09:18:00,552 DEBUG   HandlerThread:10560 [system_info.py:probe():200] Probing system done
+2024-08-31 09:18:00,552 DEBUG   HandlerThread:10560 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.12.4', 'heartbeatAt': '2024-08-30T23:18:00.500537', 'startedAt': '2024-08-30T23:17:59.881799', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\pink\\Documents\\Study\\Intelligent Systems\\COS30018-Mitigate-Hallucination\\Finetuning\\LLAMA3_LoRA.py', 'codePathLocal': 'Finetuning\\LLAMA3_LoRA.py', 'codePath': 'Finetuning\\LLAMA3_LoRA.py', 'git': {'remote': 'https://github.com/khangdzox/COS30018-Mitigate-Hallucination.git', 'commit': '39b29f18da320e1fa7e0188f4ef7475a3b854c4f'}, 'email': 'honganhnguyen915@gmail.com', 'root': 'C:/Users/pink/Documents/Study/Intelligent Systems/COS30018-Mitigate-Hallucination', 'host': 'DESKTOP-2SF5IUM', 'username': 'pink', 'executable': 'C:\\Users\\pink\\anaconda3\\envs\\LLama3-hallucinate\\python.exe', 'cpu_count': 20, 'cpu_count_logical': 28, 'cpu_freq': {'current': 3400.0, 'min': 0.0, 'max': 3400.0}, 'cpu_freq_per_core': [{'current': 3400.0, 'min': 0.0, 'max': 3400.0}], 'disk': {}, 'gpu': 'NVIDIA GeForce RTX 4070 Ti', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4070 Ti', 'memory_total': 12878610432}], 'memory': {'total': 31.746994018554688}}
+2024-08-31 09:18:00,552 INFO    HandlerThread:10560 [system_monitor.py:probe():224] Finished collecting system info
+2024-08-31 09:18:00,552 INFO    HandlerThread:10560 [system_monitor.py:probe():227] Publishing system info
+2024-08-31 09:18:00,552 DEBUG   HandlerThread:10560 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-08-31 09:18:00,555 ERROR   HandlerThread:10560 [system_info.py:_save_conda():223] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\wandb\sdk\internal\system\system_info.py", line 216, in _save_conda
+    subprocess.call(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2024-08-31 09:18:00,556 DEBUG   HandlerThread:10560 [system_info.py:_save_conda():224] Saving conda packages done
+2024-08-31 09:18:00,557 INFO    HandlerThread:10560 [system_monitor.py:probe():229] Finished publishing system info
+2024-08-31 09:18:00,560 DEBUG   SenderThread:10560 [sender.py:send():391] send: files
+2024-08-31 09:18:00,560 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-08-31 09:18:00,693 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: python_packages
+2024-08-31 09:18:00,694 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: python_packages
+2024-08-31 09:18:00,694 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:18:00,694 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:18:00,695 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:18:01,028 DEBUG   SenderThread:10560 [sender.py:send():391] send: telemetry
+2024-08-31 09:18:01,028 DEBUG   SenderThread:10560 [sender.py:send():391] send: config
+2024-08-31 09:18:01,029 DEBUG   SenderThread:10560 [sender.py:send():391] send: telemetry
+2024-08-31 09:18:01,029 DEBUG   SenderThread:10560 [sender.py:send():391] send: metric
+2024-08-31 09:18:01,029 DEBUG   SenderThread:10560 [sender.py:send():391] send: telemetry
+2024-08-31 09:18:01,029 DEBUG   SenderThread:10560 [sender.py:send():391] send: metric
+2024-08-31 09:18:01,029 WARNING SenderThread:10560 [sender.py:send_metric():1417] Seen metric with glob (shouldn't happen)
+2024-08-31 09:18:01,029 DEBUG   SenderThread:10560 [sender.py:send():391] send: telemetry
+2024-08-31 09:18:01,029 DEBUG   SenderThread:10560 [sender.py:send():391] send: telemetry
+2024-08-31 09:18:01,029 DEBUG   SenderThread:10560 [sender.py:send():391] send: config
+2024-08-31 09:18:01,455 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\requirements.txt
+2024-08-31 09:18:01,455 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:01,455 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-metadata.json
+2024-08-31 09:18:01,456 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\conda-environment.yaml
+2024-08-31 09:18:01,475 INFO    wandb-upload_0:10560 [upload_job.py:push():130] Uploaded file C:\Users\pink\AppData\Local\Temp\tmpmyu51c7twandb\bc5cgnxf-wandb-metadata.json
+2024-08-31 09:18:03,469 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:05,063 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:05,841 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:05,841 DEBUG   SenderThread:10560 [sender.py:send():391] send: metric
+2024-08-31 09:18:05,842 DEBUG   SenderThread:10560 [sender.py:send():391] send: metric
+2024-08-31 09:18:05,842 DEBUG   SenderThread:10560 [sender.py:send():391] send: metric
+2024-08-31 09:18:05,842 DEBUG   SenderThread:10560 [sender.py:send():391] send: metric
+2024-08-31 09:18:05,842 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:05,842 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:05,843 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:06,499 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:07,514 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:08,526 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:10,657 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:10,657 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:10,658 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:10,658 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:10,659 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:10,698 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:18:11,561 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:12,575 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:13,579 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:15,475 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:15,476 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:15,476 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:15,477 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:15,588 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:15,713 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:18:15,713 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:18:16,000 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:17,600 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:18,604 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:20,293 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:20,294 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:20,294 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:20,295 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:20,609 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:20,704 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:18:21,619 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:21,760 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:22,624 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:25,114 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:25,114 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:25,114 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:25,115 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:25,636 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:26,644 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:26,770 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:27,648 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:29,929 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:29,929 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:29,929 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:29,930 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:30,677 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:30,709 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:18:30,724 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:18:30,724 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:18:31,681 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:31,964 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:32,684 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:32,685 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\config.yaml
+2024-08-31 09:18:34,761 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:34,761 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:34,762 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:34,763 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:35,698 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:36,703 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:37,704 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:37,783 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:39,593 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:39,593 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:39,594 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:39,595 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:39,712 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:40,702 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:18:41,723 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:42,738 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:42,792 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:44,425 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:44,425 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:44,425 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:44,426 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:44,755 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:45,727 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:18:45,727 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:18:45,758 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:46,760 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:47,964 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:49,238 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:49,238 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:49,238 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:49,238 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:49,789 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:50,703 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:18:50,799 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:51,812 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:53,817 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:54,073 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:54,074 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:54,074 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:54,075 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:54,833 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:18:55,839 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:56,842 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:18:58,818 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:18:58,894 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:18:58,894 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:18:58,895 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:18:58,895 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:18:59,864 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:00,503 DEBUG   SystemMonitor:10560 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-31 09:19:00,504 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:19:00,708 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:19:00,739 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:19:00,739 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:19:00,865 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:01,881 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:03,727 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:03,729 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:03,729 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:03,730 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:03,885 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:04,737 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:05,907 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:08,545 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:08,545 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:08,546 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:08,547 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:08,917 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:09,924 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:10,550 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:10,723 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:19:13,360 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:13,361 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:13,361 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:13,361 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:13,941 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:13,941 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:15,742 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:19:15,742 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:19:15,959 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:15,995 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:18,146 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:18,147 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:18,147 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:18,148 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:18,981 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:19,986 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:20,726 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:19:21,863 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:22,963 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:22,963 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:22,964 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:22,964 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:23,007 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:24,013 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:26,023 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:26,880 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:27,778 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:27,779 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:27,779 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:27,779 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:28,042 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:30,068 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:30,509 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:19:30,728 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:19:30,760 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:19:30,760 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:19:32,082 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:32,592 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:32,592 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:32,592 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:32,593 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:33,086 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:33,086 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:34,090 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:37,405 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:37,405 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:37,405 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:37,405 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:37,406 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:38,135 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:38,136 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:39,139 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:40,742 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:19:42,215 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:42,216 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:42,216 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:42,217 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:43,163 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:43,164 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:43,224 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:44,172 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:45,761 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:19:45,761 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:19:47,031 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:47,031 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:47,032 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:47,032 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:47,192 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:48,197 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:49,044 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:49,202 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:50,748 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:19:51,844 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:51,845 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:51,845 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:51,846 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:52,220 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:53,225 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:54,226 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:54,884 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:19:56,632 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:19:56,633 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:19:56,633 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:19:56,634 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:19:57,245 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:19:57,246 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:19:58,251 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:00,510 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:20:00,511 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:00,763 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:20:00,778 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:20:00,778 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:20:01,447 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:01,447 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:01,447 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:01,448 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:02,290 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:02,290 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:03,296 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:05,922 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:06,262 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:06,263 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:06,263 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:06,263 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:06,318 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:07,320 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:08,332 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:10,772 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:20:10,928 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:11,072 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:11,072 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:11,073 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:11,074 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:11,350 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:12,363 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:13,365 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:15,783 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:20:15,783 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:20:15,886 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:15,989 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:15,989 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:15,990 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:15,990 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:16,380 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:17,389 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:18,392 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:20,701 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:20,701 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:20,702 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:20,702 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:20,784 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:20:21,413 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:21,414 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:21,932 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:22,421 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:25,517 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:25,518 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:25,518 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:25,518 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:26,452 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:26,942 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:27,458 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:28,473 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:30,327 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:30,328 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:30,328 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:30,329 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:30,495 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:30,511 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:20:30,780 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:20:30,780 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:20:30,796 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:20:31,498 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:31,999 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:32,513 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:35,145 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:35,146 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:35,146 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:35,147 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:35,538 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:36,542 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:37,548 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:37,954 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:39,957 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:39,958 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:39,958 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:39,958 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:40,567 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:40,800 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:20:41,582 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:42,588 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:42,963 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:44,783 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:44,783 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:44,783 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:44,784 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:45,624 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:45,781 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:20:45,781 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:20:46,629 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:47,634 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:48,105 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:49,440 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:49,440 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:49,440 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:49,440 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:49,653 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:50,657 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:50,814 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:20:51,658 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:53,992 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:54,253 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:54,254 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:54,254 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:54,254 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:54,684 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:20:55,690 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:56,696 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:20:59,006 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:20:59,073 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:20:59,074 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:20:59,074 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:20:59,075 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:20:59,728 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:00,526 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:21:00,729 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:00,789 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:21:00,789 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:21:00,822 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:21:01,742 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:03,888 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:03,889 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:03,890 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:03,890 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:04,775 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:04,900 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:05,782 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:06,789 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:08,704 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:08,704 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:08,705 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:08,705 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:08,807 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:09,813 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:10,723 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:10,819 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:10,835 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:21:13,517 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:13,518 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:13,518 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:13,519 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:13,833 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:14,847 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:15,802 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:21:15,802 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:21:15,848 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:16,026 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:18,338 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:18,338 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:18,339 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:18,339 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:18,860 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:19,868 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:20,840 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:21:20,872 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:22,007 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:23,153 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:23,153 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:23,153 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:23,154 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:23,891 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:24,896 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:25,898 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:27,014 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:27,808 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:27,808 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:27,808 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:27,808 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:27,909 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:29,925 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:30,539 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:21:30,803 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:21:30,803 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:21:30,850 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:21:32,089 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:32,621 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:32,622 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:32,622 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:32,623 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:32,945 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:33,951 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:37,433 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:37,433 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:37,434 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:37,434 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:37,434 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:37,978 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:37,979 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:39,987 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:40,864 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:21:42,251 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:42,251 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:42,251 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:42,252 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:43,009 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:43,261 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:44,014 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:45,827 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:21:45,828 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:21:47,066 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:47,067 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:47,067 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:47,067 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:48,033 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:48,034 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:49,085 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:50,042 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:50,875 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:21:51,883 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:51,883 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:51,883 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:51,884 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:52,051 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:54,059 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:21:54,908 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:21:56,697 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:21:56,698 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:21:56,698 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:21:56,699 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:21:57,085 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:21:58,088 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:00,540 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:22:00,541 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:00,837 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:22:00,837 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:22:00,884 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:22:01,513 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:01,514 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:01,514 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:01,514 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:02,118 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:02,118 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:04,139 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:05,542 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:06,171 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:06,172 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:06,172 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:06,173 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:07,162 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:07,163 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:08,168 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:10,898 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:22:10,983 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:10,983 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:10,984 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:10,984 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:10,984 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:11,193 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:12,194 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:13,199 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:15,797 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:15,798 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:15,798 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:15,798 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:15,850 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:22:15,850 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:22:16,113 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:16,212 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:17,228 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:18,237 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:20,611 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:20,611 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:20,611 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:20,612 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:20,907 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:22:21,128 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:21,253 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:21,254 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:22,268 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:25,421 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:25,422 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:25,422 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:25,423 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:26,135 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:26,295 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:26,295 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:27,303 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:30,234 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:30,234 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:30,234 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:30,235 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:30,320 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:30,541 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:22:30,870 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:22:30,871 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:22:30,918 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:22:31,138 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:31,328 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:32,338 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:35,046 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:35,047 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:35,047 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:35,048 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:35,357 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:36,143 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:36,365 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:37,370 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:39,865 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:39,866 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:39,866 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:39,866 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:40,393 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:40,924 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:22:41,145 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:41,396 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:42,400 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:44,517 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:44,518 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:44,518 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:44,519 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:45,419 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:45,420 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:45,892 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:22:45,892 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:22:46,190 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:46,426 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:49,333 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:49,333 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:49,333 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:49,334 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:49,443 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:50,449 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:50,487 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-31 09:22:50,488 DEBUG   SenderThread:10560 [sender.py:send():391] send: telemetry
+2024-08-31 09:22:50,488 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:50,488 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:50,489 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:50,489 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:50,489 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:50,489 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:50,490 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:50,490 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:50,490 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:50,490 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:50,490 DEBUG   SenderThread:10560 [sender.py:send():391] send: history
+2024-08-31 09:22:50,490 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: summary_record
+2024-08-31 09:22:50,491 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:22:50,935 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:22:51,455 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:51,456 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:22:52,177 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:22:52,458 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:52,458 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\config.yaml
+2024-08-31 09:22:54,463 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:56,472 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:22:57,507 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:00,554 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:23:00,899 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:23:00,900 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:23:00,947 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:23:03,054 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:06,524 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:08,534 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:08,876 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:10,548 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:10,955 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:23:14,508 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:15,909 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:23:15,909 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:23:20,095 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:20,614 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:20,963 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:23:22,627 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:24,631 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:25,789 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:30,556 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:23:30,664 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:30,915 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:23:30,915 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:23:30,978 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:23:31,221 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:34,692 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:36,239 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:38,729 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:40,991 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:23:41,244 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:42,755 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:45,930 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:23:45,930 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:23:46,259 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:46,778 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:48,790 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:50,808 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:50,995 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:23:51,261 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:52,813 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:54,827 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:56,269 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:23:56,835 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:23:58,854 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:00,558 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:24:00,870 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:00,948 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:24:00,948 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:24:01,009 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:24:01,278 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:02,877 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:04,881 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:06,288 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:06,898 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:08,909 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:11,014 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:24:11,715 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:15,974 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:24:15,975 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:24:17,304 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:18,977 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:20,983 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:21,030 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:24:23,091 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:24,002 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:28,143 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:30,561 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:24:30,971 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:24:30,971 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:24:31,035 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:24:33,897 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:34,054 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:36,056 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:38,069 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:39,042 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:41,038 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:24:44,098 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:44,161 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:45,975 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:24:45,975 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:24:48,126 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:49,696 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:51,042 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:24:52,151 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:24:55,247 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:24:56,170 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:00,185 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:00,563 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:25:00,563 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:25:00,987 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: stop_status
+2024-08-31 09:25:00,987 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: stop_status
+2024-08-31 09:25:01,049 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:25:04,208 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:05,687 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:25:06,216 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:08,224 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:10,241 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:11,054 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:25:11,130 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:25:12,265 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:14,269 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:14,566 DEBUG   SenderThread:10560 [sender.py:send():391] send: exit
+2024-08-31 09:25:14,566 INFO    SenderThread:10560 [sender.py:send_exit():598] handling exit code: 0
+2024-08-31 09:25:14,566 INFO    SenderThread:10560 [sender.py:send_exit():600] handling runtime: 434
+2024-08-31 09:25:14,567 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:25:14,567 INFO    SenderThread:10560 [sender.py:send_exit():606] send defer
+2024-08-31 09:25:14,567 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,567 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 0
+2024-08-31 09:25:14,567 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,567 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 0
+2024-08-31 09:25:14,567 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 1
+2024-08-31 09:25:14,567 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,567 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 1
+2024-08-31 09:25:14,567 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,567 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 1
+2024-08-31 09:25:14,567 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 2
+2024-08-31 09:25:14,568 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,568 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 2
+2024-08-31 09:25:14,568 INFO    HandlerThread:10560 [system_monitor.py:finish():203] Stopping system monitor
+2024-08-31 09:25:14,568 DEBUG   SystemMonitor:10560 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-31 09:25:14,568 DEBUG   SystemMonitor:10560 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-31 09:25:14,575 INFO    HandlerThread:10560 [interfaces.py:finish():200] Joined cpu monitor
+2024-08-31 09:25:14,575 INFO    HandlerThread:10560 [interfaces.py:finish():200] Joined disk monitor
+2024-08-31 09:25:14,613 INFO    HandlerThread:10560 [interfaces.py:finish():200] Joined gpu monitor
+2024-08-31 09:25:14,614 INFO    HandlerThread:10560 [interfaces.py:finish():200] Joined memory monitor
+2024-08-31 09:25:14,614 INFO    HandlerThread:10560 [interfaces.py:finish():200] Joined network monitor
+2024-08-31 09:25:14,614 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,614 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 2
+2024-08-31 09:25:14,614 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 3
+2024-08-31 09:25:14,614 DEBUG   SenderThread:10560 [sender.py:send():391] send: stats
+2024-08-31 09:25:14,614 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,614 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 3
+2024-08-31 09:25:14,614 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,614 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 3
+2024-08-31 09:25:14,614 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 4
+2024-08-31 09:25:14,614 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,614 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 4
+2024-08-31 09:25:14,614 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,615 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 4
+2024-08-31 09:25:14,615 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 5
+2024-08-31 09:25:14,615 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,615 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 5
+2024-08-31 09:25:14,615 DEBUG   SenderThread:10560 [sender.py:send():391] send: summary
+2024-08-31 09:25:14,615 INFO    SenderThread:10560 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-08-31 09:25:14,615 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,615 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 5
+2024-08-31 09:25:14,615 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 6
+2024-08-31 09:25:14,615 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,615 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 6
+2024-08-31 09:25:14,615 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,615 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 6
+2024-08-31 09:25:14,616 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 7
+2024-08-31 09:25:14,616 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: status_report
+2024-08-31 09:25:14,616 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:14,616 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 7
+2024-08-31 09:25:14,616 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:14,616 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 7
+2024-08-31 09:25:15,283 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:25:15,567 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: poll_exit
+2024-08-31 09:25:16,022 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 8
+2024-08-31 09:25:16,023 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: poll_exit
+2024-08-31 09:25:16,023 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:16,023 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 8
+2024-08-31 09:25:16,023 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:16,023 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 8
+2024-08-31 09:25:16,023 INFO    SenderThread:10560 [job_builder.py:build():443] Attempting to build job artifact
+2024-08-31 09:25:16,025 INFO    SenderThread:10560 [job_builder.py:_get_source_type():572] is repo sourced job
+2024-08-31 09:25:16,057 INFO    SenderThread:10560 [job_builder.py:build():548] adding wandb-job metadata file
+2024-08-31 09:25:16,066 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 9
+2024-08-31 09:25:16,066 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:16,066 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 9
+2024-08-31 09:25:16,066 DEBUG   SenderThread:10560 [sender.py:send():391] send: artifact
+2024-08-31 09:25:16,286 INFO    Thread-16 :10560 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:16,570 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: poll_exit
+2024-08-31 09:25:17,448 INFO    SenderThread:10560 [sender.py:send_artifact():1549] sent artifact job-https___github.com_khangdzox_COS30018-Mitigate-Hallucination.git_Finetuning_LLAMA3_LoRA.py - {'id': 'QXJ0aWZhY3Q6MTE3MzQ5NjAyMw==', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjQxODY4ODU4NQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTE3MzUzNDA0MA==', 'versionIndex': 9}}}
+2024-08-31 09:25:17,448 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:17,448 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 9
+2024-08-31 09:25:17,448 INFO    SenderThread:10560 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-08-31 09:25:18,290 INFO    SenderThread:10560 [dir_watcher.py:finish():388] scan: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files
+2024-08-31 09:25:18,291 INFO    SenderThread:10560 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\conda-environment.yaml conda-environment.yaml
+2024-08-31 09:25:18,291 INFO    SenderThread:10560 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\config.yaml config.yaml
+2024-08-31 09:25:18,291 INFO    SenderThread:10560 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log output.log
+2024-08-31 09:25:18,291 INFO    SenderThread:10560 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\requirements.txt requirements.txt
+2024-08-31 09:25:18,292 INFO    SenderThread:10560 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-metadata.json wandb-metadata.json
+2024-08-31 09:25:18,292 INFO    SenderThread:10560 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json wandb-summary.json
+2024-08-31 09:25:18,294 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 10
+2024-08-31 09:25:18,295 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: poll_exit
+2024-08-31 09:25:18,295 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:18,295 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 10
+2024-08-31 09:25:18,296 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:18,296 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 10
+2024-08-31 09:25:18,296 INFO    SenderThread:10560 [file_pusher.py:finish():169] shutting down file pusher
+2024-08-31 09:25:18,582 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: poll_exit
+2024-08-31 09:25:18,582 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: poll_exit
+2024-08-31 09:25:19,061 INFO    wandb-upload_3:10560 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\wandb-summary.json
+2024-08-31 09:25:19,105 INFO    wandb-upload_2:10560 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\requirements.txt
+2024-08-31 09:25:19,108 INFO    wandb-upload_0:10560 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\config.yaml
+2024-08-31 09:25:19,138 INFO    wandb-upload_1:10560 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\files\output.log
+2024-08-31 09:25:19,348 INFO    Thread-15 (_thread_body):10560 [sender.py:transition_state():626] send defer: 11
+2024-08-31 09:25:19,348 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:19,348 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 11
+2024-08-31 09:25:19,349 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:19,349 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 11
+2024-08-31 09:25:19,349 INFO    SenderThread:10560 [file_pusher.py:join():175] waiting for file pusher
+2024-08-31 09:25:19,349 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 12
+2024-08-31 09:25:19,349 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:19,349 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 12
+2024-08-31 09:25:19,349 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:19,349 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 12
+2024-08-31 09:25:19,349 INFO    SenderThread:10560 [file_stream.py:finish():601] file stream finish called
+2024-08-31 09:25:19,597 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: poll_exit
+2024-08-31 09:25:20,488 INFO    SenderThread:10560 [file_stream.py:finish():605] file stream finish is done
+2024-08-31 09:25:20,488 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 13
+2024-08-31 09:25:20,488 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: poll_exit
+2024-08-31 09:25:20,488 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:20,488 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 13
+2024-08-31 09:25:20,489 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:20,489 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 13
+2024-08-31 09:25:20,489 INFO    SenderThread:10560 [sender.py:transition_state():626] send defer: 14
+2024-08-31 09:25:20,489 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: defer
+2024-08-31 09:25:20,489 INFO    HandlerThread:10560 [handler.py:handle_request_defer():184] handle defer: 14
+2024-08-31 09:25:20,489 DEBUG   SenderThread:10560 [sender.py:send():391] send: final
+2024-08-31 09:25:20,489 DEBUG   SenderThread:10560 [sender.py:send():391] send: footer
+2024-08-31 09:25:20,489 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: defer
+2024-08-31 09:25:20,489 INFO    SenderThread:10560 [sender.py:send_request_defer():622] handle sender defer: 14
+2024-08-31 09:25:20,489 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: poll_exit
+2024-08-31 09:25:20,490 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: poll_exit
+2024-08-31 09:25:20,490 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: server_info
+2024-08-31 09:25:20,490 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: poll_exit
+2024-08-31 09:25:20,490 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: get_summary
+2024-08-31 09:25:20,490 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: server_info
+2024-08-31 09:25:20,490 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: sampled_history
+2024-08-31 09:25:20,491 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: internal_messages
+2024-08-31 09:25:20,693 DEBUG   SenderThread:10560 [sender.py:send_request():418] send_request: poll_exit
+2024-08-31 09:25:20,693 INFO    MainThread:10560 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2024-08-31 09:25:20,694 INFO    MainThread:10560 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2024-08-31 09:25:20,695 INFO    MainThread:10560 [wandb_run.py:_footer_sync_info():4037] logging synced files
+2024-08-31 09:25:20,696 DEBUG   HandlerThread:10560 [handler.py:handle_request():158] handle_request: shutdown
+2024-08-31 09:25:20,696 INFO    HandlerThread:10560 [handler.py:finish():884] shutting down handler
+2024-08-31 09:25:21,494 INFO    WriterThread:10560 [datastore.py:close():296] close: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20240831_091759-8ynb9c51\run-8ynb9c51.wandb
+2024-08-31 09:25:21,700 INFO    SenderThread:10560 [sender.py:finish():1631] shutting down sender
+2024-08-31 09:25:21,700 INFO    SenderThread:10560 [file_pusher.py:finish():169] shutting down file pusher
+2024-08-31 09:25:21,700 INFO    SenderThread:10560 [file_pusher.py:join():175] waiting for file pusher

@@ -7,7 +7,6 @@ from datasets import load_dataset
 from peft import get_peft_model, LoraConfig
 
 import torch
-import evaluate
 
 from trl import SFTTrainer
 
@@ -29,9 +28,6 @@ def main():
     EOS_TOKEN = tokenizer.eos_token
     tokenizer.pad_token = tokenizer.eos_token
     
-    # Interface to interact with the model
-    streamer = TextStreamer(tokenizer) # type: ignore  
-    
     # Freezing the original weights
     for param in model.parameters():
         param.requires_grad = False #freeze the model - train adapters later
@@ -51,7 +47,7 @@ def main():
             all_params += param.numel()
             if param.requires_grad:
                 trainable_params += param.numel()
-        print(f"Parameter Status:\n------------------------\nTrainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}\n------------------------\n" )
+        print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
     
     # LoRA config
     config = LoraConfig(
@@ -68,6 +64,7 @@ def main():
     
     # Load the dataset
     dataset = load_dataset("yahma/alpaca-cleaned", split="train")
+    output_direction = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/yahma_alpaca-cleaned"
     
     # Create the prompt
     alpaca_prompt = "Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the task."
@@ -99,7 +96,7 @@ def main():
             weight_decay = 0.01,
             lr_scheduler_type = "linear",
             seed = 3407,
-            output_dir = "LLaMA-3-8B-Instruct-LoRA",
+            output_dir = output_direction,
         )
     
     #training setup
@@ -113,15 +110,19 @@ def main():
         args = training_args,
     )
     
-    # Show current memory stats
-    gpu_stats = torch.cuda.get_device_properties(0)
-    start_gpu_memory = round(torch.cuda.max_memory_reserved() / 1024 / 1024 / 1024, 3)
-    max_memory = round(gpu_stats.total_memory / 1024 / 1024 / 1024, 3)
-    print(f"GPU Status: \n------------------------\nGPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
-    print(f"{start_gpu_memory} GB of memory reserved.\n------------------------\n")
-    
     # Start training
     trainer.train()
+    
+    # Interface to interact with the model
+    streamer = TextStreamer(tokenizer) # type: ignore
+
+    print("Question:\n")
+    input_text = "What does DNA stand for?"
+    input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
+
+    with torch.cuda.amp.autocast():
+        output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
+    return output_tokens
 
 if __name__ == "__main__":
     main()
