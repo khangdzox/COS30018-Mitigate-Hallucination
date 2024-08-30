@@ -1,13 +1,12 @@
 import warnings
 
-from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, DataCollatorForLanguageModeling, Trainer, TrainingArguments
+from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments 
 
-from datasets import load_dataset, DatasetDict, Dataset
+from datasets import load_dataset
 
-from peft import PeftModel, PeftConfig, get_peft_model, LoraConfig
+from peft import get_peft_model, LoraConfig
 
 import torch
-import numpy as np
 import evaluate
 
 from trl import SFTTrainer
@@ -30,6 +29,9 @@ def main():
     EOS_TOKEN = tokenizer.eos_token
     tokenizer.pad_token = tokenizer.eos_token
     
+    # Interface to interact with the model
+    streamer = TextStreamer(tokenizer) # type: ignore  
+    
     # Freezing the original weights
     for param in model.parameters():
         param.requires_grad = False #freeze the model - train adapters later
@@ -49,7 +51,7 @@ def main():
             all_params += param.numel()
             if param.requires_grad:
                 trainable_params += param.numel()
-        print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
+        print(f"Parameter Status:\n------------------------\nTrainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}\n------------------------\n" )
     
     # LoRA config
     config = LoraConfig(
@@ -110,6 +112,13 @@ def main():
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
     )
+    
+    # Show current memory stats
+    gpu_stats = torch.cuda.get_device_properties(0)
+    start_gpu_memory = round(torch.cuda.max_memory_reserved() / 1024 / 1024 / 1024, 3)
+    max_memory = round(gpu_stats.total_memory / 1024 / 1024 / 1024, 3)
+    print(f"GPU Status: \n------------------------\nGPU = {gpu_stats.name}. Max memory = {max_memory} GB.")
+    print(f"{start_gpu_memory} GB of memory reserved.\n------------------------\n")
     
     # Start training
     trainer.train()
