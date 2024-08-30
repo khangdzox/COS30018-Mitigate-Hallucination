@@ -10,6 +10,8 @@ import torch
 import numpy as np
 import evaluate
 
+from trl import SFTTrainer
+
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
     
@@ -25,9 +27,8 @@ def main():
     
     # load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
+    EOS_TOKEN = tokenizer.eos_token
     tokenizer.pad_token = tokenizer.eos_token
-    tokenizer.padding_side = "right" # Fix weird overflow issue with fp16 training
-    
     # Freezing the original weights
     for param in model.parameters():
         param.requires_grad = False #freeze the model - train adapters later
@@ -63,32 +64,46 @@ def main():
     print_trainable_parameters(model)
     
     # Load the dataset
-    dataset = load_dataset("mlabonne/guanaco-llama2-1k", split="train")
+    dataset = load_dataset("yahma/alpaca-cleaned", split="train")
+    
+    alpaca_prompt = "Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the task."
     
     # Tokenize the dataset
     def tokenize_function(examples):
-        tokenizer(examples['text'], padding='max_length', truncation=True, max_length=512)
-    
-    tokenized_dataset = dataset.map(
-        tokenize_function,
-        batched=True,
-        num_proc=4,
-    )
-    
-    # Data collator
-    data_collator = DataCollatorForLanguageModeling(
-        tokenizer=tokenizer, mlm=False, mlm_probability=0.15
-    )
-    
-    # Training hyperparameters
-    training_args = TrainingArguments(output_dir="LLaMA-3-8B-Instruct-LoRA", remove_unused_columns=False)
+        instructions = examples["instruction"]
+        inputs = examples["input"]
+        outputs = examples["output"]
+        texts = []
+        
+        for instruction, input, output in zip(instructions, inputs, outputs):
+            text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
+            texts.append(text)
+        return {"text": texts}
+    tokenized_dataset = dataset.map(tokenize_function,batched=True,)
     
     #training
-    trainer = Trainer(
-        model=model,
-        train_dataset=tokenized_dataset,
-        data_collator=data_collator,
-        args=training_args,
+    trainer = SFTTrainer(
+        model = model,
+        tokenizer = tokenizer,
+        train_dataset = tokenized_dataset,
+        dataset_text_field = "text",
+        dataset_num_proc = 2,
+        packing = False, # Can make training 5x faster for short sequences.
+        args = TrainingArguments(
+            per_device_train_batch_size = 2,
+            gradient_accumulation_steps = 4,
+            warmup_steps = 5,
+            max_steps = 60,
+            learning_rate = 2e-4,
+            fp16 = not torch.cuda.is_bf16_supported(),
+            bf16 = torch.cuda.is_bf16_supported(),
+            logging_steps = 1,
+            optim = "adamw_8bit",
+            weight_decay = 0.01,
+            lr_scheduler_type = "linear",
+            seed = 3407,
+            output_dir = "LLaMA-3-8B-Instruct-LoRA",
+        ),
     )
     trainer.train()
 

@@ -1,9 +1,11 @@
-from peft import PeftModel, PeftConfig
+from peft import PeftModel, PeftConfig, LoraConfig
 
 import warnings
 
-from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, BitsAndBytesConfig, TrainingArguments, SFTTrainer, LoraConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, BitsAndBytesConfig, TrainingArguments
 import torch
+
+from trl import SFTTrainer
 
 import datasets
 from datasets import load_dataset
@@ -153,7 +155,7 @@ bnb_config = BitsAndBytesConfig(
 # Load base model
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-quantization_config=bnb_config,
+    quantization_config=bnb_config,
     device_map="auto", # Use automatic device mapping to leverage multiple GPUs if available
     torch_dtype=torch.float16,
 )
