@@ -38,7 +38,7 @@ def main():
     model.gradient_checkpointing_enable() # reduce number of stored activations
     model.enable_input_require_grads()
     
-    #Setting up the LoRA adapter
+    # Show the number of trainable parameters
     def print_trainable_parameters(model):
         trainable_params = 0
         all_params = 0
@@ -49,7 +49,7 @@ def main():
                 trainable_params += param.numel()
         print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
     
-    # LoRA config
+    # LoRA config (adapter)
     config = LoraConfig(
         r = 16,
         lora_alpha=32,

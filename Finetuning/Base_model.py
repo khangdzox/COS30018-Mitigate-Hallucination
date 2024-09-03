@@ -6,9 +6,9 @@ def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
     
     model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+    model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
-    model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
     streamer = TextStreamer(tokenizer) # type: ignore
 
     input_text = 'What does DNA stand for?'
