@@ -123,7 +123,7 @@ def main():
     input_text = "What does DNA stand for?"
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
 
-    with torch.cuda.amp.autocast(): #Convert type of the output to match with input (dtype)
+    with torch.cuda.amp.autocast(): #Convert type of the parameter to match with input (dtype)
         output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
     return output_tokens
 
