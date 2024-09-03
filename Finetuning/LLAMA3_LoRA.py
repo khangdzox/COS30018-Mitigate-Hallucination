@@ -1,5 +1,6 @@
 import warnings
 
+from sklearn import pipeline
 from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments # type: ignore
 
 from datasets import load_dataset # type: ignore
@@ -9,6 +10,8 @@ from peft import get_peft_model, LoraConfig # type: ignore
 import torch # type: ignore
 
 from trl import SFTTrainer # type: ignore
+
+from textwrap import dedent
 
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
@@ -69,21 +72,23 @@ def main():
     output_direction = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/yahma_alpaca-cleaned"
     
     # Create the prompt
-    alpaca_prompt = "Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the task."
+    alpaca_prompt = "Below is an instruction, Input. Base on the instruction and input to give the output."
     
     # Tokenize the dataset
-    def tokenize_function(examples):
+    def tokenize_function(examples: dict):
         instructions = examples["instruction"]
         inputs = examples["input"]
         outputs = examples["output"]
+
         texts = []
         
         for instruction, input, output in zip(instructions, inputs, outputs):
-            text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
+            text = alpaca_prompt.format("### Instruction:" + instruction + "\n","### Input:" +  input + "\n","### Output:" +  output) + EOS_TOKEN
             texts.append(text)
+        
         return {"text": texts}
     
-    tokenized_dataset = dataset.map(tokenize_function,batched=True,)
+    tokenized_dataset = dataset.map(tokenize_function, batched=True)
     
     # Config arguments for the training process
     training_args = TrainingArguments(
@@ -119,10 +124,9 @@ def main():
     # Interface to interact with the model
     streamer = TextStreamer(tokenizer) # type: ignore
 
-    print("Question:\n")
-    input_text = "What does DNA stand for?"
+    input_text = "###Instruction: What does DNA stand for? \n ### Input: \n ### Output: "
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
-
+    
     with torch.cuda.amp.autocast(): #Convert type of the parameter to match with input (dtype)
         output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
     return output_tokens
