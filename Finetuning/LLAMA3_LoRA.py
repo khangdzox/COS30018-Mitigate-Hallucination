@@ -1,14 +1,14 @@
 import warnings
 
-from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments 
+from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments # type: ignore
 
-from datasets import load_dataset
+from datasets import load_dataset # type: ignore
 
-from peft import get_peft_model, LoraConfig
+from peft import get_peft_model, LoraConfig # type: ignore
 
-import torch
+import torch # type: ignore
 
-from trl import SFTTrainer
+from trl import SFTTrainer # type: ignore
 
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
@@ -60,6 +60,8 @@ def main():
     
     # Load the model with the adapter
     model = get_peft_model(model, config)
+
+    # Print the trainable parameters
     print_trainable_parameters(model)
     
     # Load the dataset
@@ -80,6 +82,7 @@ def main():
             text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
             texts.append(text)
         return {"text": texts}
+    
     tokenized_dataset = dataset.map(tokenize_function,batched=True,)
     
     # Config arguments for the training process
@@ -120,7 +123,7 @@ def main():
     input_text = "What does DNA stand for?"
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
 
-    with torch.cuda.amp.autocast():
+    with torch.cuda.amp.autocast(): #Convert type of the output to match with input (dtype)
         output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
     return output_tokens
 
