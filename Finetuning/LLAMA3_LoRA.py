@@ -1,6 +1,5 @@
 import warnings
 
-from sklearn import pipeline
 from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments # type: ignore
 
 from datasets import load_dataset # type: ignore
@@ -10,8 +9,6 @@ from peft import get_peft_model, LoraConfig # type: ignore
 import torch # type: ignore
 
 from trl import SFTTrainer # type: ignore
-
-from textwrap import dedent
 
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
@@ -68,22 +65,24 @@ def main():
     print_trainable_parameters(model)
     
     # Load the dataset
-    dataset = load_dataset("yahma/alpaca-cleaned", split="train")
-    output_direction = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/yahma_alpaca-cleaned"
+    data_file = "Finetuning/Dataset/medical_2/medDataset_processed.csv"
+    output_direction = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2"
+    
+    dataset = load_dataset('csv', data_files=data_file, split='train')
     
     # Create the prompt
-    alpaca_prompt = "Below is an instruction, Input. Base on the instruction and input to give the output."
+    alpaca_prompt = "Below is an instruction that describes a question. Write a response that appropriately answer the question."
     
     # Tokenize the dataset
     def tokenize_function(examples: dict):
-        instructions = examples["instruction"]
-        inputs = examples["input"]
-        outputs = examples["output"]
+        instructions = examples["qtype"]
+        inputs = examples["Question"]
+        outputs = examples["Answer"]
 
         texts = []
         
         for instruction, input, output in zip(instructions, inputs, outputs):
-            text = alpaca_prompt.format("### Instruction:" + instruction + "\n","### Input:" +  input + "\n","### Output:" +  output) + EOS_TOKEN
+            text = alpaca_prompt.format("### Type: " + instruction + "\n","### Question: " +  input + "\n","### Answer: " +  output) + EOS_TOKEN
             texts.append(text)
         
         return {"text": texts}
@@ -124,7 +123,7 @@ def main():
     # Interface to interact with the model
     streamer = TextStreamer(tokenizer) # type: ignore
 
-    input_text = "###Instruction: What does DNA stand for? \n ### Input: \n ### Output: "
+    input_text = "### Type: information \n ### Question: What is (are) Parasites - Scabies? \n ### Answer: "
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
     
     with torch.cuda.amp.autocast(): #Convert type of the parameter to match with input (dtype)
