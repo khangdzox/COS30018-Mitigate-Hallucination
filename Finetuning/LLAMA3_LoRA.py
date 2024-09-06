@@ -8,7 +8,18 @@ from peft import get_peft_model, LoraConfig # type: ignore
 
 import torch # type: ignore
 
-from trl import SFTTrainer # type: ignore
+from trl import SFTTrainer, SFTConfig # type: ignore
+
+# Show the number of trainable parameters
+def print_trainable_parameters(model):
+    trainable_params = 0
+    all_params = 0
+    
+    for _, param in model.named_parameters():
+        all_params += param.numel()
+        if param.requires_grad:
+            trainable_params += param.numel()
+    print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
 
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
@@ -38,17 +49,6 @@ def main():
     model.gradient_checkpointing_enable() # reduce number of stored activations
     model.enable_input_require_grads()
     
-    # Show the number of trainable parameters
-    def print_trainable_parameters(model):
-        trainable_params = 0
-        all_params = 0
-        
-        for _, param in model.named_parameters():
-            all_params += param.numel()
-            if param.requires_grad:
-                trainable_params += param.numel()
-        print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
-    
     # LoRA config (adapter)
     config = LoraConfig(
         r = 16,
@@ -71,20 +71,19 @@ def main():
     dataset = load_dataset('csv', data_files=data_file, split='train')
     
     # Create the prompt
-    alpaca_prompt = "Below is an instruction that describes a question. Write a response that appropriately answer the question."
+    alpaca_prompt = "Below is  a question. Answer that question appropriately."
     
     # Tokenize the dataset
     def tokenize_function(examples: dict):
-        instructions = examples["qtype"]
         inputs = examples["Question"]
         outputs = examples["Answer"]
 
         texts = []
         
-        for instruction, input, output in zip(instructions, inputs, outputs):
-            text = alpaca_prompt.format("### Type: " + instruction + "\n","### Question: " +  input + "\n","### Answer: " +  output) + EOS_TOKEN
+        for input, output in zip(inputs, outputs):
+            text = alpaca_prompt + "\n" + "### Question: " +  input + "\n","### Answer: " +  output + EOS_TOKEN
             texts.append(text)
-        
+            
         return {"text": texts}
     
     tokenized_dataset = dataset.map(tokenize_function, batched=True)
@@ -123,12 +122,12 @@ def main():
     # Interface to interact with the model
     streamer = TextStreamer(tokenizer) # type: ignore
 
-    input_text = "### Type: information \n ### Question: What is (are) Parasites - Scabies? \n ### Answer: "
+    input_text = "### Question: What is (are) Parasites - Scabies? \n ### Answer: "
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
     
-    with torch.cuda.amp.autocast(): #Convert type of the parameter to match with input (dtype)
-        output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
+    output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
     return output_tokens
 
 if __name__ == "__main__":
+    
     main()
