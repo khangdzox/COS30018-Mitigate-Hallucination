@@ -4,6 +4,8 @@ from datasets import load_dataset
 from peft import get_peft_model, LoraConfig 
 import torch 
 from trl import SFTTrainer
+import math
+import evaluate
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -124,6 +126,21 @@ def main():
     
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
+    
+    # TRAINING
+    
+    # Training setup
+    trainer = SFTTrainer(
+        model = model,
+        tokenizer = tokenizer,
+        train_dataset = tokenized_dataset['train'],
+        eval_dataset= tokenized_dataset['test'],
+        dataset_text_field = "text",
+        max_seq_length = 512,
+        packing = False, # Can make training 5x faster for short sequences.
+        args = training_args,
+    )
+    
     # EVALUATING
     
     # Evaluate the base model
@@ -135,18 +152,8 @@ def main():
     for question in after_questions:
         print(generate_output(model, tokenizer, question))
     
-    # TRAINING
-    
-    # Training setup
-    trainer = SFTTrainer(
-        model = model,
-        tokenizer = tokenizer,
-        train_dataset = tokenized_dataset['train'],
-        dataset_text_field = "text",
-        max_seq_length = 512,
-        packing = False, # Can make training 5x faster for short sequences.
-        args = training_args,
-    )
+    eval_results = trainer.evaluate()
+    print(f"Perlexity: {math.exp(eval_results["eval_loss"]):.2f}")
     
     # Start training
     trainer.train()
@@ -158,6 +165,9 @@ def main():
     print("=====================================") 
     for question in before_questions:
         print(generate_output(model, tokenizer, question))
+        
+    eval_results = trainer.evaluate()
+    print(f"Perlexity: {math.exp(eval_results["eval_loss"]):.2f}")
         
     # Save the model
     model.save_pretrained("LLAMA3_Fine-tuned")
