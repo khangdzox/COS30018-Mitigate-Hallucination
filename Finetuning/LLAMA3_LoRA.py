@@ -100,6 +100,8 @@ def main():
     
     train_dataset= load_dataset('csv', data_files=data_file, split='train')
     
+    # IMPLEMENTING LORA TECHNIQUE
+    
     # Freezing the original weights
     freeze_model(model)
     
@@ -109,6 +111,7 @@ def main():
     # Print the trainable parameters
     print_trainable_parameters(model)
     
+    # DATA PREPROCESSING AND TOKENIZING
     
     # Create the prompt
     alpaca_prompt = "Below is  a question. Answer that question appropriately."
@@ -116,6 +119,8 @@ def main():
     # Tokenize the dataset
     
     tokenized_dataset = train_dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    
+    # TRAINING
     
     #training setup
     trainer = SFTTrainer(
