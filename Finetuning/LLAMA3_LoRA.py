@@ -69,16 +69,16 @@ def main():
             per_device_train_batch_size = 2,
             gradient_accumulation_steps = 4,
             warmup_steps = 5,
+            logging_steps = 1,
             learning_rate = 2e-4,
             fp16 = True,
-            logging_steps = 1,
             optim = "adamw_8bit",
             weight_decay = 0.01,
             lr_scheduler_type = "linear", # Control learning rate change
             seed = 3407,
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            max_steps = 1,
+            max_steps = 60,
         )
     
     # LOADDING
@@ -127,7 +127,6 @@ def main():
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # EVALUATING
-
     
     # Evaluate the base model
     after_questions = ["What is the cause of diabetes?"]
