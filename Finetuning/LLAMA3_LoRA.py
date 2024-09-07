@@ -1,14 +1,9 @@
 import warnings
-
-from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments # type: ignore
-
-from datasets import load_dataset, ReadInstruction # type: ignore
-
-from peft import get_peft_model, LoraConfig # type: ignore
-
-import torch # type: ignore
-
-from trl import SFTTrainer # type: ignore
+from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments 
+from datasets import load_dataset 
+from peft import get_peft_model, LoraConfig 
+import torch 
+from trl import SFTTrainer 
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
