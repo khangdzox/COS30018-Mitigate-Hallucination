@@ -5,6 +5,7 @@ from peft import get_peft_model, LoraConfig
 import torch 
 from trl import SFTTrainer
 import evaluate
+import numpy as np
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -18,13 +19,13 @@ def print_trainable_parameters(model):
     print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
     
 # Interface to interact with the model
-def generate_output(model, tokenizer):
-    streamer = TextStreamer(tokenizer) # type: ignore
+def generate_output(model, tokenizer, question):
+    streamer = TextStreamer(tokenizer) # Type: ignore
 
-    input_text = "### Question: What is (are) Parasites - Scabies? \n ### Answer: "
+    input_text = f"### Question: {question} \n ### Answer: "
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
     
-    with torch.cuda.amp.autocast():
+    with torch.cuda.amp.autocast(): # Make sure the model and input are in the same fp16 format
         output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
     return output_tokens
 
@@ -44,10 +45,10 @@ def tokenize_function(examples: dict, alpaca_prompt: str, EOS_TOKEN: str):
 # Freezing the original weights
 def freeze_model(model):
     for param in model.parameters():
-        param.requires_grad = False #freeze the model - train adapters later
+        param.requires_grad = False # Freeze the model - train adapters later
         
         if param.ndim == 1:
-            param.data = param.data.to(torch.float32) #cast the small parameters (layernorm) to fp32 fpr stability
+            param.data = param.data.to(torch.float32) # Cast the small parameters (layernorm) to fp32 fpr stability
             
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
@@ -68,16 +69,16 @@ def main():
             per_device_train_batch_size = 2,
             gradient_accumulation_steps = 4,
             warmup_steps = 5,
-            max_steps = 60,
             learning_rate = 2e-4,
             fp16 = True,
             logging_steps = 1,
             optim = "adamw_8bit",
             weight_decay = 0.01,
-            lr_scheduler_type = "linear", # control learning rate change
+            lr_scheduler_type = "linear", # Control learning rate change
             seed = 3407,
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
-            group_by_length = True, # group samples of same length to reduce padding and speed up training
+            group_by_length = True, # Group samples of same length to reduce padding and speed up training
+            max_steps = 1,
         )
     
     # LOADDING
@@ -88,11 +89,11 @@ def main():
     
     device = get_device_map()
 
-    # load base model
+    # Load base model
     model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
     model = AutoModelForCausalLM.from_pretrained(model_id, device_map=device, torch_dtype=torch.bfloat16)
     
-    # load tokenizer
+    # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     EOS_TOKEN = tokenizer.eos_token # End of sequence token
     tokenizer.pad_token = tokenizer.eos_token
@@ -100,7 +101,10 @@ def main():
     # Load the dataset
     data_file = "Finetuning/Dataset/medical_2/4K_answer_medDataset.csv"
     
-    train_dataset= load_dataset('csv', data_files=data_file, split='train')
+    dataset = load_dataset('csv', data_files=data_file, split='train')
+    
+    # Split the dataset into training and testing
+    dataset = dataset.train_test_split()
     
     # IMPLEMENTING LORA TECHNIQUE
     
@@ -120,18 +124,29 @@ def main():
     
     # Tokenize the dataset
     
-    tokenized_dataset = train_dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    
+    # EVALUATING
+
+    
+    # Evaluate the base model
+    after_questions = ["What is the cause of diabetes?"]
+    
+    print("Base model predictions:")
+    print("=====================================")
+    
+    for question in after_questions:
+        print(generate_output(model, tokenizer, question))
     
     # TRAINING
     
-    #training setup
+    # Training setup
     trainer = SFTTrainer(
         model = model,
         tokenizer = tokenizer,
-        train_dataset = tokenized_dataset,
+        train_dataset = tokenized_dataset['train'],
         dataset_text_field = "text",
-        dataset_num_proc = 2,
-        max_seq_length = 1024,
+        max_seq_length = 512,
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
     )
@@ -139,8 +154,16 @@ def main():
     # Start training
     trainer.train()
     
-    # generate output
-    print(generate_output(model, tokenizer))
+    # Evaluate the fine-tuned model
+    before_questions = ["What is the cause of diabetes?"]
+    
+    print("Fine-tuned model predictions:")
+    print("=====================================") 
+    for question in before_questions:
+        print(generate_output(model, tokenizer, question))
+        
+    # Save the model
+    model.save_pretrained("LLAMA3_Fine-tuned")
 
 if __name__ == "__main__":
     
