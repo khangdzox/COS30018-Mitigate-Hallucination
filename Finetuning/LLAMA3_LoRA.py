@@ -4,6 +4,7 @@ from datasets import load_dataset
 from peft import get_peft_model, LoraConfig 
 import torch 
 from trl import SFTTrainer
+import evaluate
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -76,6 +77,7 @@ def main():
             lr_scheduler_type = "linear", # control learning rate change
             seed = 3407,
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
+            group_by_length = True, # group samples of same length to reduce padding and speed up training
         )
     
     # LOADDING
