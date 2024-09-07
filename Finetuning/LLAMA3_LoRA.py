@@ -46,7 +46,6 @@ def main():
         if param.ndim == 1:
             param.data = param.data.to(torch.float32) #cast the small parameters (layernorm) to fp32 fpr stability
     
-    model.gradient_checkpointing_enable() # reduce number of stored activations
     model.enable_input_require_grads()
     
     # LoRA config (adapter)
@@ -95,8 +94,7 @@ def main():
             warmup_steps = 5,
             max_steps = 60,
             learning_rate = 2e-4,
-            fp16 = not torch.cuda.is_bf16_supported(),
-            bf16 = torch.cuda.is_bf16_supported(),
+            fp16 = True,
             logging_steps = 1,
             optim = "adamw_8bit",
             weight_decay = 0.01,
@@ -125,7 +123,8 @@ def main():
     input_text = "### Question: What is (are) Parasites - Scabies? \n ### Answer: "
     input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
     
-    output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
+    with torch.cuda.amp.autocast():
+        output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
     return output_tokens
 
 if __name__ == "__main__":
