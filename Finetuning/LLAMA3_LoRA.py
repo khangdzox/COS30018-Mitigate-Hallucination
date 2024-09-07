@@ -8,7 +8,7 @@ from peft import get_peft_model, LoraConfig # type: ignore
 
 import torch # type: ignore
 
-from trl import SFTTrainer, SFTConfig # type: ignore
+from trl import SFTTrainer # type: ignore
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -64,7 +64,7 @@ def main():
     print_trainable_parameters(model)
     
     # Load the dataset
-    data_file = "Finetuning/Dataset/medical_2/medDataset_processed.csv"
+    data_file = "Finetuning/Dataset/medical_2/4K_answer_medDataset.csv"
     output_direction = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2"
     
     dataset = load_dataset('csv', data_files=data_file, split='train')
