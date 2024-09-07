@@ -4,8 +4,6 @@ from datasets import load_dataset
 from peft import get_peft_model, LoraConfig 
 import torch 
 from trl import SFTTrainer
-import evaluate
-import numpy as np
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
