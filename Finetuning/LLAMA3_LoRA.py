@@ -3,7 +3,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, Trai
 from datasets import load_dataset 
 from peft import get_peft_model, LoraConfig 
 import torch 
-from trl import SFTTrainer 
+from trl import SFTTrainer
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):

@@ -156,7 +156,7 @@ bnb_config = BitsAndBytesConfig(
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config=bnb_config,
-    device_map="auto", # Use automatic device mapping to leverage multiple GPUs if available
+    device_map="cuda", # Use automatic device mapping to leverage multiple GPUs if available
     torch_dtype=torch.float16,
 )
 model.config.use_cache = False
