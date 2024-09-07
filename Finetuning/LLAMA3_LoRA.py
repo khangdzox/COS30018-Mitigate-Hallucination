@@ -5,7 +5,6 @@ from peft import get_peft_model, LoraConfig
 import torch 
 from trl import SFTTrainer
 import math
-import evaluate
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -49,6 +48,11 @@ def freeze_model(model):
         
         if param.ndim == 1:
             param.data = param.data.to(torch.float32) # Cast the small parameters (layernorm) to fp32 fpr stability
+            
+# Evaluate the model
+def evaluate_model(trainer):
+    eval_results = trainer.evaluate()
+    return f"Perlexity: {math.exp(eval_results["eval_loss"]):.2f}"
             
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
@@ -126,7 +130,6 @@ def main():
     
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
-    
     # TRAINING
     
     # Training setup
@@ -152,8 +155,7 @@ def main():
     for question in after_questions:
         print(generate_output(model, tokenizer, question))
     
-    eval_results = trainer.evaluate()
-    print(f"Perlexity: {math.exp(eval_results["eval_loss"]):.2f}")
+    print(evaluate_model(trainer)) # Evaluate using perplexity
     
     # Start training
     trainer.train()
@@ -166,8 +168,7 @@ def main():
     for question in before_questions:
         print(generate_output(model, tokenizer, question))
         
-    eval_results = trainer.evaluate()
-    print(f"Perlexity: {math.exp(eval_results["eval_loss"]):.2f}")
+    print(evaluate_model(trainer)) # Evaluate using perplexity
         
     # Save the model
     model.save_pretrained("LLAMA3_Fine-tuned")
