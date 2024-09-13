@@ -20,6 +20,8 @@ Dataset: Medical - link:
 
 ## Usage
 
+# Training
+
 Step 1: import all require libraries. 
 Note: torch need to be matched with your device version.
 

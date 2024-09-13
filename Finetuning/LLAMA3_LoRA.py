@@ -29,7 +29,7 @@ def generate_output(model, tokenizer, question):
     return output_tokens
 
 # Tokenize and formating
-def tokenize_function(examples: dict, alpaca_prompt: str, EOS_TOKEN: str):
+def tokenize_function(examples, alpaca_prompt, EOS_TOKEN):
     inputs = examples["Question"]
     outputs = examples["Answer"]
 
@@ -52,7 +52,7 @@ def freeze_model(model):
 # Evaluate the model
 def evaluate_model(trainer):
     eval_results = trainer.evaluate()
-    return f"Perlexity: {math.exp(eval_results["eval_loss"]):.2f}"
+    return f"Perplexity: {math.exp(eval_results["eval_loss"]):.2f}"
             
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
@@ -145,14 +145,12 @@ def main():
     )
     
     # EVALUATING
+    questions = ["What is the cause of diabetes?"]
     
     # Evaluate the base model
-    after_questions = ["What is the cause of diabetes?"]
     
     print("Base model predictions:")
-    print("=====================================")
-    
-    for question in after_questions:
+    for question in questions:
         print(generate_output(model, tokenizer, question))
     
     print(evaluate_model(trainer)) # Evaluate using perplexity
@@ -161,11 +159,9 @@ def main():
     trainer.train()
     
     # Evaluate the fine-tuned model
-    before_questions = ["What is the cause of diabetes?"]
     
     print("Fine-tuned model predictions:")
-    print("=====================================") 
-    for question in before_questions:
+    for question in questions:
         print(generate_output(model, tokenizer, question))
         
     print(evaluate_model(trainer)) # Evaluate using perplexity
