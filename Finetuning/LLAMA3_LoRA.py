@@ -63,7 +63,7 @@ def main():
     config = LoraConfig(
         r = 1,
         lora_alpha=32,
-        lora_dropout=0.05,
+        lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
         task_type="CAUSAL_LM"
     )
