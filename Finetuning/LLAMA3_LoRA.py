@@ -70,19 +70,20 @@ def main():
     
     # Config arguments for the training process
     training_args = TrainingArguments(
-            per_device_train_batch_size = 2,
-            gradient_accumulation_steps = 4,
+            per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
+            per_gpu_eval_batch_size= 1,
+            gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
             warmup_steps = 5,
             logging_steps = 1,
             learning_rate = 2e-4,
-            fp16 = True,
-            optim = "adamw_8bit",
+            fp16 = True, # Use mixed precision training for faster training
+            optim = "adamw_8bit", # Use 8-bit optimization for faster training
             weight_decay = 0.01,
             lr_scheduler_type = "linear", # Control learning rate change
             seed = 3407,
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            max_steps = 60,
+            max_steps = 120,
         )
     
     # LOADDING
@@ -103,7 +104,7 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
     
     # Load the dataset
-    data_file = "Finetuning/Dataset/medical_2/4K_answer_medDataset.csv"
+    data_file = "Finetuning/Dataset/medical_2/medDataset_processed.csv"
     
     dataset = load_dataset('csv', data_files=data_file, split='train')
     
@@ -149,20 +150,18 @@ def main():
     
     # Evaluate the base model
     
-    print("Base model predictions:")
-    for question in questions:
-        print(generate_output(model, tokenizer, question))
-    
-    print(evaluate_model(trainer)) # Evaluate using perplexity
+    # print("Base model predictions:")
+    # for question in questions:
+    #     print(generate_output(model, tokenizer, question))
     
     # Start training
     trainer.train()
     
     # Evaluate the fine-tuned model
     
-    print("Fine-tuned model predictions:")
-    for question in questions:
-        print(generate_output(model, tokenizer, question))
+    # print("Fine-tuned model predictions:")
+    # for question in questions:
+    #     print(generate_output(model, tokenizer, question))
         
     print(evaluate_model(trainer)) # Evaluate using perplexity
         
