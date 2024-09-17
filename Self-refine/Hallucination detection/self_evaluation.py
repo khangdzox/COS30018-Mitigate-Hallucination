@@ -9,24 +9,14 @@ terminators = [
     tokenizer.convert_tokens_to_ids("<|eot_id|>")
 ]
 
-question = "What is the capital of Australia?"
+question = "How many letter R are there in strawberry?"
 
 num_samples = 20
 
 
-# Step 2: Sample 20 more responses Rs using the same question prompt
 
-# Step 3: Ask the model using the following format:
 
-# ```
-# Question: {question}
-# Here are some brainstormed ideas: {Rs}
-# Possible answer: {A}
-# Is the possible answer:
-# A. True
-# B. False
-# The possible answer is:
-# ```
+# Step 1: Generate a response A using a question prompt
 
 messages = [
     {"role": "user", "content": question},
@@ -38,8 +28,6 @@ input_ids = tokenizer.apply_chat_template(
     return_tensors="pt",
 ).to(model.device) # type: ignore
 
-# Step 1: Generate a response A using a question prompt
-
 output_ids = model.generate(
     input_ids, # type: ignore
     max_new_tokens=100,
@@ -49,6 +37,9 @@ output_ids = model.generate(
 )
 
 answer = tokenizer.decode(output_ids[0, input_ids.shape[-1]:], skip_special_tokens=True).strip()
+
+
+
 
 # Step 2: Sample 20 more responses Rs using the same question prompt
 
@@ -63,7 +54,20 @@ output_ids = model.generate(
 
 responses = tokenizer.batch_decode(output_ids[:, input_ids.shape[-1]:], skip_special_tokens=True)
 
-# Step 3: Ask the model using the format
+
+
+
+# Step 3: Ask the model using the following format:
+# ```
+# Question: {question}
+# Here are some brainstormed ideas: {Rs}
+# Possible answer: {A}
+# Is the possible answer:
+# A. True
+# B. False
+# The possible answer is:
+# ```
+
 messages = [
     {"role": "user", "content": question},
     {"role": "user", "content": f"Here are some brainstormed ideas: {responses}"},
