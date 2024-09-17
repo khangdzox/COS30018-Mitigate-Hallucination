@@ -71,6 +71,7 @@ def main():
     # Config arguments for the training process
     training_args = TrainingArguments(
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
+            per_device_eval_batch_size= 1, # Batch size for evaluation
             gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
             eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
             warmup_steps = 5,
@@ -84,6 +85,7 @@ def main():
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
             max_steps = 120,
+            eval_strategy= "steps", # Evaluate every 100 steps
         )
     
     # LOADDING
