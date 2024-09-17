@@ -71,8 +71,8 @@ def main():
     # Config arguments for the training process
     training_args = TrainingArguments(
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
-            per_gpu_eval_batch_size= 1,
             gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
+            eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
             warmup_steps = 5,
             logging_steps = 1,
             learning_rate = 2e-4,
@@ -153,6 +153,8 @@ def main():
     # print("Base model predictions:")
     # for question in questions:
     #     print(generate_output(model, tokenizer, question))
+    
+    print(evaluate_model(trainer)) # Evaluate using perplexity
     
     # Start training
     trainer.train()
