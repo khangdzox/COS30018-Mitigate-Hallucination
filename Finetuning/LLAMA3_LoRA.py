@@ -76,7 +76,7 @@ def main():
             eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
             warmup_steps = 5,
             logging_steps = 1,
-            learning_rate = 2e-4,
+            learning_rate = 1e-4, # Learning rate change
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
             weight_decay = 0.01,
@@ -85,7 +85,6 @@ def main():
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
             max_steps = 120,
-            eval_strategy= "steps", # Evaluate every 100 steps
         )
     
     # LOADDING
@@ -156,16 +155,16 @@ def main():
     # for question in questions:
     #     print(generate_output(model, tokenizer, question))
     
-    print(evaluate_model(trainer)) # Evaluate using perplexity
+    # print(evaluate_model(trainer)) # Evaluate using perplexity
     
     # Start training
     trainer.train()
     
     # Evaluate the fine-tuned model
     
-    # print("Fine-tuned model predictions:")
-    # for question in questions:
-    #     print(generate_output(model, tokenizer, question))
+    print("Fine-tuned model predictions:")
+    for question in questions:
+        print(generate_output(model, tokenizer, question))
         
     print(evaluate_model(trainer)) # Evaluate using perplexity
         
