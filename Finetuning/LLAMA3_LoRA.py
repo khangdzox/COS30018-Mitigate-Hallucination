@@ -5,7 +5,6 @@ from peft import get_peft_model, LoraConfig
 import torch 
 from trl import SFTTrainer
 import math
-#test
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -29,18 +28,41 @@ def generate_output(model, tokenizer, question, alpaca_prompt):
     input_tokens = tokenizer.apply_chat_template(input_text, return_tensors="pt").to(model.device)
     
     with torch.cuda.amp.autocast(): # Make sure the model and input are in the same fp16 format
-        output_tokens = model.generate(input_tokens, streamer=streamer, max_new_tokens=256, do_sample=True, top_p=0.8, pad_token_id=tokenizer.eos_token_id)
+        output_tokens = model.generate(input_tokens, streamer=streamer, max_new_tokens=512, do_sample=True, top_p=0.8, pad_token_id=tokenizer.eos_token_id)
     return output_tokens
 
 # Tokenize and formating
 def tokenize_function(examples, alpaca_prompt, EOS_TOKEN):
-    inputs = examples["Question"]
-    outputs = examples["Answer"]
+    questions = examples["question"]
+    option_as = examples["opa"]
+    option_bs = examples["opb"]
+    option_cs = examples["opc"]
+    option_ds = examples["opd"]
+    answers = examples["cop"]
+    explainations = examples["exp"]
 
     texts = []
     
-    for input, output in zip(inputs, outputs):
-        text = alpaca_prompt + "\n" + "### Question: " +  input + "\n","### Answer: " +  output + EOS_TOKEN
+    for question, option_a, option_b, option_c, option_d, answer, explaination in zip(questions, option_as, option_bs, option_cs, option_ds, answers, explainations):
+        text = f"""
+        {alpaca_prompt}
+        
+        ### Question:
+        {question}
+        
+        ### Options:
+        A. {option_a}
+        B. {option_b}
+        C. {option_c}
+        D. {option_d}
+        
+        ### Answer:
+        {answer}
+        
+        ### Explaination:
+        {explaination}
+        {EOS_TOKEN}
+        """
         texts.append(text)
         
     return {"text": texts}
@@ -78,6 +100,7 @@ def main():
             per_device_eval_batch_size= 1, # Batch size for evaluation
             gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
             eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
+            eval_strategy= "steps", # Evaluate every 100
             warmup_steps = 5,
             logging_steps = 1,
             learning_rate = 1e-4, # Learning rate change
@@ -88,7 +111,8 @@ def main():
             seed = 3407,
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            max_steps = 120,
+            max_steps = 200,
+            eval_steps= 10,
         )
     
     # LOADDING
@@ -109,12 +133,17 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
     
     # Load the dataset
-    data_file = "Finetuning/Dataset/medical_2/medDataset_processed.csv"
+    data_files = {
+        "train" : "../medical_3/train.csv",
+        "validation": "../medical_3/validation.csv",
+        "test" : "../medical_3/test.csv"
+    }
     
-    dataset = load_dataset('csv', data_files=data_file, split='train')
+    dataset = load_dataset("csv", data_files=data_files)
     
-    # Split the dataset into training and testing
-    dataset = dataset.train_test_split()
+    # sameple the dataset
+    validation_subset = dataset['validation'].train_test_split(test_size=0.2, seed=3407)
+    train_subset = dataset['train'].train_test_split(test_size=0.2, seed=3407)
     
     # IMPLEMENTING LORA TECHNIQUE
     
@@ -130,11 +159,13 @@ def main():
     # DATA PREPROCESSING AND TOKENIZING
     
     # Create the prompt
-    alpaca_prompt = "Below is  a question. Answer that question appropriately."
+    alpaca_prompt = "You are an assistant for question-answering tasks.\nBelow is the instruction. Answer the question and explain your answer.\nIf you don't know the answer or explaination, just say you don't know."
     
     # Tokenize the dataset
     
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    tokenized_validation_subset = validation_subset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
+    tokenized_train_subset = train_subset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
     
     # TRAINING
     
@@ -143,7 +174,7 @@ def main():
         model = model,
         tokenizer = tokenizer,
         train_dataset = tokenized_dataset['train'],
-        eval_dataset= tokenized_dataset['test'],
+        eval_dataset= tokenized_validation_subset['test'],
         dataset_text_field = "text",
         max_seq_length = 512,
         packing = False, # Can make training 5x faster for short sequences.
@@ -151,7 +182,7 @@ def main():
     )
     
     # EVALUATING
-    questions = ["What is the capital of France?"]
+    questions = ["### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma\n###Options: \nA. Hyperplasia\nB. Hyperophy.\nC. Atrophy\nD. Dyplasia"]
     
     # Evaluate the base model
     
@@ -166,9 +197,9 @@ def main():
     
     # Evaluate the fine-tuned model
     
-    print("Fine-tuned model predictions:")
-    for question in questions:
-        print(generate_output(model, tokenizer, question, alpaca_prompt))
+    # print("Fine-tuned model predictions:")
+    # for question in questions:
+    #     print(generate_output(model, tokenizer, question, alpaca_prompt))
         
     # print(evaluate_model(trainer)) # Evaluate using perplexity
         
