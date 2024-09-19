@@ -18,11 +18,11 @@ def print_trainable_parameters(model):
     print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
     
 # Interface to interact with the model
-def generate_output(model, tokenizer, question, alpaca_prompt):
+def generate_output(model, tokenizer, question, prompt):
     streamer = TextStreamer(tokenizer) # Type: ignore
 
     input_text = [
-        {"role": "system", "content": alpaca_prompt},
+        {"role": "system", "content": prompt},
         {"role": "user", "content": question},
     ]
     input_tokens = tokenizer.apply_chat_template(input_text, return_tensors="pt").to(model.device)
@@ -32,7 +32,7 @@ def generate_output(model, tokenizer, question, alpaca_prompt):
     return output_tokens
 
 # Tokenize and formating
-def tokenize_function(examples, alpaca_prompt, EOS_TOKEN):
+def tokenize_function(examples, prompt, EOS_TOKEN):
     questions = examples["question"]
     option_as = examples["opa"]
     option_bs = examples["opb"]
@@ -45,7 +45,7 @@ def tokenize_function(examples, alpaca_prompt, EOS_TOKEN):
     
     for question, option_a, option_b, option_c, option_d, answer, explaination in zip(questions, option_as, option_bs, option_cs, option_ds, answers, explainations):
         text = f"""
-        {alpaca_prompt}
+        {prompt}
         
         ### Question:
         {question}
@@ -141,8 +141,8 @@ def main():
     
     dataset = load_dataset("csv", data_files=data_files)
     
-    # sameple the dataset
-    validation_subset = dataset['validation'].train_test_split(test_size=0.2, seed=3407)
+    # sample the dataset
+    validation_subset = dataset['validation'].train_test_split(test_size=0.1, seed=3407)
     train_subset = dataset['train'].train_test_split(test_size=0.2, seed=3407)
     
     # IMPLEMENTING LORA TECHNIQUE
@@ -159,13 +159,13 @@ def main():
     # DATA PREPROCESSING AND TOKENIZING
     
     # Create the prompt
-    alpaca_prompt = "You are an assistant for question-answering tasks.\nBelow is the instruction. Answer the question and explain your answer.\nIf you don't know the answer or explaination, just say you don't know."
+    prompt = "You are an assistant for question-answering tasks.\nBelow is the instruction. Answer the question and explain your answer.\nIf you don't know the answer or explaination, just say you don't know."
     
     # Tokenize the dataset
     
-    # tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
-    tokenized_validation_subset = validation_subset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
-    tokenized_train_subset = train_subset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
+    tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    tokenized_validation_subset = validation_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
+    tokenized_train_subset = train_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
     
     # TRAINING
     
@@ -188,9 +188,9 @@ def main():
     
     # print("Base model predictions:")
     # for question in questions:
-    #     print(generate_output(model, tokenizer, question, alpaca_prompt))
+    #     print(generate_output(model, tokenizer, question, prompt))
     
-    print(evaluate_model(trainer)) # Evaluate using perplexity
+    # print(evaluate_model(trainer)) # Evaluate using perplexity
     
     # Start training
     # trainer.train()
@@ -199,12 +199,12 @@ def main():
     
     # print("Fine-tuned model predictions:")
     # for question in questions:
-    #     print(generate_output(model, tokenizer, question, alpaca_prompt))
+    #     print(generate_output(model, tokenizer, question, prompt))
         
     # print(evaluate_model(trainer)) # Evaluate using perplexity
         
     # Save the model
-    # model.save_pretrained("LLAMA3_Fine-tuned")
+    # model.save_pretrained("medical_3_LLAMA3_Fine-tuned")
 
 if __name__ == "__main__":
     
