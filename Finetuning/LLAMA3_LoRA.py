@@ -163,7 +163,7 @@ def main():
     
     # Tokenize the dataset
     
-    tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    # tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     tokenized_validation_subset = validation_subset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
     tokenized_train_subset = train_subset.map(tokenize_function, fn_kwargs= {"alpaca_prompt": alpaca_prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
     
@@ -173,7 +173,7 @@ def main():
     trainer = SFTTrainer(
         model = model,
         tokenizer = tokenizer,
-        train_dataset = tokenized_dataset['train'],
+        train_dataset = tokenized_train_subset['test'],
         eval_dataset= tokenized_validation_subset['test'],
         dataset_text_field = "text",
         max_seq_length = 512,
@@ -190,7 +190,7 @@ def main():
     # for question in questions:
     #     print(generate_output(model, tokenizer, question, alpaca_prompt))
     
-    # print(evaluate_model(trainer)) # Evaluate using perplexity
+    print(evaluate_model(trainer)) # Evaluate using perplexity
     
     # Start training
     # trainer.train()
