@@ -19,14 +19,17 @@ def print_trainable_parameters(model):
     print(f"Trainable parameters: {trainable_params} || all params: {all_params} || trainable %: {100 * trainable_params/all_params}" )
     
 # Interface to interact with the model
-def generate_output(model, tokenizer, question):
+def generate_output(model, tokenizer, question, alpaca_prompt):
     streamer = TextStreamer(tokenizer) # Type: ignore
 
-    input_text = f"### Question: {question} \n ### Answer: "
-    input_tokens = tokenizer(input_text, return_tensors="pt").to(model.device)
+    input_text = [
+        {"role": "system", "content": alpaca_prompt},
+        {"role": "user", "content": question},
+    ]
+    input_tokens = tokenizer.apply_chat_template(input_text, return_tensors="pt").to(model.device)
     
     with torch.cuda.amp.autocast(): # Make sure the model and input are in the same fp16 format
-        output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8)
+        output_tokens = model.generate(input_tokens, streamer=streamer, max_new_tokens=256, do_sample=True, top_p=0.8, pad_token_id=tokenizer.eos_token_id)
     return output_tokens
 
 # Tokenize and formating
@@ -148,29 +151,29 @@ def main():
     )
     
     # EVALUATING
-    questions = ["What is the cause of diabetes?"]
+    questions = ["What is the capital of France?"]
     
     # Evaluate the base model
     
     # print("Base model predictions:")
     # for question in questions:
-    #     print(generate_output(model, tokenizer, question))
+    #     print(generate_output(model, tokenizer, question, alpaca_prompt))
     
     # print(evaluate_model(trainer)) # Evaluate using perplexity
     
     # Start training
-    trainer.train()
+    # trainer.train()
     
     # Evaluate the fine-tuned model
     
     print("Fine-tuned model predictions:")
     for question in questions:
-        print(generate_output(model, tokenizer, question))
+        print(generate_output(model, tokenizer, question, alpaca_prompt))
         
-    print(evaluate_model(trainer)) # Evaluate using perplexity
+    # print(evaluate_model(trainer)) # Evaluate using perplexity
         
     # Save the model
-    model.save_pretrained("LLAMA3_Fine-tuned")
+    # model.save_pretrained("LLAMA3_Fine-tuned")
 
 if __name__ == "__main__":
     

@@ -9,8 +9,7 @@ from transformers import (
 )
 import torch
 
-model_id = "google/gemma-2-2b-it"
-# model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 
 quantization_config = BitsAndBytesConfig(load_in_8bit=True)
 
@@ -35,4 +34,9 @@ input_tokens = tokenizer.apply_chat_template(
     return_tensors="pt",
 ).to(model.device) # type: ignore
 
-output_tokens = model.generate(**input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.9)
+terminators = [
+    tokenizer.eos_token_id,
+    tokenizer.convert_tokens_to_ids("<|eot_id|>")
+]
+
+output_tokens = model.generate(input_tokens, streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.9, eos_token_id=terminators, pad_token_id=tokenizer.eos_token_id)
