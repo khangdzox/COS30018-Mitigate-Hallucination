@@ -109,7 +109,7 @@ def main():
             weight_decay = 0.01,
             lr_scheduler_type = "linear", # Control learning rate change
             seed = 3407,
-            output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
+            output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_3",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
             max_steps = 200,
             eval_steps= 20,
@@ -193,18 +193,18 @@ def main():
     # print(evaluate_model(trainer)) # Evaluate using perplexity
     
     # Start training
-    # trainer.train()
+    trainer.train()
     
     # Evaluate the fine-tuned model
     
-    # print("Fine-tuned model predictions:")
-    # for question in questions:
-    #     print(generate_output(model, tokenizer, question, prompt))
-        
-    # print(evaluate_model(trainer)) # Evaluate using perplexity
+    print("Fine-tuned model predictions:")
+    for question in questions:
+        print(generate_output(model, tokenizer, question, prompt))
+    
+    print(evaluate_model(trainer)) # Evaluate using perplexity
         
     # Save the model
-    # model.save_pretrained("medical_3_LLAMA3_Fine-tuned")
+    model.save_pretrained("medical_3_LLAMA3_Fine-tuned")
 
 if __name__ == "__main__":
     
