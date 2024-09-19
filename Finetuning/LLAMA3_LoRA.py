@@ -112,7 +112,7 @@ def main():
             output_dir = "LLaMA-3-8B-Instruct-Fine-Tuned-LoRA/medical_2",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
             max_steps = 200,
-            eval_steps= 10,
+            eval_steps= 20,
         )
     
     # LOADDING
