@@ -37,7 +37,7 @@ def main():
             eval_steps= 20,
         )
     
-    lora_config = PeftConfig.from_pretrained("PinkBro/LLAMA3_Fine-tuned_medical3")
+    lora_config = PeftConfig.from_pretrained("PinkBro/LLAMA3_Pre-trained_medical3")
     
     # LOADDING
     
@@ -46,7 +46,7 @@ def main():
     base_model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct")
     
     # Load Pre-trained model
-    model = PeftModel.from_pretrained(base_model, "PinkBro/LLAMA3_Fine-tuned_medical3", device_map = "cuda", torch_dtype = torch.bfloat16)
+    model = PeftModel.from_pretrained(base_model, "PinkBro/LLAMA3_Pre-trained_medical3", device_map = "cuda", torch_dtype = torch.bfloat16)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
