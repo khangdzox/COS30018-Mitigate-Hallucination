@@ -26,20 +26,54 @@ answer_input_tokens = tokenizer.apply_chat_template(
     return_tensors="pt",
 ).to(model.device) # type: ignore
 
+# answer_output_tokens = model.generate(
+#     answer_input_tokens,
+#     max_new_tokens=50,
+#     do_sample=True,
+#     top_p=0.9,
+#     output_scores=True,
+#     return_dict_in_generate=True,
+# ).cpu()
+
+# answer_only_tokens = answer_output_tokens.sequences.squeeze(0)[answer_input_tokens.shape[-1]:].cpu()
+
+# answer = tokenizer.decode(answer_only_tokens, skip_special_tokens=True).strip()
+
+# answer_transition_scores = model.compute_transition_scores(answer_output_tokens.sequences, answer_output_tokens.scores, normalize_logits=True).squeeze(0)
+
 answer_output_tokens = model.generate(
     answer_input_tokens,
     max_new_tokens=50,
     do_sample=True,
-    top_p=0.9,
-    output_scores=True,
-    return_dict_in_generate=True,
+    top_p=0.9
 ).cpu()
 
-answer_only_tokens = answer_output_tokens.sequences.squeeze(0)[answer_input_tokens.shape[-1]:].cpu()
+answer_only_tokens = answer_output_tokens[0, answer_input_tokens.shape[-1]:]
 
 answer = tokenizer.decode(answer_only_tokens, skip_special_tokens=True).strip()
 
-answer_transition_scores = model.compute_transition_scores(answer_output_tokens.sequences, answer_output_tokens.scores, normalize_logits=True).squeeze(0)
+def compute_transition_scores_from_string(model, tokenizer, string, start_idx=0):
+    """
+    Manually compute the transition scores for a string by generating one token at a time.
+    """
+    string_tokens = tokenizer(string, return_tensors="pt").to(model.device)
+
+    logits = ()
+
+    for i in range(start_idx, string_tokens.shape[-1] - 1):
+        logit = model.generate(
+            string_tokens[:, :i],
+            max_new_tokens=1,
+            output_scores=True,
+            return_dict_in_generate=True,
+        )
+        logits += logit.scores
+
+    transition_scores = model.compute_transition_scores(string_tokens, logits, normalize_logits=True)
+
+    return transition_scores.squeeze(0)
+
+answer_transition_scores = compute_transition_scores_from_string(model, tokenizer, answer)
 
 
 
