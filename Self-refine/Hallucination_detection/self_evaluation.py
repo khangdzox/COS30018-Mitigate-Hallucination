@@ -141,15 +141,18 @@ def self_evaluation(
 
     # Ask the model to evaluate the answer
     messages = f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-    Only answer True or False<|start_header_id|>user<|end_header_id|>
-    Question: {question}
-    Here are some brainstormed ideas:
-    {"\n".join(responses)}
-    Possible answer: {answer}
-    Is the possible answer:
-    A. True
-    B. False<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-    The possible answer is: """
+
+Only answer True or False<|start_header_id|>user<|end_header_id|>
+
+Question: {question}
+Here are some brainstormed ideas:
+{"\n".join(responses)}
+Possible answer: {answer}
+Is the possible answer:
+A. True
+B. False<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+The possible answer is: """
 
     validate_input_ids = tokenizer.encode(
         messages,
