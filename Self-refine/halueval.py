@@ -3,7 +3,7 @@ Evaluating hallucination detection methods on HaluEval dataset, QA_samples subse
 """
 
 
-import transformers, torch, datasets, evaluate
+import transformers, torch, datasets, evaluate, tqdm
 from Hallucination_detection import self_evaluation, low_confidence_generation
 
 def load_model() -> transformers.PreTrainedModel:
@@ -38,7 +38,7 @@ results = {
 for method in ['self_evaluation', 'low_confidence_generation']:
     results[method] = []
 
-    for knowledge, question, answer in zip(dataset['knowledge'], dataset['question'], dataset['answer']):
+    for knowledge, question, answer in tqdm.tqdm(zip(dataset['knowledge'], dataset['question'], dataset['answer']), method):
         if knowledge[-1] != ".":
             knowledge += "."
 
