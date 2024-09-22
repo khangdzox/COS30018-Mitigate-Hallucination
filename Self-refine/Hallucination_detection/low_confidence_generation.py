@@ -1,44 +1,43 @@
-from numpy import add
 import transformers, torch
 
-model_id = "google/gemma-2-2b-it"
-tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
-model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
+# model_id = "google/gemma-2-2b-it"
+# tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
+# model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
 
-terminators = [
-    tokenizer.eos_token_id,
-    tokenizer.convert_tokens_to_ids("<|eot_id|>")
-]
+# terminators = [
+#     tokenizer.eos_token_id,
+#     tokenizer.convert_tokens_to_ids("<|eot_id|>")
+# ]
 
-question = "How many letter R are there in strawberry?"
-
-
+# question = "How many letter R are there in strawberry?"
 
 
-# Step 1: Generate a response A using a question prompt
 
-answer_input_msgs = [
-    {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
-    {"role": "user", "content": question},
-]
 
-answer_input_tokens = tokenizer.apply_chat_template(
-    answer_input_msgs,
-    add_generation_prompt=True,
-    return_tensors="pt",
-).to(model.device) # type: ignore
+# # Step 1: Generate a response A using a question prompt
 
-answer_output_tokens = model.generate(
-    answer_input_tokens,
-    max_new_tokens=50,
-    do_sample=True,
-    top_p=0.9,
-    eos_token_id=terminators,
-).cpu()
+# answer_input_msgs = [
+#     {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
+#     {"role": "user", "content": question},
+# ]
 
-answer_only_tokens = answer_output_tokens[0, answer_input_tokens.shape[-1]:]
+# answer_input_tokens = tokenizer.apply_chat_template(
+#     answer_input_msgs,
+#     add_generation_prompt=True,
+#     return_tensors="pt",
+# ).to(model.device) # type: ignore
 
-answer = tokenizer.decode(answer_only_tokens, skip_special_tokens=True).strip()
+# answer_output_tokens = model.generate(
+#     answer_input_tokens,
+#     max_new_tokens=50,
+#     do_sample=True,
+#     top_p=0.9,
+#     eos_token_id=terminators,
+# ).cpu()
+
+# answer_only_tokens = answer_output_tokens[0, answer_input_tokens.shape[-1]:]
+
+# answer = tokenizer.decode(answer_only_tokens, skip_special_tokens=True).strip()
 
 def compute_transition_scores_from_string(model, tokenizer, terminators, string_tokens, start_idx=0):
     """
@@ -123,40 +122,40 @@ def compute_transition_scores_from_string(model, tokenizer, terminators, string_
 
     return transition_scores.squeeze(0)
 
-answer_transition_scores = compute_transition_scores_from_string(model, tokenizer, terminators, answer)
+# answer_transition_scores = compute_transition_scores_from_string(model, tokenizer, terminators, answer)
 
 
 
 
-# Step 2: Get the keywords from the response A using a prompt (?) and the response A
+# # Step 2: Get the keywords from the response A using a prompt (?) and the response A
 
-keywords_input_msgs = [
-    {"role": "system", "content": "Identify all the important keyphrases from the provided content and return a comma separated list."},
-    {"role": "user", "content": answer},
-]
+# keywords_input_msgs = [
+#     {"role": "system", "content": "Identify all the important keyphrases from the provided content and return a comma separated list."},
+#     {"role": "user", "content": answer},
+# ]
 
-keywords_input_tokens = tokenizer.apply_chat_template(
-    keywords_input_msgs,
-    add_generation_prompt=True,
-    return_tensors="pt",
-).to(model.device) # type: ignore
+# keywords_input_tokens = tokenizer.apply_chat_template(
+#     keywords_input_msgs,
+#     add_generation_prompt=True,
+#     return_tensors="pt",
+# ).to(model.device) # type: ignore
 
-keywords_output_tokens = model.generate(
-    keywords_input_tokens,
-    max_new_tokens=50,
-    do_sample=True,
-    top_p=0.9,
-    eos_token_id=terminators,
-).cpu()
+# keywords_output_tokens = model.generate(
+#     keywords_input_tokens,
+#     max_new_tokens=50,
+#     do_sample=True,
+#     top_p=0.9,
+#     eos_token_id=terminators,
+# ).cpu()
 
-keywords = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True).strip().split(", ")
+# keywords = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True).strip().split(", ")
 
-keyword_tokens = {keyword: tokenizer.encode(keyword) for keyword in keywords}
-
-
+# keyword_tokens = {keyword: tokenizer.encode(keyword) for keyword in keywords}
 
 
-# Step 3: For each keyword, calculate the minimum of softmax token probabilities
+
+
+# # Step 3: For each keyword, calculate the minimum of softmax token probabilities
 
 def find_all_subset_index(subset, sequence):
     ans = []
@@ -165,26 +164,26 @@ def find_all_subset_index(subset, sequence):
             ans.append(i)
     return ans
 
-kw_probs = {}
+# kw_probs = {}
 
-for kw, toks in keyword_tokens.items():
-    kwidxes = find_all_subset_index(toks, answer_only_tokens)
+# for kw, toks in keyword_tokens.items():
+#     kwidxes = find_all_subset_index(toks, answer_only_tokens)
 
-    if not kwidx:
-        continue
+#     if not kwidx:
+#         continue
 
-    for i, kwidx in enumerate(kwidxes):
-        kw_probs[f"{kw} {i}"] = torch.min(torch.exp(answer_transition_scores[kwidx:kwidx + len(toks)]))
+#     for i, kwidx in enumerate(kwidxes):
+#         kw_probs[f"{kw} {i}"] = torch.min(torch.exp(answer_transition_scores[kwidx:kwidx + len(toks)]))
 
-print(kw_probs)
-
-
+# print(kw_probs)
 
 
-# Step 4: If the minimum of softmax token probabilities is less than a threshold, then the response A is low-confidence generation
 
-if any(prob < 0.1 for prob in kw_probs.values()):
-    print("Low-confidence generation detected.")
+
+# # Step 4: If the minimum of softmax token probabilities is less than a threshold, then the response A is low-confidence generation
+
+# if any(prob < 0.1 for prob in kw_probs.values()):
+#     print("Low-confidence generation detected.")
 
 
 
@@ -220,6 +219,8 @@ def low_confidence_generation(
         return_tensors="pt",
     ).to(model.device) # type: ignore
 
+    answer_only_tokens = tokenizer.encode(answer)[1:]
+
     # calculate the transition scores (log probabilities) for each token in the answer
     answer_transition_scores = compute_transition_scores_from_string(model, tokenizer, terminators, full_string_tokens, start_idx=question_tokens.shape[-1])
 
@@ -244,7 +245,7 @@ def low_confidence_generation(
     keywords = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True).split(",")
 
     # get the token ids for each keyword
-    keyword_tokens = {keyword: tokenizer.encode(keyword.strip()) for keyword in keywords}
+    keyword_tokens = {keyword: tokenizer.encode(keyword.strip())[1:] for keyword in keywords}
 
     # calculate the minimum of softmax token probabilities for each keyword
     kw_probs = {}
