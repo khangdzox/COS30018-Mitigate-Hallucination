@@ -54,18 +54,18 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
 
     # Load the dataset
-    # data_path = "../medical_3/validation.csv"
+    data_path = "../medical_3/clean_validation.csv"
     
-    # dataset = load_dataset("csv", data_files=data_path)
+    dataset = load_dataset("csv", data_files=data_path)
     
     # GENERATE OUTPUT
-    prompt = "You are an assistant for question-answering tasks.\nBelow is the instruction. Answer the question and explain your answer.\nIf you don't know the answer or explaination, just say you don't know.\nIf you finish your explanation stop, do not generate repeat answer"
+    prompt = "You are an assistant for question-answering tasks.\nBelow is the instruction. Answer the question and explain your answer.\nIf you don't know the answer or explaination, just say you don't know."
     question = "### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma\n###Options: \nA. Hyperplasia\nB. Hyperophy.\nC. Atrophy\nD. Dyplasia"
  
-    print(generate_output(model, tokenizer, question, prompt))
+    # print(generate_output(model, tokenizer, question, prompt))
     
     # Tokenize the dataset
-    # tokenized_validation = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    tokenized_validation = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # Evaluate model
     trainer = SFTTrainer(
@@ -73,9 +73,10 @@ def main():
         tokenizer = tokenizer,
         dataset_text_field = "text",
         max_seq_length = 512,
-        # eval_dataset = tokenized_validation,
+        eval_dataset = tokenized_validation,
         args = training_args,
     )
+    eval_results = trainer.evaluate()
     
     # print(evaluate_model(trainer))
 
