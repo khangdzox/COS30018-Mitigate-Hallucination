@@ -3,3 +3,8 @@ lr_scheduler_type: linear -> cosine
 eval_steps: 20 -> 25
 save_steps: 40 -> 50
 max_steps: 500 -> 200
+
+change input format:
+- add subject_name
+- decode cop (0,1,2,3) -> (a,b,c,d)
+- strip dataset (cleaning)

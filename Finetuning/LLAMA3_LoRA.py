@@ -40,15 +40,19 @@ def tokenize_function(examples, prompt, EOS_TOKEN):
     option_ds = examples["opd"]
     answers = examples["cop"]
     explainations = examples["exp"]
+    subjects = examples["subject_name"]
 
     texts = []
     
-    for question, option_a, option_b, option_c, option_d, answer, explaination in zip(questions, option_as, option_bs, option_cs, option_ds, answers, explainations):
+    for question, option_a, option_b, option_c, option_d, answer, explaination, subject in zip(questions, option_as, option_bs, option_cs, option_ds, answers, explainations, subjects):
         text = f"""
         {prompt}
         
         ### Question:
         {question}
+        
+        ### Subject:
+        {subject}
         
         ### Options:
         A. {option_a}
@@ -64,8 +68,7 @@ def tokenize_function(examples, prompt, EOS_TOKEN):
         {EOS_TOKEN}
         """
         texts.append(text)
-        
-    print(texts)
+    
     return {"text": texts}
 
 # Freezing the original weights
@@ -111,7 +114,7 @@ def main():
             eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
             per_device_eval_batch_size= 1, # Batch size for evaluation
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
-            max_steps = 200,
+            max_steps = 500,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
@@ -138,8 +141,8 @@ def main():
     
     # Load the dataset
     data_files = {
-        "train" : "../medical_3/train.csv",
-        "validation": "../medical_3/validation.csv",
+        "train" : "../medical_3/clean_train.csv",
+        "validation": "../medical_3/clean_validation.csv",
         "test" : "../medical_3/test.csv"
     }
     
@@ -188,9 +191,9 @@ def main():
     
     # Evaluate the base model
     
-    # print("Base model predictions:")
-    # for question in questions:
-    #     print(generate_output(model, tokenizer, question, prompt))
+    print("Base model predictions:")
+    for question in questions:
+        print(generate_output(model, tokenizer, question, prompt))
     
     # print(evaluate_model(trainer)) # Evaluate using perplexity
     
