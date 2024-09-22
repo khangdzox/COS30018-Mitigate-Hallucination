@@ -88,7 +88,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 1,
+        r = 2,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -98,25 +98,25 @@ def main():
     # Config arguments for the training process
     training_args = TrainingArguments(
             learning_rate = 2e-4, # Learning rate change
-            lr_scheduler_type = "linear", # Control learning rate change
+            lr_scheduler_type = "cosine", # Control learning rate change
             eval_strategy= "steps", # Evaluate every 100
-            eval_steps= 20,
+            eval_steps= 25,
             warmup_steps = 5,
             weight_decay = 0.01,
             save_strategy= "steps",
-            save_steps= 40,
+            save_steps= 50,
             logging_steps = 1,
             load_best_model_at_end= True,
             gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
             eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
             per_device_eval_batch_size= 1, # Batch size for evaluation
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
-            max_steps = 500,
+            max_steps = 200,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/2/medical_3",
         )
     
     # LOADDING
@@ -146,8 +146,7 @@ def main():
     dataset = load_dataset("csv", data_files=data_files)
     
     # sample the dataset
-    validation_subset = dataset['validation'].train_test_split(test_size=0.1, seed=3407)
-    # train_subset = dataset['train'].train_test_split(test_size=0.2, seed=3407)
+    validation_subset = dataset['validation'].train_test_split(test_size=0.2, seed=3407)
     
     # IMPLEMENTING LORA TECHNIQUE
     
@@ -169,7 +168,6 @@ def main():
     
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     tokenized_validation_subset = validation_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
-    # tokenized_train_subset = train_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
     
     # TRAINING
     
@@ -208,7 +206,7 @@ def main():
     print(evaluate_model(trainer)) # Evaluate using perplexity
         
     # Save the model
-    model.save_pretrained("Finetuning/medical_3_LLAMA3_Fine-tuned")
+    model.save_pretrained("Finetuning/2/medical_3_LLAMA3_Fine-tuned")
 
 if __name__ == "__main__":
     

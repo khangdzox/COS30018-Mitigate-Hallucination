@@ -1,0 +1,5 @@
+r Rank: 1 -> 2
+lr_scheduler_type: linear -> cosine
+eval_steps: 20 -> 25
+save_steps: 40 -> 50
+max_steps: 500 -> 200
