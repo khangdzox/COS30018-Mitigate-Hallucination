@@ -65,6 +65,7 @@ def tokenize_function(examples, prompt, EOS_TOKEN):
         """
         texts.append(text)
         
+    print(texts)
     return {"text": texts}
 
 # Freezing the original weights
