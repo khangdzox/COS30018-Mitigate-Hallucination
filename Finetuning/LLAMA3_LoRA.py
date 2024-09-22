@@ -96,23 +96,26 @@ def main():
     
     # Config arguments for the training process
     training_args = TrainingArguments(
-            per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
-            per_device_eval_batch_size= 1, # Batch size for evaluation
+            learning_rate = 2e-4, # Learning rate change
+            lr_scheduler_type = "linear", # Control learning rate change
+            eval_strategy= "steps", # Evaluate every 100
+            eval_steps= 20,
+            warmup_steps = 5,
+            weight_decay = 0.01,
+            save_strategy= "steps",
+            save_steps= 40,
+            logging_steps = 1,
+            load_best_model_at_end= True,
             gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
             eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
-            eval_strategy= "steps", # Evaluate every 100
-            warmup_steps = 5,
-            logging_steps = 1,
-            learning_rate = 1e-4, # Learning rate change
+            per_device_eval_batch_size= 1, # Batch size for evaluation
+            per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
+            max_steps = 500,
+            seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
-            weight_decay = 0.01,
-            lr_scheduler_type = "linear", # Control learning rate change
-            seed = 3407,
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            max_steps = 200,
-            eval_steps= 20,
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3",
         )
     
     # LOADDING
@@ -143,7 +146,7 @@ def main():
     
     # sample the dataset
     validation_subset = dataset['validation'].train_test_split(test_size=0.1, seed=3407)
-    train_subset = dataset['train'].train_test_split(test_size=0.2, seed=3407)
+    # train_subset = dataset['train'].train_test_split(test_size=0.2, seed=3407)
     
     # IMPLEMENTING LORA TECHNIQUE
     
@@ -165,7 +168,7 @@ def main():
     
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     tokenized_validation_subset = validation_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
-    tokenized_train_subset = train_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
+    # tokenized_train_subset = train_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
     
     # TRAINING
     
@@ -173,7 +176,7 @@ def main():
     trainer = SFTTrainer(
         model = model,
         tokenizer = tokenizer,
-        train_dataset = tokenized_train_subset['test'],
+        train_dataset = tokenized_dataset['train'],
         eval_dataset= tokenized_validation_subset['test'],
         dataset_text_field = "text",
         max_seq_length = 512,
