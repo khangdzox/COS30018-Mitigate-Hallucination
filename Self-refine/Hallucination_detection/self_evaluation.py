@@ -142,9 +142,7 @@ def self_evaluation(
     responses = [" ".join(res.split()) for res in responses]
 
     # Ask the model to evaluate the answer
-    messages = f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-
-Only answer True or False<|start_header_id|>user<|end_header_id|>
+    messages = f"""<|begin_of_text|><|start_header_id|>user<|end_header_id|>
 
 Question: {question}
 Here are some brainstormed ideas:
@@ -156,6 +154,8 @@ B. False<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 
 The possible answer is: """
 
+    # print(messages)
+
     validate_input_ids = tokenizer.encode(
         messages,
         return_tensors="pt"
@@ -165,15 +165,15 @@ The possible answer is: """
     token_a_true = tokenizer.encode("A. True", return_tensors="pt").to(model.device) # type: ignore
     token_b_false = tokenizer.encode("B. False", return_tensors="pt").to(model.device) # type: ignore
 
-    token_output_a_true = torch.cat([validate_input_ids, token_a_true], dim=1), # type: ignore
-    token_output_b_false = torch.cat([validate_input_ids, token_b_false], dim=1), # type: ignore
+    token_output_a_true = torch.cat([validate_input_ids, token_a_true], dim=1) # type: ignore
+    token_output_b_false = torch.cat([validate_input_ids, token_b_false], dim=1) # type: ignore
 
     true_probs = compute_transition_scores_from_string(model, tokenizer, terminators, token_output_a_true, start_idx=validate_input_ids.shape[-1])
     false_probs = compute_transition_scores_from_string(model, tokenizer, terminators, token_output_b_false, start_idx=validate_input_ids.shape[-1])
 
     # Calculate the sum of the probabilities
-    sum_true_prob = true_probs.sum().cpu().numpy().item()
-    sum_false_prob = false_probs.sum().cpu().numpy().item()
+    sum_true_prob = true_probs.cpu().to(torch.float32).sum().numpy().item()
+    sum_false_prob = false_probs.cpu().to(torch.float32).sum().numpy().item()
 
-    # Return the output: True if probability of A. True is greater than B. False, False otherwise
-    return sum_true_prob > sum_false_prob
+    # Return the output: Hallucination if False, Non-hallucination if True
+    return sum_true_prob < sum_false_prob
