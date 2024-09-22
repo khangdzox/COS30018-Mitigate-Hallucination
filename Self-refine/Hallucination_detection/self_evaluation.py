@@ -1,102 +1,102 @@
 import transformers, torch
 
-model_id = "google/gemma-2-2b-it"
-tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
-model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
+# model_id = "google/gemma-2-2b-it"
+# tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
+# model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
 
-terminators = [
-    tokenizer.eos_token_id,
-    tokenizer.convert_tokens_to_ids("<|eot_id|>")
-]
+# terminators = [
+#     tokenizer.eos_token_id,
+#     tokenizer.convert_tokens_to_ids("<|eot_id|>")
+# ]
 
-question = "How many letter R are there in strawberry?"
+# question = "How many letter R are there in strawberry?"
 
-num_samples = 10
-
-
-
-
-# Step 1: Generate a response A using a question prompt
-
-messages = [
-    {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
-    {"role": "user", "content": question},
-]
-
-input_ids = tokenizer.apply_chat_template(
-    messages,
-    add_generation_prompt=True,
-    return_tensors="pt",
-).to(model.device) # type: ignore
-
-output_ids = model.generate(
-    input_ids, # type: ignore
-    max_new_tokens=100,
-    do_sample=True,
-    top_p=0.9,
-    eos_token_id=terminators,
-)
-
-answer = tokenizer.decode(output_ids[0, input_ids.shape[-1]:], skip_special_tokens=True).strip()
+# num_samples = 10
 
 
 
 
-# Step 2: Sample 10 more responses Rs using the same question prompt
+# # Step 1: Generate a response A using a question prompt
 
-output_ids = model.generate(
-    input_ids, # type: ignore
-    max_new_tokens=100,
-    do_sample=True,
-    top_p=0.9,
-    eos_token_id=terminators,
-    num_return_sequences=num_samples,
-)
+# messages = [
+#     {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
+#     {"role": "user", "content": question},
+# ]
 
-responses = tokenizer.batch_decode(output_ids[:, input_ids.shape[-1]:], skip_special_tokens=True)
+# input_ids = tokenizer.apply_chat_template(
+#     messages,
+#     add_generation_prompt=True,
+#     return_tensors="pt",
+# ).to(model.device) # type: ignore
+
+# output_ids = model.generate(
+#     input_ids, # type: ignore
+#     max_new_tokens=100,
+#     do_sample=True,
+#     top_p=0.9,
+#     eos_token_id=terminators,
+# )
+
+# answer = tokenizer.decode(output_ids[0, input_ids.shape[-1]:], skip_special_tokens=True).strip()
 
 
 
 
-# Step 3: Ask the model using the following format:
-# ```
-# Question: {question}
-# Here are some brainstormed ideas: {Rs}
-# Possible answer: {A}
+# # Step 2: Sample 10 more responses Rs using the same question prompt
+
+# output_ids = model.generate(
+#     input_ids, # type: ignore
+#     max_new_tokens=100,
+#     do_sample=True,
+#     top_p=0.9,
+#     eos_token_id=terminators,
+#     num_return_sequences=num_samples,
+# )
+
+# responses = tokenizer.batch_decode(output_ids[:, input_ids.shape[-1]:], skip_special_tokens=True)
+
+
+
+
+# # Step 3: Ask the model using the following format:
+# # ```
+# # Question: {question}
+# # Here are some brainstormed ideas: {Rs}
+# # Possible answer: {A}
+# # Is the possible answer:
+# # A. True
+# # B. False
+# # The possible answer is:
+# # ```
+
+# messages = f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+# Only answer True or False<|start_header_id|>user<|end_header_id|>
+# Question: How many letter R are there in strawberry?
+# Here are some brainstormed ideas: There a three Rs in strawberry
+# Strawberry has 3 Rs
+# The word'strawberry' contains 2 letter Rs
+# Possible answer: there are 3 Rs
 # Is the possible answer:
 # A. True
-# B. False
-# The possible answer is:
-# ```
+# B. False<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+# The possible answer is:"""
 
-messages = f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-Only answer True or False<|start_header_id|>user<|end_header_id|>
-Question: How many letter R are there in strawberry?
-Here are some brainstormed ideas: There a three Rs in strawberry
-Strawberry has 3 Rs
-The word'strawberry' contains 2 letter Rs
-Possible answer: there are 3 Rs
-Is the possible answer:
-A. True
-B. False<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-The possible answer is:"""
+# input_ids = tokenizer(messages, return_tensors="pt").to(model.device)
 
-input_ids = tokenizer(messages, return_tensors="pt").to(model.device)
+# output_ids = model.generate(
+#     input_ids,
+#     max_new_tokens=10,
+#     do_sample=False,
+#     eos_token_id=terminators,
+# )
 
-output_ids = model.generate(
-    input_ids,
-    max_new_tokens=10,
-    do_sample=False,
-    eos_token_id=terminators,
-)
+# output = tokenizer.decode(output_ids[0, input_ids.shape[-1]:], skip_special_tokens=True)
 
-output = tokenizer.decode(output_ids[0, input_ids.shape[-1]:], skip_special_tokens=True)
-
-# Return the output
-if "A" in output or "True" in output:
-    print(True)
-else:
-    print(False)
+# # Return the output
+# if "A" in output or "True" in output:
+#     print(True)
+# else:
+#     print(False)
 
 
 
