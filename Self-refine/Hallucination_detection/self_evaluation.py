@@ -1,4 +1,6 @@
+from calendar import c
 import transformers, torch
+from .utils import compute_transition_scores_from_string
 
 # model_id = "google/gemma-2-2b-it"
 # tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
@@ -159,27 +161,19 @@ The possible answer is: """
         return_tensors="pt"
     ).to(model.device) # type: ignore
 
-    validate_output_dict = model.generate(
-        validate_input_ids,
-        max_new_tokens=3,
-        eos_token_id=terminators,
-        output_scores=True,
-        return_dict_in_generate=True,
-    )
-
     # Calculate the log probabilities of the model answer A. True and B. False
-    token_a_true = tokenizer("A. True", return_tensors="pt")["input_ids"].to(model.device) # type: ignore
-    token_b_false = tokenizer("B. False", return_tensors="pt")["input_ids"].to(model.device) # type: ignore
+    token_a_true = tokenizer.encode("A. True", return_tensors="pt").to(model.device) # type: ignore
+    token_b_false = tokenizer.encode("B. False", return_tensors="pt").to(model.device) # type: ignore
 
-    validate_batch = torch.cat([
-        torch.cat([validate_output_dict.sequences, token_a_true], dim=1), # type: ignore
-        torch.cat([validate_output_dict.sequences, token_b_false], dim=1), # type: ignore
-    ], dim=0)
+    token_output_a_true = torch.cat([validate_input_ids, token_a_true], dim=1), # type: ignore
+    token_output_b_false = torch.cat([validate_input_ids, token_b_false], dim=1), # type: ignore
 
-    validate_probs = model.compute_transition_scores(validate_batch, validate_output_dict.scores, normalize_logits=True)[0] # type: ignore
+    true_probs = compute_transition_scores_from_string(model, tokenizer, terminators, token_output_a_true, start_idx=validate_input_ids.shape[-1])
+    false_probs = compute_transition_scores_from_string(model, tokenizer, terminators, token_output_b_false, start_idx=validate_input_ids.shape[-1])
 
     # Calculate the sum of the probabilities
-    validate_probs = validate_probs.sum(dim=1).cpu().numpy()
+    sum_true_prob = true_probs.sum().cpu().numpy().item()
+    sum_false_prob = false_probs.sum().cpu().numpy().item()
 
     # Return the output: True if probability of A. True is greater than B. False, False otherwise
-    return validate_probs[0] > validate_probs[1]
+    return sum_true_prob > sum_false_prob
