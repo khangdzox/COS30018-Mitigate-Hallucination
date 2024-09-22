@@ -4,7 +4,7 @@ Evaluating hallucination detection methods on HaluEval dataset, QA_samples subse
 
 
 import transformers, torch, datasets, evaluate, tqdm
-from Hallucination_detection import self_evaluation, low_confidence_generation
+from Hallucination_detection import self_evaluation #, low_confidence_generation
 
 def load_model() -> transformers.PreTrainedModel:
     return transformers.AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct", device_map="auto", torch_dtype=torch.bfloat16)
@@ -35,7 +35,8 @@ results = {
     'targets': list(map(lambda x: 1 if x == "yes" else 0, dataset['hallucination'])),
 }
 
-for method in ['self_evaluation', 'low_confidence_generation']:
+# for method in ['self_evaluation', 'low_confidence_generation']:
+for method in ['self_evaluation']:
     results[method] = []
 
     for knowledge, question, answer in tqdm.tqdm(zip(dataset['knowledge'], dataset['question'], dataset['answer']), method):
@@ -46,8 +47,8 @@ for method in ['self_evaluation', 'low_confidence_generation']:
 
         if method == 'self_evaluation':
             predict = self_evaluation(question_with_context, answer, 10, model, tokenizer, terminators)
-        elif method == 'low_confidence_generation':
-            predict = low_confidence_generation(question_with_context, answer, model, tokenizer, terminators)
+        # elif method == 'low_confidence_generation':
+        #     predict = low_confidence_generation(question_with_context, answer, model, tokenizer, terminators)
 
         results[method].append(int(predict))
 
@@ -55,7 +56,8 @@ metrics = evaluate.combine(['accuracy', 'f1', 'precision', 'recall'])
 
 scores = {}
 
-for method in ['self_evaluation', 'low_confidence_generation']:
+# for method in ['self_evaluation', 'low_confidence_generation']:
+for method in ['self_evaluation']:
     scores[method] = metrics.compute(results['targets'], results[method])
 
 print(scores)
