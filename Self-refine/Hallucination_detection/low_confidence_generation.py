@@ -108,6 +108,7 @@ def low_confidence_generation(
     terminators: list[int],
 ) -> bool:
 
+    # reconstruct the full generation string
     full_string_template = [
         {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
         {"role": "user", "content": question},
@@ -119,6 +120,7 @@ def low_confidence_generation(
         return_tensors="pt",
     ).to(model.device) # type: ignore
 
+    # reconstruct the question prompt
     question_template = [
         {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
         {"role": "user", "content": question},
@@ -129,8 +131,6 @@ def low_confidence_generation(
         add_generation_prompt=True,
         return_tensors="pt",
     ).to(model.device) # type: ignore
-
-    answer_only_tokens = tokenizer.encode(answer)[1:]
 
     # calculate the transition scores (log probabilities) for each token in the answer
     answer_transition_scores = compute_transition_scores_from_string(model, tokenizer, terminators, full_string_tokens, start_idx=question_tokens.shape[-1])
@@ -154,9 +154,21 @@ def low_confidence_generation(
     ).cpu() # type: ignore
 
     keywords = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True).split(",")
+    keywords = [keyword.strip() for keyword in keywords]
 
+    print({'question': question, 'answer': answer, 'keywords': keywords})
+
+    keyword_tokens = {}
     # get the token ids for each keyword
-    keyword_tokens = {keyword: tokenizer.encode(keyword.strip())[1:] for keyword in keywords}
+    for kw in keywords:
+        keyword_tokens[kw] = tokenizer.encode(kw)[1:]
+
+        # add the token ids of the keywords with space prefix
+        # because the tokenizer encodes the keywords with space prefix and no space prefix differently
+        keyword_tokens[f" {kw}"] = tokenizer.encode(f" {kw}")[1:]
+
+    # get the token ids of the answer
+    answer_only_tokens = tokenizer.encode(answer)[1:]
 
     # calculate the minimum of softmax token probabilities for each keyword
     kw_probs = {}
@@ -164,11 +176,13 @@ def low_confidence_generation(
     for kw, toks in keyword_tokens.items():
         kwidxes = find_all_subset_index(toks, answer_only_tokens)
 
-        if kwidxes is None:
+        if not kwidxes:
             continue
 
         for i, kwidx in enumerate(kwidxes):
             kw_probs[f"{kw} {i}"] = torch.min(torch.exp(answer_transition_scores[kwidx:kwidx + len(toks)]))
 
-    # if the minimum of softmax token probabilities is less than a threshold, then the response is low-confidence generation
+    print(kw_probs)
+
+    # if any of the minimum of softmax token probabilities is less than a threshold, then the response is low-confidence generation
     return not any(prob < 0.1 for prob in kw_probs.values())
