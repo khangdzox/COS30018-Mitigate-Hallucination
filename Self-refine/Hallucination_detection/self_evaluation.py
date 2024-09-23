@@ -1,4 +1,3 @@
-from calendar import c
 import transformers, torch
 from .utils import compute_transition_scores_from_string
 
