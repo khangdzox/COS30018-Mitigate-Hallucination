@@ -4,7 +4,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 import torch
 import sys
 from datasets import load_dataset 
-
+import math
 from trl import SFTTrainer
 
 
@@ -37,7 +37,7 @@ def main():
             eval_steps= 20,
         )
     
-    lora_config = PeftConfig.from_pretrained("PinkBro/LLAMA3_Pre-trained_medical3")
+    lora_config = PeftConfig.from_pretrained("./Finetuning/medical_3_LLAMA3_Fine-tuned/2")
     
     # LOADDING
     
@@ -46,7 +46,7 @@ def main():
     base_model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct")
     
     # Load Pre-trained model
-    model = PeftModel.from_pretrained(base_model, "PinkBro/LLAMA3_Pre-trained_medical3", device_map = "cuda", torch_dtype = torch.bfloat16)
+    model = PeftModel.from_pretrained(base_model, "./Finetuning/medical_3_LLAMA3_Fine-tuned/2", device_map = "cuda", torch_dtype = torch.bfloat16)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -54,15 +54,17 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
 
     # Load the dataset
-    data_path = "../medical_3/clean_validation.csv"
+    data_path = {
+        'test': "../medical_3/clean_validation.csv"
+        }
     
     dataset = load_dataset("csv", data_files=data_path)
-    
+
     # GENERATE OUTPUT
     prompt = "You are an assistant for question-answering tasks.\nBelow is the instruction. Answer the question and explain your answer.\nIf you don't know the answer or explaination, just say you don't know."
-    question = "### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma\n###Options: \nA. Hyperplasia\nB. Hyperophy.\nC. Atrophy\nD. Dyplasia"
+    question = "### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"
  
-    # print(generate_output(model, tokenizer, question, prompt))
+    print(generate_output(model, tokenizer, question, prompt))
     
     # Tokenize the dataset
     tokenized_validation = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
@@ -76,9 +78,9 @@ def main():
         eval_dataset = tokenized_validation,
         args = training_args,
     )
-    eval_results = trainer.evaluate()
     
-    # print(evaluate_model(trainer))
+    # eval_results = trainer.evaluate()
+    # print(f"Perplexity: {math.exp(eval_results["eval_loss"]):.2f}")
 
 if __name__ == "__main__":
     main()

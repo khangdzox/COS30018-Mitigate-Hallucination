@@ -119,7 +119,7 @@ def main():
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/2/medical_3",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/3",
         )
     
     # LOADDING
@@ -209,7 +209,7 @@ def main():
     print(evaluate_model(trainer)) # Evaluate using perplexity
         
     # Save the model
-    model.save_pretrained("Finetuning/2/medical_3_LLAMA3_Fine-tuned")
+    model.save_pretrained("Finetuning/medical_3_LLAMA3_Fine-tuned/3")
 
 if __name__ == "__main__":
     
