@@ -4,7 +4,12 @@ Description: describe the loop, stopping conditions, etc. Impact on hallucinatio
 
 ## Requirements
 
-Required libraries, datasets, etc.
+Libraries:
+- transformers
+- evaluate
+- datasets
+- torch
+- scikit-learn
 
 ## Usage
 
