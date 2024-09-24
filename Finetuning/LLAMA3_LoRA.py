@@ -85,7 +85,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 2,
+        r = 8,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -101,14 +101,14 @@ def main():
             save_strategy= "steps",
             save_steps= 5,
             logging_steps = 1,
-            gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
-            per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
-            max_steps = 55,
+            gradient_accumulation_steps = 2, # Accumulate gradients for larger batch size
+            per_device_train_batch_size= 2, # Batch size per GPU (1 batch contain 1000 data points)
+            max_steps = 500,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/3",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/4",
         )
     
     # LOADDING
@@ -155,7 +155,8 @@ def main():
     # DATA PREPROCESSING AND TOKENIZING
     
     # Create the prompt
-    prompt = """You are an assistant for question-answering tasks.
+    prompt = """
+    You are an assistant for question-answering tasks.
     First check user input, if it is only question, then give the answer follow this format:
     ### Answer: <answer>
     
@@ -230,9 +231,9 @@ def main():
     
     # Evaluate the base model
     
-    print("Base model predictions:")
-    for question in questions:
-        print(generate_output(model, tokenizer, question, prompt))
+    # print("Base model predictions:")
+    # for question in questions:
+    #     print(generate_output(model, tokenizer, question, prompt))
     
     # Start training
     trainer.train()
