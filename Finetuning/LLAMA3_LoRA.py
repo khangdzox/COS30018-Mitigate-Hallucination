@@ -4,7 +4,6 @@ from datasets import load_dataset
 from peft import get_peft_model, LoraConfig 
 import torch 
 from trl import SFTTrainer
-import math
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -79,11 +78,6 @@ def freeze_model(model):
         if param.ndim == 1:
             param.data = param.data.to(torch.float32) # Cast the small parameters (layernorm) to fp32 fpr stability
             
-# Evaluate the model
-def evaluate_model(trainer):
-    eval_results = trainer.evaluate()
-    return f"Perplexity: {math.exp(eval_results["eval_loss"]):.2f}"
-            
 def main():
     warnings.filterwarnings('ignore') # Ignore warnings when display the output
     
@@ -102,19 +96,14 @@ def main():
     training_args = TrainingArguments(
             learning_rate = 2e-4, # Learning rate change
             lr_scheduler_type = "cosine", # Control learning rate change
-            eval_strategy= "steps", # Evaluate every 100
-            eval_steps= 25,
-            warmup_steps = 5,
+            warmup_ratio = 0.03,
             weight_decay = 0.01,
             save_strategy= "steps",
-            save_steps= 50,
+            save_steps= 5,
             logging_steps = 1,
-            load_best_model_at_end= True,
             gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
-            eval_accumulation_steps= 4, # Accumulate evaluation results for larger batch size
-            per_device_eval_batch_size= 1, # Batch size for evaluation
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
-            max_steps = 500,
+            max_steps = 55,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
@@ -148,8 +137,9 @@ def main():
     
     dataset = load_dataset("csv", data_files=data_files)
     
-    # sample the dataset
-    validation_subset = dataset['validation'].train_test_split(test_size=0.2, seed=3407)
+    # shuffle the dataset
+    dataset['train'] = dataset['train'].shuffle(seed=3407)
+    dataset['validation'] = dataset['validation'].shuffle(seed=3407)
     
     # IMPLEMENTING LORA TECHNIQUE
     
@@ -165,12 +155,61 @@ def main():
     # DATA PREPROCESSING AND TOKENIZING
     
     # Create the prompt
-    prompt = "You are an assistant for question-answering tasks.\nBelow is the instruction. Answer the question and explain your answer.\nIf you don't know the answer or explaination, just say you don't know."
+    prompt = """You are an assistant for question-answering tasks.
+    First check user input, if it is only question, then give the answer follow this format:
+    ### Answer: <answer>
+    
+    ### Explaination: <explaination>
+    
+    The explaination should be detailed and clear.
+    
+    if the user input is a question with options, then give the answer follow this format:
+    
+    ### Answer: <correct option>
+    
+    ### Explaination: <explaination>
+    
+    The explaination should explain why the other options are incorrect and why the correct option is correct.
+    
+    If you don't know the answer or explaination, just say you don't know.
+    
+    Here is some example questions and answer:
+    ### Example 1:
+    ### Question:
+    Which of the following is an example for reversible dementia?
+    
+    ### Subject:
+    Psychiatry
+    
+    ### Options:
+    A. Normal pressure hydrocephalus
+    B. Alzheimer's dementia
+    C. Lewy body dementia
+    D. CreutzFeldt Jakob disease
+    
+    ### Answer:
+    A
+    
+    ### Explaination:
+    Impoant possibly reversible conditions are: Substance and medication related Anticholinergics, anti-hypeensives, sedative hypnotics Psychiatric disorders Depression Metabolic and endocrinal disorders Hypothyroidism, Vitamin B12 deficiency, Hepatic and Renal failure Neurosurgical conditions Normal pressure Hydrocephalus, Brain tumor, Subdural hematoma Neuroinfections Herpes encephalitis Miscellaneous Significant sensory deficits
+    
+    ### Example 2:
+    ### Question:
+    A 16 year old female patient presents to the OPD with hirsutism and masculinization. Which of the following hormones of the adrenal coex is the likely culprit?
+    
+    ### Subject:
+    Physiology
+    
+    ### Answer:
+    Dehydroepiandrosterone (DHEA)
+    
+    ### Explaination:
+    Hirsutism and musculanisation in a female suggests excessive androgens like dehydroepiandrosteronen(DHEA), which is culprit here. Adrenogenital sydrome: An adrenocoical tumor secretes excessive quantities of androgens that cause intense masculanizing effects. In women, virile characteristics develop, including growth of a beard, deeper voice, masculine distribution of hair on the body and the pubis and growth of the clitoris. In boys, it presents as precocious pubey. The excretion of 17-ketosteroids (which are derived from androgens) in the urine may be 10 to 15 times elevated. This findings can be used in diagnosing the disease. Ref: Guyton and Hall 13th edition Pgno: 981
+    """
     
     # Tokenize the dataset
     
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
-    tokenized_validation_subset = validation_subset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN}, batched=True)
     
     # TRAINING
     
@@ -179,15 +218,15 @@ def main():
         model = model,
         tokenizer = tokenizer,
         train_dataset = tokenized_dataset['train'],
-        eval_dataset= tokenized_validation_subset['test'],
+        eval_dataset= tokenized_dataset['validation'],
         dataset_text_field = "text",
-        max_seq_length = 512,
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
+        max_seq_length = 258
     )
     
     # EVALUATING
-    questions = ["### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma\n###Options: \nA. Hyperplasia\nB. Hyperophy.\nC. Atrophy\nD. Dyplasia"]
+    questions = ["### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"]
     
     # Evaluate the base model
     
@@ -195,22 +234,9 @@ def main():
     for question in questions:
         print(generate_output(model, tokenizer, question, prompt))
     
-    # print(evaluate_model(trainer)) # Evaluate using perplexity
-    
     # Start training
     trainer.train()
     
-    # Evaluate the fine-tuned model
-    
-    print("Fine-tuned model predictions:")
-    for question in questions:
-        print(generate_output(model, tokenizer, question, prompt))
-    
-    print(evaluate_model(trainer)) # Evaluate using perplexity
-        
-    # Save the model
-    model.save_pretrained("Finetuning/medical_3_LLAMA3_Fine-tuned/3")
-
 if __name__ == "__main__":
     
     main()
