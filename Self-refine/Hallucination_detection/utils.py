@@ -28,6 +28,9 @@ def compute_transition_scores_from_string(model, tokenizer, terminators, string_
 
     # do the above in batch
 
+    # Example:
+    # Given tokens: tensor([[token1, token2, token3, token4, token5]])
+
     generation_batch = torch.cat([
         torch.cat([
             # left pad with eos tokens
