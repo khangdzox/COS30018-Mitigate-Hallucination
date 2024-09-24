@@ -79,8 +79,10 @@ def main():
         args = training_args,
     )
     
-    # eval_results = trainer.evaluate()
-    # print(f"Perplexity: {math.exp(eval_results["eval_loss"]):.2f}")
+    eval_results = trainer.evaluate()
+    print(eval_results)
+    print(f"Perplexity: {math.exp(eval_results):.2f}")
+    print(eval_results)['eval_loss']
 
 if __name__ == "__main__":
     main()

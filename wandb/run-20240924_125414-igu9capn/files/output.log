@@ -1,0 +1,9 @@
+
+{'eval_test_loss': 0.9960412383079529, 'eval_test_model_preparation_time': 0.005, 'eval_test_runtime': 15496.7093, 'eval_test_samples_per_second': 0.27, 'eval_test_steps_per_second': 0.27}
+Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\Evaluate_fine-tuned_model.py", line 88, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\Evaluate_fine-tuned_model.py", line 84, in main
+    print(f"Perplexity: {math.exp(eval_results):.2f}")
+                         ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: must be real number, not dict
