@@ -1,0 +1,48 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.12.4",
+    "heartbeatAt": "2024-09-25T13:07:19.747058",
+    "startedAt": "2024-09-25T13:07:19.117227",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\pink\\Documents\\Study\\Intelligent Systems\\COS30018-Mitigate-Hallucination\\Finetuning\\LLAMA3_LoRA.py",
+    "codePathLocal": "Finetuning\\LLAMA3_LoRA.py",
+    "codePath": "Finetuning\\LLAMA3_LoRA.py",
+    "git": {
+        "remote": "https://github.com/khangdzox/COS30018-Mitigate-Hallucination.git",
+        "commit": "e6212bedf62dbda4e4261501780156722240e51b"
+    },
+    "email": "honganhnguyen915@gmail.com",
+    "root": "C:/Users/pink/Documents/Study/Intelligent Systems/COS30018-Mitigate-Hallucination",
+    "host": "DESKTOP-2SF5IUM",
+    "username": "pink",
+    "executable": "C:\\Users\\pink\\anaconda3\\envs\\LLama3-hallucinate\\python.exe",
+    "cpu_count": 20,
+    "cpu_count_logical": 28,
+    "cpu_freq": {
+        "current": 3400.0,
+        "min": 0.0,
+        "max": 3400.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3400.0,
+            "min": 0.0,
+            "max": 3400.0
+        }
+    ],
+    "disk": {},
+    "gpu": "NVIDIA GeForce RTX 4070 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4070 Ti",
+            "memory_total": 12878610432
+        }
+    ],
+    "memory": {
+        "total": 63.74699401855469
+    }
+}

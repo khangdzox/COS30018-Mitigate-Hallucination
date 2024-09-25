@@ -4,6 +4,23 @@ from datasets import load_dataset
 from peft import get_peft_model, LoraConfig 
 import torch 
 from trl import SFTTrainer
+from torch.utils.data import DataLoader
+
+import matplotlib.pyplot as plt
+
+# Filter tokenized_data set
+def filter_max_tokens(example, max_tokens):
+    return len(example['text']) <= max_tokens
+
+# Tokenize visualization
+def visualize_token_lengths(dataset):
+    token_lengths = [len(example["text"]) for example in dataset]
+    
+    plt.hist(token_lengths, bins=50, edgecolor='black')
+    plt.title('Token Length Distribution')
+    plt.xlabel('Number of Tokens')
+    plt.ylabel('Frequency')
+    plt.show()
 
 # Show the number of trainable parameters
 def print_trainable_parameters(model):
@@ -99,16 +116,16 @@ def main():
             warmup_ratio = 0.03,
             weight_decay = 0.01,
             save_strategy= "steps",
-            save_steps= 5,
+            save_steps= 10,
             logging_steps = 1,
             gradient_accumulation_steps = 2, # Accumulate gradients for larger batch size
-            per_device_train_batch_size= 2, # Batch size per GPU (1 batch contain 1000 data points)
-            max_steps = 500,
+            per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
+            max_steps = 110,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/4",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/6",
         )
     
     # LOADDING
@@ -137,10 +154,6 @@ def main():
     
     dataset = load_dataset("csv", data_files=data_files)
     
-    # shuffle the dataset
-    dataset['train'] = dataset['train'].shuffle(seed=3407)
-    dataset['validation'] = dataset['validation'].shuffle(seed=3407)
-    
     # IMPLEMENTING LORA TECHNIQUE
     
     # Freezing the original weights
@@ -156,25 +169,25 @@ def main():
     
     # Create the prompt
     prompt = """
-    You are an assistant for question-answering tasks.
-    First check user input, if it is only question, then give the answer follow this format:
-    ### Answer: <answer>
-    
-    ### Explaination: <explaination>
-    
-    The explaination should be detailed and clear.
-    
-    if the user input is a question with options, then give the answer follow this format:
-    
-    ### Answer: <correct option>
-    
-    ### Explaination: <explaination>
-    
-    The explaination should explain why the other options are incorrect and why the correct option is correct.
-    
-    If you don't know the answer or explaination, just say you don't know.
-    
-    Here is some example questions and answer:
+You are an assistant for question-answering tasks.
+First check user input, if it is only question, then give the answer follow this format:
+### Answer: <answer>
+
+### Explaination: <explaination>
+
+The explaination should be detailed and clear.
+
+if the user input is a question with options, then give the answer follow this format:
+
+### Answer: <correct option>
+
+### Explaination: <explaination>
+
+The explaination should explain why the other options are incorrect and why the correct option is correct.
+
+If you don't know the answer or explaination, just say you don't know.
+
+   Here is some example questions and answer:
     ### Example 1:
     ### Question:
     Which of the following is an example for reversible dementia?
@@ -209,8 +222,20 @@ def main():
     """
     
     # Tokenize the dataset
-    
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
+    
+    # Limit token number
+    # print(len(tokenized_dataset["train"]))
+    
+    # After filter
+    # print(len(tokenized_dataset["train"]))
+    
+    # Visualize token number
+    # visualize_token_lengths(tokenized_dataset["train"])
+    
+    # shuffle the dataset
+    tokenized_dataset['train'] = tokenized_dataset['train'].shuffle(seed=3407)
+    tokenized_dataset['validation'] = tokenized_dataset['validation'].shuffle(seed=3407)
     
     # TRAINING
     
@@ -223,11 +248,14 @@ def main():
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
-        max_seq_length = 258
+        max_seq_length= 1024,
+        dataset_batch_size = 1000,
     )
     
     # EVALUATING
-    questions = ["### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"]
+    questions = """
+### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma
+    """
     
     # Evaluate the base model
     
