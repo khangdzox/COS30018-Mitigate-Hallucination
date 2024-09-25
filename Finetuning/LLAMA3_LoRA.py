@@ -117,15 +117,19 @@ def main():
             weight_decay = 0.01,
             save_strategy= "steps",
             save_steps= 10,
+            eval_strategy= "steps",
+            eval_steps= 10,
             logging_steps = 1,
             gradient_accumulation_steps = 2, # Accumulate gradients for larger batch size
-            per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
+            eval_accumulation_steps= 2,
+            per_device_train_batch_size= 2, # Batch size per GPU (1 batch contain 1000 data points)
+            per_device_eval_batch_size= 2,
             max_steps = 110,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/6",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/7",
         )
     
     # LOADDING
@@ -187,38 +191,38 @@ The explaination should explain why the other options are incorrect and why the 
 
 If you don't know the answer or explaination, just say you don't know.
 
-   Here is some example questions and answer:
-    ### Example 1:
-    ### Question:
-    Which of the following is an example for reversible dementia?
-    
-    ### Subject:
-    Psychiatry
-    
-    ### Options:
-    A. Normal pressure hydrocephalus
-    B. Alzheimer's dementia
-    C. Lewy body dementia
-    D. CreutzFeldt Jakob disease
-    
-    ### Answer:
-    A
-    
-    ### Explaination:
-    Impoant possibly reversible conditions are: Substance and medication related Anticholinergics, anti-hypeensives, sedative hypnotics Psychiatric disorders Depression Metabolic and endocrinal disorders Hypothyroidism, Vitamin B12 deficiency, Hepatic and Renal failure Neurosurgical conditions Normal pressure Hydrocephalus, Brain tumor, Subdural hematoma Neuroinfections Herpes encephalitis Miscellaneous Significant sensory deficits
-    
-    ### Example 2:
-    ### Question:
-    A 16 year old female patient presents to the OPD with hirsutism and masculinization. Which of the following hormones of the adrenal coex is the likely culprit?
-    
-    ### Subject:
-    Physiology
-    
-    ### Answer:
-    Dehydroepiandrosterone (DHEA)
-    
-    ### Explaination:
-    Hirsutism and musculanisation in a female suggests excessive androgens like dehydroepiandrosteronen(DHEA), which is culprit here. Adrenogenital sydrome: An adrenocoical tumor secretes excessive quantities of androgens that cause intense masculanizing effects. In women, virile characteristics develop, including growth of a beard, deeper voice, masculine distribution of hair on the body and the pubis and growth of the clitoris. In boys, it presents as precocious pubey. The excretion of 17-ketosteroids (which are derived from androgens) in the urine may be 10 to 15 times elevated. This findings can be used in diagnosing the disease. Ref: Guyton and Hall 13th edition Pgno: 981
+Here is some example questions and answer:
+### Example 1:
+### Question:
+Which of the following is an example for reversible dementia?
+
+### Subject:
+Psychiatry
+
+### Options:
+A. Normal pressure hydrocephalus
+B. Alzheimer's dementia
+C. Lewy body dementia
+D. CreutzFeldt Jakob disease
+
+### Answer:
+A
+
+### Explaination:
+Impoant possibly reversible conditions are: Substance and medication related Anticholinergics, anti-hypeensives, sedative hypnotics Psychiatric disorders Depression Metabolic and endocrinal disorders Hypothyroidism, Vitamin B12 deficiency, Hepatic and Renal failure Neurosurgical conditions Normal pressure Hydrocephalus, Brain tumor, Subdural hematoma Neuroinfections Herpes encephalitis Miscellaneous Significant sensory deficits
+
+### Example 2:
+### Question:
+A 16 year old female patient presents to the OPD with hirsutism and masculinization. Which of the following hormones of the adrenal coex is the likely culprit?
+
+### Subject:
+Physiology
+
+### Answer:
+Dehydroepiandrosterone (DHEA)
+
+### Explaination:
+Hirsutism and musculanisation in a female suggests excessive androgens like dehydroepiandrosteronen(DHEA), which is culprit here. Adrenogenital sydrome: An adrenocoical tumor secretes excessive quantities of androgens that cause intense masculanizing effects. In women, virile characteristics develop, including growth of a beard, deeper voice, masculine distribution of hair on the body and the pubis and growth of the clitoris. In boys, it presents as precocious pubey. The excretion of 17-ketosteroids (which are derived from androgens) in the urine may be 10 to 15 times elevated. This findings can be used in diagnosing the disease. Ref: Guyton and Hall 13th edition Pgno: 981
     """
     
     # Tokenize the dataset
@@ -237,6 +241,8 @@ If you don't know the answer or explaination, just say you don't know.
     tokenized_dataset['train'] = tokenized_dataset['train'].shuffle(seed=3407)
     tokenized_dataset['validation'] = tokenized_dataset['validation'].shuffle(seed=3407)
     
+    validation_subset = tokenized_dataset['validation'].train_test_split(test_size=0.1)
+    
     # TRAINING
     
     # Training setup
@@ -244,11 +250,12 @@ If you don't know the answer or explaination, just say you don't know.
         model = model,
         tokenizer = tokenizer,
         train_dataset = tokenized_dataset['train'],
-        eval_dataset= tokenized_dataset['validation'],
+        eval_dataset= validation_subset,
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
+        eval_packing= False,
         args = training_args,
-        max_seq_length= 1024,
+        max_seq_length= 512,
         dataset_batch_size = 1000,
     )
     
