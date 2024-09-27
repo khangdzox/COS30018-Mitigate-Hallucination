@@ -34,27 +34,27 @@ def compute_transition_scores_from_string(model, tokenizer, terminators, string_
     generation_batch = torch.cat([
         torch.cat([
             # left pad with eos tokens
-            torch.ones((string_tokens.shape[0], string_tokens.shape[1] - i), dtype = string_tokens.dtype, device=model.device) * tokenizer.eos_token_id,
+            torch.ones((string_tokens.shape[0], string_tokens.shape[1] - i - 1), dtype = string_tokens.dtype, device=model.device) * tokenizer.eos_token_id,
             string_tokens[:, :i]
         ], dim=-1)
         for i in range(start_idx, string_tokens.shape[-1])
     ], dim=0)
     # Example:
-    # tensor([[<|eos|>, <|eos|>, <|eos|>, token1, token2],
-    #         [<|eos|>, <|eos|>,  token1, token2, token3],
-    #         [<|eos|>,  token1,  token2, token3, token4]])
+    # tensor([[<|eos|>, <|eos|>, token1, token2],
+    #         [<|eos|>,  token1, token2, token3],
+    #         [ token1,  token2, token3, token4]])
 
     generation_attention_mask = torch.cat([
         torch.cat([
-            torch.zeros((string_tokens.shape[0], string_tokens.shape[1] - i), dtype = string_tokens.dtype, device=model.device),
+            torch.zeros((string_tokens.shape[0], string_tokens.shape[1] - i - 1), dtype = string_tokens.dtype, device=model.device),
             torch.ones((string_tokens.shape[0], i), dtype = string_tokens.dtype, device=model.device)
         ], dim=-1)
         for i in range(start_idx, string_tokens.shape[-1])
     ], dim=0)
     # Example:
-    # tensor([[0, 0, 0, 1, 1],
-    #         [0, 0, 1, 1, 1],
-    #         [0, 1, 1, 1, 1]])
+    # tensor([[0, 0, 1, 1],
+    #         [0, 1, 1, 1],
+    #         [1, 1, 1, 1]])
 
     generation_logits = model.generate(
         input_ids=generation_batch,
@@ -65,10 +65,10 @@ def compute_transition_scores_from_string(model, tokenizer, terminators, string_
         eos_token_id=terminators,
     )
     # Example:
-    # generation_logits.sequences                         vvvvvv -> this is the token we generated
-    # tensor([[<|eos|>, <|eos|>, <|eos|>, token1, token2, token3],
-    #         [<|eos|>, <|eos|>,  token1, token2, token3, token4],
-    #         [<|eos|>,  token1,  token2, token3, token4, token5]])
+    # generation_logits.sequences                vvvvvv -> this is the token we generated
+    # tensor([[<|eos|>, <|eos|>, token1, token2, token3],
+    #         [<|eos|>,  token1, token2, token3, token4],
+    #         [ token1,  token2, token3, token4, token5]])
     # generation_logits.scores
     # (tensor([[-84.0000, -84.0000, -88.5000,  ..., -93.0000, -93.5000, -87.0000],
     #          [-74.0000, -73.0000, -77.5000,  ..., -77.5000, -81.5000, -75.5000],
