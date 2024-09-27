@@ -3,7 +3,7 @@ Evaluating hallucination detection methods on HaluEval dataset, QA_samples subse
 """
 
 import transformers, torch, datasets, evaluate, tqdm
-from Hallucination_detection import self_evaluation, low_confidence_generation
+from ..detection import self_evaluation, low_confidence_generation
 
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 

@@ -28,16 +28,3 @@ def compute_log_prob_from_string(model, string_tokens, start_idx=0):
     log_prob = logits[torch.arange(logits.shape[0]), string_tokens] # tensor(answer_length)
 
     return log_prob
-
-
-
-
-def find_all_subset_index(subset, sequence):
-    """
-    Find all the start indices of the subset in the sequence.
-    """
-    ans = []
-    for i in range(len(sequence) - len(subset) + 1):
-        if sequence[i:i + len(subset)] == subset:
-            ans.append(i)
-    return ans

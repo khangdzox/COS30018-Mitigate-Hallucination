@@ -1,5 +1,5 @@
 import transformers, torch
-from .utils import compute_log_prob_from_string
+from ...utilities import compute_log_prob_from_string
 
 # model_id = "google/gemma-2-2b-it"
 # tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
