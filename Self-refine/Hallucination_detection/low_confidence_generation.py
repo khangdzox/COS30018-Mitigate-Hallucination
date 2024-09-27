@@ -1,5 +1,5 @@
 import transformers, torch
-from .utils import compute_transition_scores_from_string, find_all_subset_index
+from .utils import compute_log_prob_from_string, find_all_subset_index
 
 # model_id = "google/gemma-2-2b-it"
 # tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
@@ -133,7 +133,7 @@ def low_confidence_generation(
     ).to(model.device) # type: ignore
 
     # calculate the transition scores (log probabilities) for each token in the answer
-    answer_transition_scores = compute_transition_scores_from_string(model, tokenizer, terminators, full_string_tokens, start_idx=question_tokens.shape[-1])
+    answer_transition_scores = compute_log_prob_from_string(model, full_string_tokens, start_idx=question_tokens.shape[-1])
 
     # get the keywords from the answer
     keywords_input_template = [

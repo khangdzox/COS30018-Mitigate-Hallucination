@@ -1,5 +1,5 @@
 import transformers, torch
-from .utils import compute_transition_scores_from_string
+from .utils import compute_log_prob_from_string
 
 # model_id = "google/gemma-2-2b-it"
 # tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
@@ -167,8 +167,8 @@ The possible answer is: """
     token_output_a_true = torch.cat([validate_input_ids, token_a_true], dim=1) # type: ignore
     token_output_b_false = torch.cat([validate_input_ids, token_b_false], dim=1) # type: ignore
 
-    true_probs = compute_transition_scores_from_string(model, tokenizer, terminators, token_output_a_true, start_idx=validate_input_ids.shape[-1])
-    false_probs = compute_transition_scores_from_string(model, tokenizer, terminators, token_output_b_false, start_idx=validate_input_ids.shape[-1])
+    true_probs = compute_log_prob_from_string(model, token_output_a_true, start_idx=validate_input_ids.shape[-1])
+    false_probs = compute_log_prob_from_string(model, token_output_b_false, start_idx=validate_input_ids.shape[-1])
 
     # Calculate the sum of the probabilities
     sum_true_prob = true_probs.cpu().to(torch.float32).sum().numpy().item()
