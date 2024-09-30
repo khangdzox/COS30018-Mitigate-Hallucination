@@ -231,9 +231,6 @@ Hirsutism and musculanisation in a female suggests excessive androgens like dehy
     # Limit token number
     # print(len(tokenized_dataset["train"]))
     
-    # After filter
-    # print(len(tokenized_dataset["train"]))
-    
     # Visualize token number
     # visualize_token_lengths(tokenized_dataset["train"])
     
@@ -250,7 +247,7 @@ Hirsutism and musculanisation in a female suggests excessive androgens like dehy
         model = model,
         tokenizer = tokenizer,
         train_dataset = tokenized_dataset['train'],
-        eval_dataset= validation_subset,
+        eval_dataset= validation_subset['test'],
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
         eval_packing= False,
