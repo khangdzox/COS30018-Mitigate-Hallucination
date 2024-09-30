@@ -10,9 +10,9 @@ save_file = "halueval_results.csv"
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 
 def load_model() -> transformers.PreTrainedModel:
-    # quantization_config = transformers.BitsAndBytesConfig(load_in_8bit=True)
-    return transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
-    # return transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16, quantization_config=quantization_config)
+    quantization_config = transformers.BitsAndBytesConfig(load_in_4bit=True)
+    # return transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16)
+    return transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16, quantization_config=quantization_config)
 
 def load_tokenizer() -> transformers.PreTrainedTokenizer:
     return transformers.AutoTokenizer.from_pretrained(model_id) # type: ignore
