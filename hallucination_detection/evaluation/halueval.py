@@ -6,6 +6,7 @@ import transformers, torch, datasets, evaluate, tqdm, pandas as pd
 from ..detection import self_evaluation, low_confidence_generation
 
 save_file = "halueval_results.csv"
+save_interval = 10
 
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 
@@ -55,7 +56,7 @@ for method in ['self_evaluation', 'low_confidence_generation']:
 
     print(f"Running {method}...")
 
-    for knowledge, question, answer in tqdm.tqdm(zip(dataset['knowledge'], dataset['question'], dataset['answer']), method, total=len(dataset)):
+    for knowledge, question, answer, i in tqdm.tqdm(zip(dataset['knowledge'], dataset['question'], dataset['answer'], range(len(dataset))), method, total=len(dataset)):
 
         # Skip if the result is already known
         if results.loc[question, method] == 0 or results.loc[question, method] == 1:
@@ -73,7 +74,9 @@ for method in ['self_evaluation', 'low_confidence_generation']:
             predict = low_confidence_generation(question_with_context, answer, model, tokenizer, terminators)
 
         results.loc[question, method] = int(predict)
-        results.to_csv(save_file)
+
+        if i % save_interval == 0:
+            results.to_csv(save_file)
 
 metrics = evaluate.combine(['accuracy', 'f1', 'precision', 'recall'])
 
