@@ -45,12 +45,11 @@ try:
     results = pd.read_csv(save_file)
 except FileNotFoundError:
     results = pd.DataFrame(columns=['targets', 'self_evaluation', 'low_confidence_generation'])
-
     results['question'] = dataset['question']
     results['targets'] = list(map(lambda x: 1 if x == "yes" else 0, dataset['hallucination']))
-
-    results.set_index('question', inplace=True)
     results.to_csv(save_file)
+finally:
+    results.set_index('question', inplace=True)
 
 for method in ['self_evaluation', 'low_confidence_generation']:
 
