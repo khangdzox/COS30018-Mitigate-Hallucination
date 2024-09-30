@@ -74,6 +74,7 @@ for method in ['self_evaluation', 'low_confidence_generation']:
             predict = low_confidence_generation(question_with_context, answer, model, tokenizer, terminators)
 
         results.loc[question, method] = int(predict)
+        results.to_csv(save_file)
 
 metrics = evaluate.combine(['accuracy', 'f1', 'precision', 'recall'])
 
