@@ -172,8 +172,8 @@ The possible answer is: """
     false_probs = compute_log_prob_from_string(model, token_output_b_false, start_idx=validate_input_ids.shape[-1])
 
     # Calculate the sum of the probabilities
-    sum_true_prob = true_probs.cpu().to(torch.float32).sum().numpy().item()
-    sum_false_prob = false_probs.cpu().to(torch.float32).sum().numpy().item()
+    sum_true_prob = true_probs.cpu().to(torch.float32).sum().item()
+    sum_false_prob = false_probs.cpu().to(torch.float32).sum().item()
 
     # Return the output: Hallucination if False, Non-hallucination if True
     return sum_true_prob < sum_false_prob
