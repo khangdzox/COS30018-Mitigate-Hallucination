@@ -139,13 +139,14 @@ def self_evaluation(
 
     # Clean the responses
     responses = [" ".join(res.split()) for res in responses]
+    joined_responses = "\n".join(responses)
 
     # Ask the model to evaluate the answer
     messages = f"""<|begin_of_text|><|start_header_id|>user<|end_header_id|>
 
 Question: {question}
 Here are some brainstormed ideas:
-{"\n".join(responses)}
+{joined_responses}
 Possible answer: {answer}
 Is the possible answer:
 A. True
