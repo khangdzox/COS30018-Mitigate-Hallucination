@@ -22,7 +22,7 @@ python -c "import torch; print(torch.cuda.is_available())"
 ```
 ### 2. 🤗 Transformers for high-level APIs
 ```bash
-pip install transformers datasets evaluate accelerate
+pip install transformers==4.45.1 datasets evaluate accelerate bitsandbytes scikit-learn
 ```
 ### 3. Gradio for web interface
 ```bash
