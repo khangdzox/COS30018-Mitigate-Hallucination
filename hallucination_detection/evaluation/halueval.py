@@ -55,7 +55,6 @@ except FileNotFoundError:
 for method in ['self_evaluation', 'low_confidence_generation']:
 
     print(f"Running {method}...")
-    results[method] = []
 
     for knowledge, question, answer in tqdm.tqdm(zip(dataset['knowledge'], dataset['question'], dataset['answer']), method, total=len(dataset)):
 
