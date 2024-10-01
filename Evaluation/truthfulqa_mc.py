@@ -85,6 +85,8 @@ except FileNotFoundError:
     dataset["mc2_lprob_diff"] = None
     dataset["mc2_scores"] = None
 
+    dataset.to_csv(f"{model_name}_truthfulqa_mc.csv", index=False)
+
 print("Evaluating...")
 for idx in tqdm.trange(dataset.shape[0]):
 
