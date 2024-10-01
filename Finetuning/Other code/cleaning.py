@@ -3,8 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#Test
-
 def main():
     data = pd.read_csv('../medical_3/Deep Cleaning/Version_1.csv')
     
