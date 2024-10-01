@@ -110,9 +110,9 @@ for idx in tqdm.trange(dataset.shape[0]):
             answer_lprob = compute_log_prob_from_string(model, answer_tokens, start_idx=question_tokens.shape[-1])
 
             if label == 1:
-                mc1_lprob_true.append(answer_lprob)
+                mc1_lprob_true.append(answer_lprob.sum().item())
             else:
-                mc1_lprob_false.append(answer_lprob)
+                mc1_lprob_false.append(answer_lprob.sum().item())
 
         # Save the results
         dataset.loc[idx, "mc1_lprob"] = mc1_lprob_true + mc1_lprob_false
@@ -135,9 +135,9 @@ for idx in tqdm.trange(dataset.shape[0]):
             answer_lprob = compute_log_prob_from_string(model, answer_tokens, start_idx=question_tokens.shape[-1])
 
             if label == 1:
-                mc2_lprob_true.append(answer_lprob)
+                mc2_lprob_true.append(answer_lprob.sum().item())
             else:
-                mc2_lprob_false.append(answer_lprob)
+                mc2_lprob_false.append(answer_lprob.sum().item())
 
         # Save the results
         dataset.loc[idx, "mc2_lprob"] = mc2_lprob_true + mc2_lprob_false
