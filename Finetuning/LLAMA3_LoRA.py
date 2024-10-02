@@ -50,13 +50,13 @@ def generate_output(model, tokenizer, question, prompt):
 # Tokenize and formating
 def tokenize_function(examples, prompt, EOS_TOKEN):
     questions = examples["question"]
-    option_as = examples["opa"]
-    option_bs = examples["opb"]
-    option_cs = examples["opc"]
-    option_ds = examples["opd"]
+    option_as = examples["option_a"]
+    option_bs = examples["option_b"]
+    option_cs = examples["option_c"]
+    option_ds = examples["option_d"]
     answers = examples["cop"]
     explainations = examples["exp"]
-    subjects = examples["subject_name"]
+    subjects = examples["subject"]
 
     texts = []
     
@@ -117,19 +117,15 @@ def main():
             weight_decay = 0.01,
             save_strategy= "steps",
             save_steps= 10,
-            eval_strategy= "steps",
-            eval_steps= 10,
             logging_steps = 1,
-            gradient_accumulation_steps = 2, # Accumulate gradients for larger batch size
-            eval_accumulation_steps= 2,
-            per_device_train_batch_size= 2, # Batch size per GPU (1 batch contain 1000 data points)
-            per_device_eval_batch_size= 2,
+            gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
+            per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
             max_steps = 110,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit", # Use 8-bit optimization for faster training
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/7",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/9",
         )
     
     # LOADDING
@@ -151,9 +147,7 @@ def main():
     
     # Load the dataset
     data_files = {
-        "train" : "../medical_3/clean_train.csv",
-        "validation": "../medical_3/clean_validation.csv",
-        "test" : "../medical_3/test.csv"
+        "train" : "../medical_3/final_train.csv",
     }
     
     dataset = load_dataset("csv", data_files=data_files)
@@ -190,55 +184,20 @@ if the user input is a question with options, then give the answer follow this f
 The explaination should explain why the other options are incorrect and why the correct option is correct.
 
 If you don't know the answer or explaination, just say you don't know.
-
-Here is some example questions and answer:
-### Example 1:
-### Question:
-Which of the following is an example for reversible dementia?
-
-### Subject:
-Psychiatry
-
-### Options:
-A. Normal pressure hydrocephalus
-B. Alzheimer's dementia
-C. Lewy body dementia
-D. CreutzFeldt Jakob disease
-
-### Answer:
-A
-
-### Explaination:
-Impoant possibly reversible conditions are: Substance and medication related Anticholinergics, anti-hypeensives, sedative hypnotics Psychiatric disorders Depression Metabolic and endocrinal disorders Hypothyroidism, Vitamin B12 deficiency, Hepatic and Renal failure Neurosurgical conditions Normal pressure Hydrocephalus, Brain tumor, Subdural hematoma Neuroinfections Herpes encephalitis Miscellaneous Significant sensory deficits
-
-### Example 2:
-### Question:
-A 16 year old female patient presents to the OPD with hirsutism and masculinization. Which of the following hormones of the adrenal coex is the likely culprit?
-
-### Subject:
-Physiology
-
-### Answer:
-Dehydroepiandrosterone (DHEA)
-
-### Explaination:
-Hirsutism and musculanisation in a female suggests excessive androgens like dehydroepiandrosteronen(DHEA), which is culprit here. Adrenogenital sydrome: An adrenocoical tumor secretes excessive quantities of androgens that cause intense masculanizing effects. In women, virile characteristics develop, including growth of a beard, deeper voice, masculine distribution of hair on the body and the pubis and growth of the clitoris. In boys, it presents as precocious pubey. The excretion of 17-ketosteroids (which are derived from androgens) in the urine may be 10 to 15 times elevated. This findings can be used in diagnosing the disease. Ref: Guyton and Hall 13th edition Pgno: 981
     """
     
     # Tokenize the dataset
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # Limit token number
-    # print(len(tokenized_dataset["train"]))
+    filtered_tokenized_dataset = tokenized_dataset.filter(filter_max_tokens, fn_kwargs={"max_tokens": 2048})
+    # print(len(filtered_tokenized_dataset["train"]))
     
     # Visualize token number
-    # visualize_token_lengths(tokenized_dataset["train"])
+    # visualize_token_lengths(filtered_tokenized_dataset["train"])
     
     # shuffle the dataset
-    tokenized_dataset['train'] = tokenized_dataset['train'].shuffle(seed=3407)
-    tokenized_dataset['validation'] = tokenized_dataset['validation'].shuffle(seed=3407)
-    
-    validation_subset = tokenized_dataset['validation'].train_test_split(test_size=0.1)
+    filtered_tokenized_dataset['train'] = filtered_tokenized_dataset['train'].shuffle(seed=3407)
     
     # TRAINING
     
@@ -246,14 +205,12 @@ Hirsutism and musculanisation in a female suggests excessive androgens like dehy
     trainer = SFTTrainer(
         model = model,
         tokenizer = tokenizer,
-        train_dataset = tokenized_dataset['train'],
-        eval_dataset= validation_subset['test'],
+        train_dataset = filtered_tokenized_dataset['train'],
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
         eval_packing= False,
         args = training_args,
-        max_seq_length= 512,
-        dataset_batch_size = 1000,
+        max_seq_length= 2048,
     )
     
     # EVALUATING

@@ -8,7 +8,7 @@ def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
 def main():
-    data = pd.read_csv('../../../medical_3/Deep Cleaning/Version_1.csv')
+    data = pd.read_csv('../medical_3/Deep Cleaning/Version_1.csv')
     
     rows = []
     for i in data.iloc:
