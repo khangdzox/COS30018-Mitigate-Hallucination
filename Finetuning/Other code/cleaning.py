@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def main():
-    data = pd.read_csv('../medical_3/Deep Cleaning/Version_1.csv')
+    data = pd.read_csv('../../../medical_3/Deep Cleaning/Version_1.csv')
     
     rows = []
     for i in data.iloc:
@@ -26,11 +26,11 @@ def main():
     
     # Replace specified characters with space in all columns
     for column in df.columns:
-        df[column] = df[column].str.replace(r'<\\p>|<p>|&;|<img alt="" src="/>', ' ', regex=True)
+        df[column] = df[column].str.replace(r'<\\p>|<p>|&;|&;s|<img alt="" src="/>', ' ', regex=True)
     
     # Count rows containing specified characters after replacement
-    count = df.apply(lambda x: x.str.contains(r'<\\p>|<p>|&;|<img alt="" src="/>').any(), axis=1).sum()
-    print(f"Rows containing specified characters after replacement: {count}")
+    # count = df.apply(lambda x: x.str.contains(r'<\\p>|<p>|&;|<img alt="" src="/>').any(), axis=1).sum()
+    # print(f"Rows containing specified characters after replacement: {count}")
     
     # Verify replacement
     print(df)
