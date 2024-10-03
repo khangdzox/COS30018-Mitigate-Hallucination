@@ -1,7 +1,0 @@
-Traceback (most recent call last):
-  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\Evaluate_fine-tuned_model.py", line 86, in <module>
-    main()
-  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\Evaluate_fine-tuned_model.py", line 83, in main
-    print(f"Perplexity: {math.exp(eval_results["eval_loss"]):.2f}")
-                                  ~~~~~~~~~~~~^^^^^^^^^^^^^
-KeyError: 'eval_loss'

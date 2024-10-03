@@ -1,1 +1,0 @@
-{"eval/test_loss": 1.2212706804275513, "eval/test_model_preparation_time": 0.01, "eval/test_runtime": 8759.1082, "eval/test_samples_per_second": 0.478, "eval/test_steps_per_second": 0.478, "train/global_step": 0, "_timestamp": 1727016995.0450788, "_runtime": 0.8028287887573242, "_step": 0, "_wandb": {"runtime": 0}}

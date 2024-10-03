@@ -4,7 +4,6 @@ from datasets import load_dataset
 from peft import get_peft_model, LoraConfig 
 import torch 
 from trl import SFTTrainer
-from torch.utils.data import DataLoader
 
 import matplotlib.pyplot as plt
 
@@ -56,19 +55,15 @@ def tokenize_function(examples, prompt, EOS_TOKEN):
     option_ds = examples["option_d"]
     answers = examples["cop"]
     explainations = examples["exp"]
-    subjects = examples["subject"]
 
     texts = []
     
-    for question, option_a, option_b, option_c, option_d, answer, explaination, subject in zip(questions, option_as, option_bs, option_cs, option_ds, answers, explainations, subjects):
+    for question, option_a, option_b, option_c, option_d, answer, explaination,in zip(questions, option_as, option_bs, option_cs, option_ds, answers, explainations):
         text = f"""
         {prompt}
         
         ### Question:
         {question}
-        
-        ### Subject:
-        {subject}
         
         ### Options:
         A. {option_a}
@@ -102,7 +97,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 8,
+        r = 2,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -113,7 +108,7 @@ def main():
     training_args = TrainingArguments(
             learning_rate = 2e-4, # Learning rate change
             lr_scheduler_type = "cosine", # Control learning rate change
-            warmup_ratio = 0.03,
+            warmup_ratio= 0.03,
             weight_decay = 0.01,
             save_strategy= "steps",
             save_steps= 10,
@@ -152,6 +147,9 @@ def main():
     
     dataset = load_dataset("csv", data_files=data_files)
     
+    # Shuffling the dataset
+    dataset['train'] = dataset['train'].shuffle(seed=3407)
+    
     # IMPLEMENTING LORA TECHNIQUE
     
     # Freezing the original weights
@@ -166,38 +164,16 @@ def main():
     # DATA PREPROCESSING AND TOKENIZING
     
     # Create the prompt
-    prompt = """
-You are an assistant for question-answering tasks.
-First check user input, if it is only question, then give the answer follow this format:
-### Answer: <answer>
-
-### Explaination: <explaination>
-
-The explaination should be detailed and clear.
-
-if the user input is a question with options, then give the answer follow this format:
-
-### Answer: <correct option>
-
-### Explaination: <explaination>
-
-The explaination should explain why the other options are incorrect and why the correct option is correct.
-
-If you don't know the answer or explaination, just say you don't know.
-    """
+    prompt = """You are an assistant for question-answering tasks."""
     
     # Tokenize the dataset
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # Limit token number
-    filtered_tokenized_dataset = tokenized_dataset.filter(filter_max_tokens, fn_kwargs={"max_tokens": 2048})
-    # print(len(filtered_tokenized_dataset["train"]))
-    
+    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 2000})
+    # print(filtered_tokenized_dataset['text'][0])
     # Visualize token number
-    # visualize_token_lengths(filtered_tokenized_dataset["train"])
-    
-    # shuffle the dataset
-    filtered_tokenized_dataset['train'] = filtered_tokenized_dataset['train'].shuffle(seed=3407)
+    # visualize_token_lengths(filtered_tokenized_dataset)
     
     # TRAINING
     
@@ -205,12 +181,12 @@ If you don't know the answer or explaination, just say you don't know.
     trainer = SFTTrainer(
         model = model,
         tokenizer = tokenizer,
-        train_dataset = filtered_tokenized_dataset['train'],
+        train_dataset = filtered_tokenized_dataset,
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
-        eval_packing= False,
         args = training_args,
-        max_seq_length= 2048,
+        max_seq_length= 2000,
+        dataset_batch_size= 1000,
     )
     
     # EVALUATING
@@ -225,6 +201,7 @@ If you don't know the answer or explaination, just say you don't know.
     #     print(generate_output(model, tokenizer, question, prompt))
     
     # Start training
+    
     trainer.train()
     
 if __name__ == "__main__":

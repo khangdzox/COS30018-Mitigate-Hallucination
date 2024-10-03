@@ -2,3 +2,4 @@
 2:gradient_accumulation_steps = 4
 max_seq_length: 2048
 filter data to 2048 maximum token
+removing 2 shots from prompt
