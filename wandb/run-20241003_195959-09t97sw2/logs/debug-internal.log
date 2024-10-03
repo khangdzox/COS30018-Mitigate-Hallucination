@@ -1,0 +1,828 @@
+2024-10-03 19:59:59,900 INFO    StreamThr :29972 [internal.py:wandb_internal():85] W&B internal server running at pid: 29972, started at: 2024-10-03 19:59:59.899081
+2024-10-03 19:59:59,901 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status
+2024-10-03 19:59:59,904 INFO    WriterThread:29972 [datastore.py:open_for_write():87] open: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\run-09t97sw2.wandb
+2024-10-03 19:59:59,905 DEBUG   SenderThread:29972 [sender.py:send():391] send: header
+2024-10-03 19:59:59,929 DEBUG   SenderThread:29972 [sender.py:send():391] send: run
+2024-10-03 20:00:00,580 INFO    SenderThread:29972 [dir_watcher.py:__init__():211] watching files in: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files
+2024-10-03 20:00:00,581 INFO    SenderThread:29972 [sender.py:_start_run_threads():1200] run started: 09t97sw2 with start time 1727949599.90108
+2024-10-03 20:00:00,595 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: run_start
+2024-10-03 20:00:00,616 DEBUG   HandlerThread:29972 [system_info.py:__init__():26] System info init
+2024-10-03 20:00:00,616 DEBUG   HandlerThread:29972 [system_info.py:__init__():41] System info init done
+2024-10-03 20:00:00,616 INFO    HandlerThread:29972 [system_monitor.py:start():194] Starting system monitor
+2024-10-03 20:00:00,617 INFO    SystemMonitor:29972 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-10-03 20:00:00,617 INFO    HandlerThread:29972 [system_monitor.py:probe():214] Collecting system info
+2024-10-03 20:00:00,621 INFO    SystemMonitor:29972 [interfaces.py:start():188] Started cpu monitoring
+2024-10-03 20:00:00,621 INFO    SystemMonitor:29972 [interfaces.py:start():188] Started disk monitoring
+2024-10-03 20:00:00,621 INFO    SystemMonitor:29972 [interfaces.py:start():188] Started gpu monitoring
+2024-10-03 20:00:00,622 INFO    SystemMonitor:29972 [interfaces.py:start():188] Started memory monitoring
+2024-10-03 20:00:00,628 INFO    SystemMonitor:29972 [interfaces.py:start():188] Started network monitoring
+2024-10-03 20:00:00,639 DEBUG   HandlerThread:29972 [system_info.py:probe():152] Probing system
+2024-10-03 20:00:00,640 DEBUG   HandlerThread:29972 [system_info.py:_probe_git():137] Probing git
+2024-10-03 20:00:00,682 DEBUG   HandlerThread:29972 [system_info.py:_probe_git():145] Probing git done
+2024-10-03 20:00:00,682 DEBUG   HandlerThread:29972 [system_info.py:probe():200] Probing system done
+2024-10-03 20:00:00,682 DEBUG   HandlerThread:29972 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.12.4', 'heartbeatAt': '2024-10-03T10:00:00.639129', 'startedAt': '2024-10-03T09:59:59.892081', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\pink\\Documents\\Study\\Intelligent Systems\\COS30018-Mitigate-Hallucination\\Finetuning\\LLAMA3_LoRA.py', 'codePathLocal': 'Finetuning\\LLAMA3_LoRA.py', 'codePath': 'Finetuning\\LLAMA3_LoRA.py', 'git': {'remote': 'https://github.com/khangdzox/COS30018-Mitigate-Hallucination.git', 'commit': '2f0477528f3ae5c478f5a314d19c07ed6b14d5b6'}, 'email': 'honganhnguyen915@gmail.com', 'root': 'C:/Users/pink/Documents/Study/Intelligent Systems/COS30018-Mitigate-Hallucination', 'host': 'DESKTOP-2SF5IUM', 'username': 'pink', 'executable': 'C:\\Users\\pink\\anaconda3\\envs\\LLama3-hallucinate\\python.exe', 'cpu_count': 20, 'cpu_count_logical': 28, 'cpu_freq': {'current': 3400.0, 'min': 0.0, 'max': 3400.0}, 'cpu_freq_per_core': [{'current': 3400.0, 'min': 0.0, 'max': 3400.0}], 'disk': {}, 'gpu': 'NVIDIA GeForce RTX 4070 Ti', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4070 Ti', 'memory_total': 12878610432}], 'memory': {'total': 63.74699401855469}}
+2024-10-03 20:00:00,682 INFO    HandlerThread:29972 [system_monitor.py:probe():224] Finished collecting system info
+2024-10-03 20:00:00,682 INFO    HandlerThread:29972 [system_monitor.py:probe():227] Publishing system info
+2024-10-03 20:00:00,682 DEBUG   HandlerThread:29972 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-10-03 20:00:00,685 ERROR   HandlerThread:29972 [system_info.py:_save_conda():223] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\wandb\sdk\internal\system\system_info.py", line 216, in _save_conda
+    subprocess.call(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2024-10-03 20:00:00,686 DEBUG   HandlerThread:29972 [system_info.py:_save_conda():224] Saving conda packages done
+2024-10-03 20:00:00,687 INFO    HandlerThread:29972 [system_monitor.py:probe():229] Finished publishing system info
+2024-10-03 20:00:00,689 DEBUG   SenderThread:29972 [sender.py:send():391] send: files
+2024-10-03 20:00:00,689 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-10-03 20:00:00,803 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: python_packages
+2024-10-03 20:00:00,803 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: python_packages
+2024-10-03 20:00:00,804 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:00:00,804 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:00:00,805 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:00:01,132 DEBUG   SenderThread:29972 [sender.py:send():391] send: telemetry
+2024-10-03 20:00:01,132 DEBUG   SenderThread:29972 [sender.py:send():391] send: config
+2024-10-03 20:00:01,133 DEBUG   SenderThread:29972 [sender.py:send():391] send: telemetry
+2024-10-03 20:00:01,133 DEBUG   SenderThread:29972 [sender.py:send():391] send: metric
+2024-10-03 20:00:01,133 DEBUG   SenderThread:29972 [sender.py:send():391] send: telemetry
+2024-10-03 20:00:01,133 DEBUG   SenderThread:29972 [sender.py:send():391] send: metric
+2024-10-03 20:00:01,133 WARNING SenderThread:29972 [sender.py:send_metric():1417] Seen metric with glob (shouldn't happen)
+2024-10-03 20:00:01,133 DEBUG   SenderThread:29972 [sender.py:send():391] send: telemetry
+2024-10-03 20:00:01,133 DEBUG   SenderThread:29972 [sender.py:send():391] send: telemetry
+2024-10-03 20:00:01,133 DEBUG   SenderThread:29972 [sender.py:send():391] send: config
+2024-10-03 20:00:01,589 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:00:01,589 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\requirements.txt
+2024-10-03 20:00:01,589 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\conda-environment.yaml
+2024-10-03 20:00:01,589 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-metadata.json
+2024-10-03 20:00:01,592 INFO    wandb-upload_0:29972 [upload_job.py:push():130] Uploaded file C:\Users\pink\AppData\Local\Temp\tmpfrhpi429wandb\krlo53zj-wandb-metadata.json
+2024-10-03 20:00:03,606 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:00:05,177 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:10,820 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:00:10,820 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:15,818 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:00:15,818 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:00:16,122 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:20,832 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:00:21,847 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:26,860 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:30,831 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:00:30,831 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:00:30,841 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:00:32,162 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:32,936 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\config.yaml
+2024-10-03 20:00:37,891 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:40,848 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:00:42,895 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:45,847 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:00:45,847 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:00:48,132 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:50,853 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:00:53,922 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:00:58,922 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:00,629 DEBUG   SystemMonitor:29972 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-10-03 20:01:00,629 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:01:00,852 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:01:00,852 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:01:00,868 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:01:04,143 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:09,939 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:10,882 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:01:14,956 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:15,853 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:01:15,853 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:01:20,207 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:20,889 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:01:25,929 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:30,644 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:01:30,850 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:01:30,850 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:01:30,896 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:01:31,152 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:36,945 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:40,904 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:01:41,956 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:44,240 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:01:44,241 DEBUG   SenderThread:29972 [sender.py:send():391] send: metric
+2024-10-03 20:01:44,241 DEBUG   SenderThread:29972 [sender.py:send():391] send: metric
+2024-10-03 20:01:44,241 DEBUG   SenderThread:29972 [sender.py:send():391] send: metric
+2024-10-03 20:01:44,241 DEBUG   SenderThread:29972 [sender.py:send():391] send: metric
+2024-10-03 20:01:44,241 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:01:44,241 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:01:44,243 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:01:44,648 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:01:45,660 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:01:45,849 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:01:45,849 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:01:46,672 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:01:47,180 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:50,912 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:01:52,993 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:01:57,995 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:00,644 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:02:00,865 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:02:00,865 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:02:00,912 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:02:03,176 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:09,034 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:09,876 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\config.yaml
+2024-10-03 20:02:10,921 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:02:15,037 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:15,874 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:02:15,874 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:02:20,179 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:20,936 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:02:26,042 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:30,657 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:02:30,880 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:02:30,880 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:02:30,944 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:02:31,210 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:37,065 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:40,953 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:02:42,076 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:45,899 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:02:45,899 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:02:47,163 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:50,960 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:02:53,101 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:02:59,099 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:00,657 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:03:00,895 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:03:00,895 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:03:00,975 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:03:04,202 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:09,664 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:09,664 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:03:09,664 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:03:09,665 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:03:09,665 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:03:10,457 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:03:10,458 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:03:10,977 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:03:11,469 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:03:15,127 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:15,911 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:03:15,911 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:03:20,168 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:20,992 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:03:26,111 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:30,665 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:03:30,919 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:03:30,919 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:03:30,997 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:03:31,167 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:37,146 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:41,001 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:03:42,152 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:45,926 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:03:45,926 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:03:47,236 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:51,003 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:03:53,188 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:03:59,189 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:00,678 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:04:00,946 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:04:00,946 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:04:01,009 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:04:04,255 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:10,205 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:11,010 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:04:14,686 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:04:14,687 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:04:14,687 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:04:14,688 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:04:14,956 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:04:15,695 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:15,948 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:04:15,948 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:04:15,964 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:04:16,979 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:04:21,012 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:04:21,203 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:26,216 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:30,693 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:04:30,947 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:04:30,947 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:04:31,026 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:04:31,216 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:36,223 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:41,027 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:04:41,235 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:45,964 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:04:45,964 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:04:46,251 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:51,040 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:04:51,261 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:04:56,271 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:00,697 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:05:00,966 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:05:00,967 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:05:01,046 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:05:01,290 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:06,305 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:09,659 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:05:09,659 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:05:09,659 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:05:09,660 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:05:10,502 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:05:10,502 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:05:11,059 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:05:11,313 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:11,518 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:05:15,985 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:05:15,985 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:05:16,317 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:21,068 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:05:21,340 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:26,352 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:30,704 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:05:30,991 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:05:30,991 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:05:31,070 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:05:31,358 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:36,369 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:41,080 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:05:41,384 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:46,002 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:05:46,002 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:05:46,397 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:51,088 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:05:51,408 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:05:56,412 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:00,716 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:06:01,016 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:06:01,016 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:06:01,078 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:06:01,426 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:04,424 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:06:04,425 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:06:04,425 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:06:04,425 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:06:04,980 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:06:05,981 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:06:06,441 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:06,996 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:06:11,082 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:06:11,448 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:16,037 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:06:16,037 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:06:17,448 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:21,097 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:06:22,462 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:27,478 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:30,726 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:06:31,041 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:06:31,041 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:06:31,104 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:06:32,484 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:37,487 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:41,107 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:06:42,499 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:46,052 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:06:46,052 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:06:47,512 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:51,108 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:06:52,516 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:06:53,235 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:06:53,236 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:06:53,236 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:06:53,236 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:06:53,379 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:06:54,390 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:06:55,395 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:06:57,524 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:00,739 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:07:01,057 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:07:01,057 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:07:01,121 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:07:02,532 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:07,557 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:11,132 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:07:12,558 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:16,060 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:07:16,060 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:07:17,561 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:21,146 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:07:22,570 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:27,573 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:30,747 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:07:31,064 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:07:31,064 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:07:31,160 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:07:32,583 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:37,596 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:41,168 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:07:42,605 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:45,484 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:07:45,485 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:07:45,485 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:07:45,486 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:07:45,903 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:07:46,076 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:07:46,076 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:07:46,917 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:07:47,931 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:07:48,601 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:51,184 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:07:53,640 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:07:59,628 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:00,755 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:08:01,088 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:08:01,088 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:08:01,200 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:08:04,644 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:09,662 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:11,214 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:08:15,656 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:16,101 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:08:16,101 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:08:20,668 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:21,222 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:08:25,696 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:30,706 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:30,770 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:08:31,104 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:08:31,104 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:08:31,232 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:08:35,727 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:36,617 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:08:36,617 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:08:36,618 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:08:36,618 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:08:37,342 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:08:38,353 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:08:39,364 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:08:41,247 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:08:41,706 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:46,106 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:08:46,107 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:08:46,712 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:51,255 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:08:51,727 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:08:56,729 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:00,783 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:09:01,133 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:09:01,133 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:09:01,258 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:09:02,732 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:07,748 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:11,269 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:09:12,755 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:16,140 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:09:16,140 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:09:18,761 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:21,282 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:09:23,778 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:24,443 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:09:24,444 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:09:24,444 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:09:24,445 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:09:24,822 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:09:25,823 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:09:26,838 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:09:28,786 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:30,786 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:09:31,149 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:09:31,149 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:09:31,293 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:09:34,777 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:39,806 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:41,305 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:09:45,807 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:46,156 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:09:46,156 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:09:50,837 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:09:51,312 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:09:55,847 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:00,788 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:10:01,155 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:10:01,155 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:10:01,315 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:10:01,439 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:06,844 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:11,318 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:10:11,846 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:11,846 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:10:11,846 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:10:11,846 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:10:11,847 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:10:12,214 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:10:13,226 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:10:14,236 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:10:16,164 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:10:16,164 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:10:16,850 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:21,319 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:10:21,862 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:26,877 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:30,800 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:10:31,168 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:10:31,168 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:10:31,327 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:10:31,882 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:36,887 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:41,336 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:10:41,899 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:46,193 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:10:46,193 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:10:46,902 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:51,339 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:10:51,911 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:56,923 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:10:59,662 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:10:59,662 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:10:59,662 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:10:59,663 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:11:00,600 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:11:00,600 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:11:00,803 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:11:01,198 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:11:01,198 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:11:01,325 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:11:01,609 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:11:01,928 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:06,943 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:11,341 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:11:11,946 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:16,211 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:11:16,211 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:11:16,958 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:21,352 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:11:21,968 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:26,981 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:30,807 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:11:31,218 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:11:31,218 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:11:31,361 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:11:31,995 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:35,163 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:11:35,163 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:11:35,164 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:11:35,164 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:11:35,900 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:11:35,900 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:11:36,913 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:11:38,001 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:41,366 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:11:43,003 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:46,235 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:11:46,235 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:11:49,008 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:51,372 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:11:54,028 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:11:59,036 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:00,811 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:12:01,251 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:12:01,251 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:12:01,379 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:12:04,057 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:05,930 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:12:05,931 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:12:05,931 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:12:05,932 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:12:06,210 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:12:07,224 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:12:08,239 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:12:09,062 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:11,388 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:12:15,064 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:16,267 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:12:16,267 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:12:20,087 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:21,404 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:12:26,088 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:30,821 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:12:31,280 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:12:31,280 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:12:31,407 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:12:31,601 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:36,570 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:12:36,571 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:12:36,571 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:12:36,571 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:12:37,088 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:37,498 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:12:37,499 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:12:39,505 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:12:41,410 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:12:42,095 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:46,291 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:12:46,291 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:12:47,111 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:51,412 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:12:52,123 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:12:57,137 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:00,827 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:13:01,286 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:13:01,286 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:13:01,427 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:13:02,151 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:07,426 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:07,426 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:13:07,426 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:13:07,426 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:13:07,427 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:13:07,743 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:13:08,752 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:13:09,752 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:13:11,443 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:13:13,150 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:16,301 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:13:16,301 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:13:18,166 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:21,447 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:13:23,173 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:29,185 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:30,836 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:13:31,307 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:13:31,307 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:13:31,448 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:13:34,188 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:38,136 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:13:38,136 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:13:38,137 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:13:38,137 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:13:39,023 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:13:39,023 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:13:40,026 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:13:40,153 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:41,457 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:13:45,163 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:46,304 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:13:46,304 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:13:50,194 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:13:51,458 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:13:55,198 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:00,200 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:00,836 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:14:01,311 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:14:01,311 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:14:01,467 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:14:05,217 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:10,227 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:11,477 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:14:15,232 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:16,329 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:14:16,329 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:14:20,246 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:21,479 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:14:23,383 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:14:23,384 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:14:23,384 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:14:23,384 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:14:23,431 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:14:25,408 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:25,456 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:14:26,460 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:14:30,842 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:14:30,843 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:31,341 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:14:31,341 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:14:31,468 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:14:36,289 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:41,308 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:41,479 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:14:46,356 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:14:46,356 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:14:46,593 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:51,490 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:14:51,754 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:14:51,754 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:14:51,755 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:14:51,755 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:14:51,756 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:14:52,664 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:14:52,664 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:14:53,679 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:14:57,291 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:00,849 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:15:01,364 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:15:01,364 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:15:01,504 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:15:02,301 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:07,309 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:11,510 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:15:12,319 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:16,375 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:15:16,375 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:15:17,322 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:19,864 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:15:19,865 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:15:19,865 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:15:19,866 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:15:19,947 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:15:20,948 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:15:21,520 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:15:21,962 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:15:22,333 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:27,343 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:30,853 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:15:31,379 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:15:31,379 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:15:31,533 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:15:32,358 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:37,370 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:41,535 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:15:42,372 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:46,386 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:15:46,386 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:15:47,380 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:49,522 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:15:49,523 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:15:49,523 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:15:49,524 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:15:50,250 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:15:51,263 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:15:51,542 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:15:52,271 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:15:52,381 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:15:57,387 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:00,864 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:16:01,402 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:16:01,402 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:16:01,545 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:16:02,399 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:07,403 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:11,546 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:16:12,419 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:16,413 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:16:16,413 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:16:17,426 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:18,978 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:16:18,979 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:16:18,979 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:16:18,980 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:16:19,526 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:16:20,526 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:16:21,540 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:16:21,556 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:16:22,433 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:27,449 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:30,869 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:16:31,405 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:16:31,405 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:16:31,565 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:16:32,452 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:37,456 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:41,578 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:16:42,458 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:46,415 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-03 20:16:46,415 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: stop_status
+2024-10-03 20:16:47,474 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:51,591 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:16:51,647 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: partial_history
+2024-10-03 20:16:51,648 DEBUG   SenderThread:29972 [sender.py:send():391] send: history
+2024-10-03 20:16:51,648 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: summary_record
+2024-10-03 20:16:51,648 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:16:51,862 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:16:52,475 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:16:52,871 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:16:53,872 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:16:57,478 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:17:00,516 DEBUG   SenderThread:29972 [sender.py:send():391] send: exit
+2024-10-03 20:17:00,516 INFO    SenderThread:29972 [sender.py:send_exit():598] handling exit code: 255
+2024-10-03 20:17:00,517 INFO    SenderThread:29972 [sender.py:send_exit():600] handling runtime: 1019
+2024-10-03 20:17:00,517 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:17:00,517 INFO    SenderThread:29972 [sender.py:send_exit():606] send defer
+2024-10-03 20:17:00,518 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,518 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 0
+2024-10-03 20:17:00,518 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,518 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 0
+2024-10-03 20:17:00,518 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 1
+2024-10-03 20:17:00,518 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,518 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 1
+2024-10-03 20:17:00,518 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,518 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 1
+2024-10-03 20:17:00,518 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 2
+2024-10-03 20:17:00,518 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,518 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 2
+2024-10-03 20:17:00,519 INFO    HandlerThread:29972 [system_monitor.py:finish():203] Stopping system monitor
+2024-10-03 20:17:00,519 DEBUG   SystemMonitor:29972 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-10-03 20:17:00,526 INFO    HandlerThread:29972 [interfaces.py:finish():200] Joined cpu monitor
+2024-10-03 20:17:00,526 DEBUG   SystemMonitor:29972 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-10-03 20:17:00,526 INFO    HandlerThread:29972 [interfaces.py:finish():200] Joined disk monitor
+2024-10-03 20:17:00,563 INFO    HandlerThread:29972 [interfaces.py:finish():200] Joined gpu monitor
+2024-10-03 20:17:00,563 INFO    HandlerThread:29972 [interfaces.py:finish():200] Joined memory monitor
+2024-10-03 20:17:00,563 INFO    HandlerThread:29972 [interfaces.py:finish():200] Joined network monitor
+2024-10-03 20:17:00,563 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,563 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 2
+2024-10-03 20:17:00,563 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 3
+2024-10-03 20:17:00,563 DEBUG   SenderThread:29972 [sender.py:send():391] send: stats
+2024-10-03 20:17:00,563 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,564 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 3
+2024-10-03 20:17:00,564 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,564 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 3
+2024-10-03 20:17:00,564 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 4
+2024-10-03 20:17:00,564 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,564 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 4
+2024-10-03 20:17:00,564 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,564 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 4
+2024-10-03 20:17:00,564 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 5
+2024-10-03 20:17:00,564 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,564 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 5
+2024-10-03 20:17:00,566 DEBUG   SenderThread:29972 [sender.py:send():391] send: summary
+2024-10-03 20:17:00,566 INFO    SenderThread:29972 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-03 20:17:00,567 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,567 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 5
+2024-10-03 20:17:00,567 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 6
+2024-10-03 20:17:00,567 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,567 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 6
+2024-10-03 20:17:00,567 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,567 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 6
+2024-10-03 20:17:00,567 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 7
+2024-10-03 20:17:00,567 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: status_report
+2024-10-03 20:17:00,567 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:00,567 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 7
+2024-10-03 20:17:00,567 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:00,567 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 7
+2024-10-03 20:17:00,924 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:17:01,524 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-03 20:17:01,935 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:17:02,617 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 8
+2024-10-03 20:17:02,617 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: poll_exit
+2024-10-03 20:17:02,618 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:02,618 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 8
+2024-10-03 20:17:02,618 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:02,618 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 8
+2024-10-03 20:17:02,618 INFO    SenderThread:29972 [job_builder.py:build():443] Attempting to build job artifact
+2024-10-03 20:17:02,620 INFO    SenderThread:29972 [job_builder.py:_get_source_type():572] is repo sourced job
+2024-10-03 20:17:02,653 INFO    SenderThread:29972 [job_builder.py:build():548] adding wandb-job metadata file
+2024-10-03 20:17:02,664 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 9
+2024-10-03 20:17:02,664 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:02,664 DEBUG   SenderThread:29972 [sender.py:send():391] send: artifact
+2024-10-03 20:17:02,664 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 9
+2024-10-03 20:17:02,940 INFO    Thread-16 :29972 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:17:03,536 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-03 20:17:05,332 INFO    SenderThread:29972 [sender.py:send_artifact():1549] sent artifact job-https___github.com_khangdzox_COS30018-Mitigate-Hallucination.git_Finetuning_LLAMA3_LoRA.py - {'id': 'QXJ0aWZhY3Q6MTI1ODg2MjQ2OA==', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjQxODY4ODU4NQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTI1ODk0OTU4NQ==', 'versionIndex': 76}}}
+2024-10-03 20:17:05,332 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:05,332 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 9
+2024-10-03 20:17:05,332 INFO    SenderThread:29972 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-10-03 20:17:05,980 INFO    SenderThread:29972 [dir_watcher.py:finish():388] scan: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files
+2024-10-03 20:17:05,981 INFO    SenderThread:29972 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\conda-environment.yaml conda-environment.yaml
+2024-10-03 20:17:05,981 INFO    SenderThread:29972 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\config.yaml config.yaml
+2024-10-03 20:17:05,981 INFO    SenderThread:29972 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log output.log
+2024-10-03 20:17:05,983 INFO    SenderThread:29972 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\requirements.txt requirements.txt
+2024-10-03 20:17:05,984 INFO    SenderThread:29972 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-metadata.json wandb-metadata.json
+2024-10-03 20:17:05,984 INFO    SenderThread:29972 [dir_watcher.py:finish():402] scan save: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json wandb-summary.json
+2024-10-03 20:17:05,984 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 10
+2024-10-03 20:17:05,984 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: poll_exit
+2024-10-03 20:17:05,985 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:05,986 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 10
+2024-10-03 20:17:05,987 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:05,988 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 10
+2024-10-03 20:17:05,989 INFO    SenderThread:29972 [file_pusher.py:finish():169] shutting down file pusher
+2024-10-03 20:17:06,562 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-03 20:17:06,562 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: poll_exit
+2024-10-03 20:17:06,725 INFO    wandb-upload_3:29972 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\wandb-summary.json
+2024-10-03 20:17:06,732 INFO    wandb-upload_2:29972 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\requirements.txt
+2024-10-03 20:17:06,734 INFO    wandb-upload_0:29972 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\config.yaml
+2024-10-03 20:17:06,745 INFO    wandb-upload_1:29972 [upload_job.py:push():130] Uploaded file C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\files\output.log
+2024-10-03 20:17:06,946 INFO    Thread-15 (_thread_body):29972 [sender.py:transition_state():626] send defer: 11
+2024-10-03 20:17:06,946 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:06,946 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 11
+2024-10-03 20:17:06,946 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:06,946 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 11
+2024-10-03 20:17:06,946 INFO    SenderThread:29972 [file_pusher.py:join():175] waiting for file pusher
+2024-10-03 20:17:06,947 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 12
+2024-10-03 20:17:06,947 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:06,947 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 12
+2024-10-03 20:17:06,947 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:06,947 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 12
+2024-10-03 20:17:06,947 INFO    SenderThread:29972 [file_stream.py:finish():601] file stream finish called
+2024-10-03 20:17:07,182 INFO    SenderThread:29972 [file_stream.py:finish():605] file stream finish is done
+2024-10-03 20:17:07,183 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 13
+2024-10-03 20:17:07,183 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:07,183 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 13
+2024-10-03 20:17:07,183 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:07,183 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 13
+2024-10-03 20:17:07,183 INFO    SenderThread:29972 [sender.py:transition_state():626] send defer: 14
+2024-10-03 20:17:07,183 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: defer
+2024-10-03 20:17:07,183 INFO    HandlerThread:29972 [handler.py:handle_request_defer():184] handle defer: 14
+2024-10-03 20:17:07,183 DEBUG   SenderThread:29972 [sender.py:send():391] send: final
+2024-10-03 20:17:07,183 DEBUG   SenderThread:29972 [sender.py:send():391] send: footer
+2024-10-03 20:17:07,183 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: defer
+2024-10-03 20:17:07,183 INFO    SenderThread:29972 [sender.py:send_request_defer():622] handle sender defer: 14
+2024-10-03 20:17:07,184 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-03 20:17:07,184 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: server_info
+2024-10-03 20:17:07,184 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-03 20:17:07,184 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: poll_exit
+2024-10-03 20:17:07,184 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: get_summary
+2024-10-03 20:17:07,184 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: server_info
+2024-10-03 20:17:07,185 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: sampled_history
+2024-10-03 20:17:07,186 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-03 20:17:07,406 DEBUG   SenderThread:29972 [sender.py:send_request():418] send_request: poll_exit
+2024-10-03 20:17:07,406 INFO    MainThread:29972 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2024-10-03 20:17:07,407 INFO    MainThread:29972 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2024-10-03 20:17:07,408 INFO    MainThread:29972 [wandb_run.py:_footer_sync_info():4037] logging synced files
+2024-10-03 20:17:07,408 DEBUG   HandlerThread:29972 [handler.py:handle_request():158] handle_request: shutdown
+2024-10-03 20:17:07,408 INFO    HandlerThread:29972 [handler.py:finish():884] shutting down handler
+2024-10-03 20:17:08,184 INFO    WriterThread:29972 [datastore.py:close():296] close: C:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\wandb\run-20241003_195959-09t97sw2\run-09t97sw2.wandb
+2024-10-03 20:17:08,418 INFO    SenderThread:29972 [sender.py:finish():1631] shutting down sender
+2024-10-03 20:17:08,418 INFO    SenderThread:29972 [file_pusher.py:finish():169] shutting down file pusher
+2024-10-03 20:17:08,418 INFO    SenderThread:29972 [file_pusher.py:join():175] waiting for file pusher

@@ -1,11 +1,24 @@
 import warnings
-from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments 
+from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments, BitsAndBytesConfig
 from datasets import load_dataset 
 from peft import get_peft_model, LoraConfig 
 import torch 
 from trl import SFTTrainer
+from datasets import load_metric
+from pynvml import nvmlInit, nvmlDeviceGetHandleByIndex, nvmlDeviceGetMemoryInfo
 
 import matplotlib.pyplot as plt
+
+def print_gpu_utilization():
+    nvmlInit()
+    handle = nvmlDeviceGetHandleByIndex(0)
+    info = nvmlDeviceGetMemoryInfo(handle)
+    print(f"GPU memory occupied: {info.used//1024**2} MB.")
+
+# Define the Exact Match metric
+def compute_exact_match(predictions, references):
+    metric = load_metric("exact_match")
+    return metric.compute(predictions=predictions, references=references)
 
 # Filter tokenized_data set
 def filter_max_tokens(example, max_tokens):
@@ -97,7 +110,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 2,
+        r = 1,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -108,19 +121,19 @@ def main():
     training_args = TrainingArguments(
             learning_rate = 2e-4, # Learning rate change
             lr_scheduler_type = "cosine", # Control learning rate change
-            warmup_ratio= 0.03,
+            warmup_steps= 5,
             weight_decay = 0.01,
             save_strategy= "steps",
             save_steps= 10,
-            logging_steps = 1,
+            logging_steps= 1,
             gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
             max_steps = 110,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
-            optim = "adamw_8bit", # Use 8-bit optimization for faster training
+            optim = "adamw_8bit",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/9",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/LoRA/9",
         )
     
     # LOADDING
@@ -129,11 +142,33 @@ def main():
     def get_device_map() -> str:
         return 'cuda' if torch.cuda.is_available() else 'cpu'
     
-    device = get_device_map()
+    # device = get_device_map()
 
     # Load base model
+    
+    # Activate 4-bit precision base model loading
+    use_4bit = True
+
+    # Compute dtype for 4-bit base models
+    bnb_4bit_compute_dtype = "float16"
+
+    # Quantization type (fp4 or nf4)
+    bnb_4bit_quant_type = "nf4"
+
+    # Activate nested quantization for 4-bit base models (double quantization)
+    use_nested_quant = True
+    
+    compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
+    
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=use_4bit,
+        bnb_4bit_quant_type=bnb_4bit_quant_type,
+        bnb_4bit_compute_dtype=compute_dtype,
+        bnb_4bit_use_double_quant=use_nested_quant,
+    )
+    
     model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
-    model = AutoModelForCausalLM.from_pretrained(model_id, device_map=device, torch_dtype=torch.bfloat16)
+    model = AutoModelForCausalLM.from_pretrained(model_id, device_map='auto', torch_dtype=torch.bfloat16, quantization_config=bnb_config,)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -146,9 +181,6 @@ def main():
     }
     
     dataset = load_dataset("csv", data_files=data_files)
-    
-    # Shuffling the dataset
-    dataset['train'] = dataset['train'].shuffle(seed=3407)
     
     # IMPLEMENTING LORA TECHNIQUE
     
@@ -164,16 +196,18 @@ def main():
     # DATA PREPROCESSING AND TOKENIZING
     
     # Create the prompt
-    prompt = """You are an assistant for question-answering tasks."""
+    prompt = "You are an assistant for question-answering tasks. Answering and explaining the questions appropriately."
     
     # Tokenize the dataset
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # Limit token number
-    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 2000})
+    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 1024})
     # print(filtered_tokenized_dataset['text'][0])
     # Visualize token number
     # visualize_token_lengths(filtered_tokenized_dataset)
+    
+    filtered_tokenized_dataset = filtered_tokenized_dataset.shuffle(seed=3407)
     
     # TRAINING
     
@@ -185,7 +219,7 @@ def main():
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
-        max_seq_length= 2000,
+        max_seq_length= 1024,
         dataset_batch_size= 1000,
     )
     

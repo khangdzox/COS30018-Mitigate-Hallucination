@@ -1,0 +1,71 @@
+
+
+  1%|█▎                                                                                                                                        | 1/110 [00:02<04:17,  2.36s/it]
+
+  2%|██▌                                                                                                                                       | 2/110 [00:04<03:51,  2.14s/it]
+
+  3%|███▊                                                                                                                                      | 3/110 [00:06<03:41,  2.07s/it]
+
+  4%|█████                                                                                                                                     | 4/110 [00:08<03:35,  2.03s/it]
+
+  5%|██████▎                                                                                                                                   | 5/110 [00:10<03:30,  2.00s/it]
+
+  5%|███████▌                                                                                                                                  | 6/110 [00:12<03:26,  1.99s/it]
+
+  6%|████████▊                                                                                                                                 | 7/110 [00:14<03:23,  1.97s/it]
+
+  7%|██████████                                                                                                                                | 8/110 [00:16<03:20,  1.97s/it]
+
+  8%|███████████▎                                                                                                                              | 9/110 [00:18<03:18,  1.97s/it]
+
+  9%|████████████▍                                                                                                                            | 10/110 [00:20<03:16,  1.96s/it]
+
+ 10%|█████████████▋                                                                                                                           | 11/110 [00:22<03:32,  2.14s/it]
+
+ 11%|██████████████▉                                                                                                                          | 12/110 [00:24<03:22,  2.07s/it]
+
+ 12%|████████████████▏                                                                                                                        | 13/110 [00:26<03:15,  2.02s/it]
+
+ 13%|█████████████████▍                                                                                                                       | 14/110 [00:28<03:10,  1.98s/it]
+
+ 14%|██████████████████▋                                                                                                                      | 15/110 [00:30<03:05,  1.95s/it][34m[1mwandb[39m[22m: 429 encountered (Filestream rate limit exceeded, retrying in 2.4 seconds.), retrying request
+{'loss': 2.4318, 'grad_norm': 7.350160121917725, 'learning_rate': 9.919647942993148e-09, 'epoch': 0.0}
+ 15%|███████████████████▉                                                                                                                     | 16/110 [00:32<03:02,  1.94s/it]
+
+ 16%|██████████████████████▍                                                                                                                  | 18/110 [00:35<02:56,  1.92s/it]
+{'loss': 2.2134, 'grad_norm': 11.900514602661133, 'learning_rate': 9.857450191464336e-09, 'epoch': 0.0}
+
+ 17%|███████████████████████▋                                                                                                                 | 19/110 [00:37<02:53,  1.91s/it]
+
+ 18%|████████████████████████▉                                                                                                                | 20/110 [00:39<02:51,  1.91s/it]
+
+ 19%|██████████████████████████▏                                                                                                              | 21/110 [00:42<03:04,  2.07s/it]
+
+ 21%|████████████████████████████▋                                                                                                            | 23/110 [00:45<02:52,  1.98s/it]
+{'loss': 2.2362, 'grad_norm': 8.230958938598633, 'learning_rate': 9.626521502369984e-09, 'epoch': 0.0}
+ 21%|████████████████████████████▋                                                                                                            | 23/110 [00:45<02:52,  1.98s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 245, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 241, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2289, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3359, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\accelerator.py", line 2155, in backward
+    self.scaler.scale(loss).backward(**kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
