@@ -33,6 +33,15 @@ pip install gradio
 pip install ipython ipywidgets
 ```
 
+## Usage
+This repository is structured as a Python package. You should run any file from the parent directory by using the `-m` flag.
+
+For example, to run the `COS30018-Mitigate-Hallucination/hallucination_detection/evaluation/halueval.py` file, you should run the following command:
+
+```bash
+python -m COS30018-Mitigate-Hallucination.hallucination_detection.evaluation.halueval
+```
+
 ## Hugging Face Access Token
 
 Llama 3 is a private model, and you need to have access to it.
