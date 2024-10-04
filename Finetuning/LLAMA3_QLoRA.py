@@ -110,7 +110,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 4,
+        r = 16,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -119,10 +119,9 @@ def main():
     
     # Config arguments for the training process
     training_args = TrainingArguments(
-            learning_rate = 1e-4, # Learning rate change
-            lr_scheduler_type = "cosine_with_restarts", # Control learning rate change
-            lr_scheduler_kwargs = {'num_cycles': 10},
-            warmup_steps= 1,
+            learning_rate = 8e-6, # Learning rate change 
+            lr_scheduler_type = "cosine", # Control learning rate change
+            warmup_ratio= 0.01,
             weight_decay = 0.01,
             save_strategy= "steps",
             save_steps= 10,
@@ -133,9 +132,9 @@ def main():
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adafactor",
-            group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/2",
-            max_grad_norm=1.0  # Apply gradient clipping
+            # group_by_length = True, # Group samples of same length to reduce padding and speed up training
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/3",
+            max_grad_norm= 1.0  # Apply gradient clipping
         )
     
     # LOADDING
@@ -207,12 +206,10 @@ def main():
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # Limit token number
-    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 1024})
+    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 1300})
     # print(filtered_tokenized_dataset['text'][0])
     # Visualize token number
     # visualize_token_lengths(filtered_tokenized_dataset)
-    
-    filtered_tokenized_dataset = filtered_tokenized_dataset.shuffle(seed=3407)
     
     # TRAINING
     
@@ -224,7 +221,7 @@ def main():
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
-        max_seq_length= 1024,
+        max_seq_length= 1300,
         dataset_batch_size= 3000,
     )
     

@@ -8,7 +8,9 @@ def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
 def main():
-    data = pd.read_csv('../medical_3/Deep Cleaning/final.csv')
+    data = pd.read_csv('../medical_3/Final_train.csv')
+    
+    
     
     rows = []
     for i in data.iloc:
@@ -51,9 +53,12 @@ def main():
     # Apply the function to the cop column
     df['cop'] = df.apply(replace_cop, axis=1)
 
+    df = df.sample(frac=1).reset_index(drop=True)
+
     # Verify replacement
     print(df)
 
+    
     # Save cleaned data to csv
     df.to_csv('../medical_3/Deep Cleaning/final.csv', index=False)
 
