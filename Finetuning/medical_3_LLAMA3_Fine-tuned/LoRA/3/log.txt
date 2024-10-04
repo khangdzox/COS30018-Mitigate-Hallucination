@@ -1,7 +1,0 @@
-1: Remove evaluation during training
-2: change warmup_steps: 5 -> warmup_ratio: 0.03
-3: Change max_seq_length to 258 (maximum Ques tokens 220 + maximum Ans token 38 (from dataset description))
-4: delete evaluation function
-5: change save_steps: 50 -> 5
-6: shuffle my dataset
-7: change the prompt

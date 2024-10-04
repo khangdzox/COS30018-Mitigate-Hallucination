@@ -1,5 +1,0 @@
-1: gradient_accumulation_steps = 4 -> 2
-2: max steps = 100 -> 110
-3: remove filter and using normal train dataset
-4: max_seq_length = 1024
-6: add batch_size to control batch size: 1000

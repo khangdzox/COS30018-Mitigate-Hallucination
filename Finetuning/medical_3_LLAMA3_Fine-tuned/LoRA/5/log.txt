@@ -1,9 +1,0 @@
-1: max_seq_length recalculate. 4500
-(Problem is that, if i put the too short max_seq_length then the input will be cut and loss)
-Instead of put max_seq_length with normal dataset which may cause imcomplete input, i filtered dataset with maximum of 4500 token in text and put max_seq_length = 4500
-2: change max_steps to 100
-5: change per_device_train_batch_size = 1
-7: change gradient_accumulation_steps = 4
-8: eval_delay= 20
-
-(Strange pattern happen again)
