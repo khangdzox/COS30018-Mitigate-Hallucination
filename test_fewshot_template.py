@@ -30,7 +30,7 @@ answer = "First for Women was started first."
 answer_tokens = tokenizer.encode(answer, return_tensors="pt").to(model.device) # type: ignore
 
 keywords_input_template = [
-    {"role": "system", "content": "Identify all the important keyphrases from the provided content and return a comma separated list."},
+    {"role": "system", "content": "Identify all the important keyphrases from the provided sentence and return a comma separated list."},
     {"role": "user", "content": "John Russell Reynolds was an English physician and neurologist who made significant contributions to the field of neurology."},
     {"role": "assistant", "content": "John Russell Reynolds, English, physician, neurologist, neurology"},
     {"role": "user", "content": "He was born in London in 1820 and studied medicine at the University of London."},
