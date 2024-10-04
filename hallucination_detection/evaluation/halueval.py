@@ -21,7 +21,7 @@ def load_tokenizer() -> transformers.PreTrainedTokenizer:
 def load_terminators(tokenizer: transformers.PreTrainedTokenizer) -> list[int]:
     return [
         tokenizer.eos_token_id, # type: ignore
-        # tokenizer.convert_tokens_to_ids("<|eot_id|>")
+        tokenizer.convert_tokens_to_ids("<|eot_id|>")
     ]
 
 print("Loading model...")
