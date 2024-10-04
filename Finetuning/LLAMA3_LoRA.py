@@ -1,5 +1,5 @@
 import warnings
-from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments, BitsAndBytesConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer, TrainingArguments
 from datasets import load_dataset 
 from peft import get_peft_model, LoraConfig 
 import torch 
@@ -126,14 +126,14 @@ def main():
             save_strategy= "steps",
             save_steps= 10,
             logging_steps= 1,
-            gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
+            gradient_accumulation_steps = 2, # Accumulate gradients for larger batch size
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
             max_steps = 110,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/LoRA/9",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/LoRA/2",
         )
     
     # LOADDING
@@ -142,33 +142,12 @@ def main():
     def get_device_map() -> str:
         return 'cuda' if torch.cuda.is_available() else 'cpu'
     
-    # device = get_device_map()
+    device = get_device_map()
 
     # Load base model
-    
-    # Activate 4-bit precision base model loading
-    use_4bit = True
 
-    # Compute dtype for 4-bit base models
-    bnb_4bit_compute_dtype = "float16"
-
-    # Quantization type (fp4 or nf4)
-    bnb_4bit_quant_type = "nf4"
-
-    # Activate nested quantization for 4-bit base models (double quantization)
-    use_nested_quant = True
-    
-    compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
-    
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=use_4bit,
-        bnb_4bit_quant_type=bnb_4bit_quant_type,
-        bnb_4bit_compute_dtype=compute_dtype,
-        bnb_4bit_use_double_quant=use_nested_quant,
-    )
-    
     model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
-    model = AutoModelForCausalLM.from_pretrained(model_id, device_map='auto', torch_dtype=torch.bfloat16, quantization_config=bnb_config,)
+    model = AutoModelForCausalLM.from_pretrained(model_id, device_map=device, torch_dtype=torch.bfloat16)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)

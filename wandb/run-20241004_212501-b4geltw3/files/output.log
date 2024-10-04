@@ -1,0 +1,234 @@
+
+
+  0%|▎                                                                                                                                | 1/500 [00:03<30:15,  3.64s/it]
+{'loss': 1.7031, 'grad_norm': 2.0078256130218506, 'learning_rate': 2.0000000000000003e-06, 'epoch': 0.0}
+
+  0%|▌                                                                                                                                | 2/500 [00:06<28:19,  3.41s/it]
+
+
+  1%|█                                                                                                                                | 4/500 [00:13<27:12,  3.29s/it]
+{'loss': 2.0757, 'grad_norm': 2.6253366470336914, 'learning_rate': 6e-06, 'epoch': 0.0}
+
+
+  1%|█▌                                                                                                                               | 6/500 [00:19<26:33,  3.23s/it]
+{'loss': 2.2007, 'grad_norm': 2.537607192993164, 'learning_rate': 1e-05, 'epoch': 0.0}
+
+  1%|█▊                                                                                                                               | 7/500 [00:22<26:24,  3.21s/it]
+
+
+  2%|██▎                                                                                                                              | 9/500 [00:29<26:15,  3.21s/it]
+{'loss': 2.3021, 'grad_norm': 3.980184316635132, 'learning_rate': 9.939393939393939e-06, 'epoch': 0.0}
+
+  2%|██▌                                                                                                                             | 10/500 [00:32<26:36,  3.26s/it]
+
+  2%|██▊                                                                                                                             | 11/500 [00:36<28:18,  3.47s/it]
+
+  2%|███                                                                                                                             | 12/500 [00:39<27:57,  3.44s/it]
+
+  3%|███▎                                                                                                                            | 13/500 [00:43<27:15,  3.36s/it]
+
+
+  3%|███▊                                                                                                                            | 15/500 [00:49<26:16,  3.25s/it]
+{'loss': 2.3923, 'grad_norm': 2.7585673332214355, 'learning_rate': 9.838383838383839e-06, 'epoch': 0.0}
+
+
+  3%|████▎                                                                                                                           | 17/500 [00:55<25:40,  3.19s/it]
+{'loss': 2.1567, 'grad_norm': 3.790259599685669, 'learning_rate': 9.797979797979798e-06, 'epoch': 0.0}
+
+  4%|████▌                                                                                                                           | 18/500 [00:58<25:39,  3.19s/it]
+
+  4%|████▊                                                                                                                           | 19/500 [01:02<25:22,  3.17s/it]
+
+
+  4%|█████▍                                                                                                                          | 21/500 [01:09<27:50,  3.49s/it]
+{'loss': 2.2487, 'grad_norm': 2.9455714225769043, 'learning_rate': 9.717171717171719e-06, 'epoch': 0.0}
+
+
+  5%|█████▉                                                                                                                          | 23/500 [01:15<26:00,  3.27s/it]
+{'loss': 2.3643, 'grad_norm': 3.321765184402466, 'learning_rate': 9.676767676767678e-06, 'epoch': 0.0}
+
+
+  5%|██████▍                                                                                                                         | 25/500 [01:21<25:05,  3.17s/it]
+{'loss': 2.3588, 'grad_norm': 3.5303685665130615, 'learning_rate': 9.636363636363638e-06, 'epoch': 0.0}
+
+  5%|██████▋                                                                                                                         | 26/500 [01:24<24:52,  3.15s/it]
+
+  5%|██████▉                                                                                                                         | 27/500 [01:27<24:43,  3.14s/it]
+
+  6%|███████▏                                                                                                                        | 28/500 [01:31<24:41,  3.14s/it]
+
+
+  6%|███████▋                                                                                                                        | 30/500 [01:37<24:44,  3.16s/it]
+
+  6%|███████▉                                                                                                                        | 31/500 [01:41<26:43,  3.42s/it]
+{'loss': 2.1728, 'grad_norm': 3.933806896209717, 'learning_rate': 9.515151515151516e-06, 'epoch': 0.0}
+
+  6%|████████▏                                                                                                                       | 32/500 [01:44<26:31,  3.40s/it]
+
+  7%|████████▍                                                                                                                       | 33/500 [01:47<26:00,  3.34s/it]
+
+  7%|████████▋                                                                                                                       | 34/500 [01:50<25:10,  3.24s/it]
+
+
+  7%|█████████▏                                                                                                                      | 36/500 [01:57<24:48,  3.21s/it]
+{'loss': 2.0708, 'grad_norm': 3.8381056785583496, 'learning_rate': 9.414141414141414e-06, 'epoch': 0.0}
+
+  7%|█████████▍                                                                                                                      | 37/500 [02:00<25:13,  3.27s/it]
+
+
+  8%|█████████▉                                                                                                                      | 39/500 [02:07<25:41,  3.34s/it]
+{'loss': 2.0895, 'grad_norm': 3.995237112045288, 'learning_rate': 9.353535353535354e-06, 'epoch': 0.0}
+
+
+  8%|██████████▍                                                                                                                     | 41/500 [02:27<48:24,  6.33s/it]
+
+  8%|██████████▊                                                                                                                     | 42/500 [02:31<42:58,  5.63s/it]
+
+  9%|███████████                                                                                                                     | 43/500 [02:35<39:10,  5.14s/it]
+{'loss': 2.0973, 'grad_norm': 4.845006942749023, 'learning_rate': 9.272727272727273e-06, 'epoch': 0.0}
+
+
+  9%|███████████▌                                                                                                                    | 45/500 [02:43<34:29,  4.55s/it]
+
+  9%|███████████▊                                                                                                                    | 46/500 [02:47<32:54,  4.35s/it]
+
+  9%|████████████                                                                                                                    | 47/500 [02:51<31:44,  4.20s/it]
+
+ 10%|████████████▎                                                                                                                   | 48/500 [02:55<30:46,  4.08s/it]
+
+ 10%|████████████▌                                                                                                                   | 49/500 [02:59<30:22,  4.04s/it]
+
+ 10%|████████████▊                                                                                                                   | 50/500 [03:03<30:08,  4.02s/it]
+{'loss': 2.3394, 'grad_norm': 5.516815185546875, 'learning_rate': 9.131313131313132e-06, 'epoch': 0.0}
+
+
+ 10%|█████████████▎                                                                                                                  | 52/500 [03:11<30:34,  4.10s/it]
+
+ 11%|█████████████▌                                                                                                                  | 53/500 [03:15<29:38,  3.98s/it]
+
+ 11%|█████████████▊                                                                                                                  | 54/500 [03:19<29:28,  3.96s/it]
+{'loss': 1.9085, 'grad_norm': 3.168642997741699, 'learning_rate': 9.050505050505052e-06, 'epoch': 0.0}
+
+ 11%|██████████████                                                                                                                  | 55/500 [03:23<29:01,  3.91s/it]
+
+ 11%|██████████████▎                                                                                                                 | 56/500 [03:27<28:46,  3.89s/it]
+ 11%|██████████████▌                                                                                                                 | 57/500 [03:30<28:41,  3.89s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 244, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 240, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2289, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3328, in training_step
+    loss = self.compute_loss(model, inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3373, in compute_loss
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\utils\operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\utils\operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\amp\autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\peft_model.py", line 1577, in forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\tuners\tuners_utils.py", line 188, in forward
+    return self.model.forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 1189, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 1001, in forward
+    layer_outputs = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 734, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+                                                          ^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 619, in forward
+    value_states = self.v_proj(hidden_states)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\tuners\lora\bnb.py", line 467, in forward
+    result = self.base_layer(x, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\bitsandbytes\nn\modules.py", line 477, in forward
+    out = bnb.matmul_4bit(x, self.weight.t(), bias=bias, quant_state=self.weight.quant_state)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\bitsandbytes\autograd\_functions.py", line 579, in matmul_4bit
+    return MatMul4Bit.apply(A, B, out, bias, quant_state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\function.py", line 574, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\bitsandbytes\autograd\_functions.py", line 509, in forward
+    output = torch.nn.functional.linear(A, F.dequantize_4bit(B, quant_state).to(A.dtype).t(), bias)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

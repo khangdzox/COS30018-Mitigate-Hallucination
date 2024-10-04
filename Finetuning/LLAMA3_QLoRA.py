@@ -110,7 +110,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 1,
+        r = 4,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -119,21 +119,23 @@ def main():
     
     # Config arguments for the training process
     training_args = TrainingArguments(
-            learning_rate = 1e-8, # Learning rate change
-            lr_scheduler_type = "cosine", # Control learning rate change
-            warmup_steps= 5,
+            learning_rate = 1e-4, # Learning rate change
+            lr_scheduler_type = "cosine_with_restarts", # Control learning rate change
+            lr_scheduler_kwargs = {'num_cycles': 10},
+            warmup_steps= 1,
             weight_decay = 0.01,
             save_strategy= "steps",
             save_steps= 10,
             logging_steps= 1,
-            gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
+            gradient_accumulation_steps = 8, # Accumulate gradients for larger batch size
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
-            max_steps = 110,
+            max_steps = 500,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
-            optim = "adamw_8bit",
+            optim = "adafactor",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/9",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/2",
+            max_grad_norm=1.0  # Apply gradient clipping
         )
     
     # LOADDING
@@ -160,8 +162,9 @@ def main():
     # Activate nested quantization for 4-bit base models (double quantization)
     use_nested_quant = True
     
+    # Load tokenizer and model with QLoRA configuration
     compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
-    
+
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=use_4bit,
         bnb_4bit_quant_type=bnb_4bit_quant_type,
@@ -222,13 +225,11 @@ def main():
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
         max_seq_length= 1024,
-        dataset_batch_size= 1000,
+        dataset_batch_size= 3000,
     )
     
     # EVALUATING
-    questions = """
-### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma
-    """
+    questions = "Chronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"
     
     # Evaluate the base model
     
@@ -237,7 +238,6 @@ def main():
     #     print(generate_output(model, tokenizer, question, prompt))
     
     # Start training
-    
     trainer.train()
     
 if __name__ == "__main__":
