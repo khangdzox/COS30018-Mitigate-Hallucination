@@ -38,11 +38,11 @@ Q: Where were the 1992 Olympics held?
 A: The 1992 Olympics were held in Barcelona, Spain.
 
 Q: {question}
-A: """
+A:"""
 
     if answer:
         # Add the answer to the prompt if provided
-        fewshot += answer
+        fewshot += " " + answer
 
     return fewshot
 
