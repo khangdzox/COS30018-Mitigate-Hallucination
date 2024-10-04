@@ -126,14 +126,14 @@ def main():
             save_strategy= "steps",
             save_steps= 10,
             logging_steps= 1,
-            gradient_accumulation_steps = 4, # Accumulate gradients for larger batch size
+            gradient_accumulation_steps = 2, # Accumulate gradients for larger batch size
             per_device_train_batch_size= 1, # Batch size per GPU (1 batch contain 1000 data points)
             max_steps = 110,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit",
             group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/LoRA/1",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/LoRA/2",
         )
     
     # LOADDING
@@ -181,7 +181,7 @@ def main():
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # Limit token number
-    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 512})
+    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 1024})
     # print(filtered_tokenized_dataset['text'][0])
     # Visualize token number
     # visualize_token_lengths(filtered_tokenized_dataset)
@@ -198,7 +198,7 @@ def main():
         dataset_text_field = "text",
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
-        max_seq_length= 512,
+        max_seq_length= 1024,
         dataset_batch_size= 1000,
     )
     
