@@ -110,7 +110,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 16,
+        r = 2,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -119,7 +119,7 @@ def main():
     
     # Config arguments for the training process
     training_args = TrainingArguments(
-            learning_rate = 8e-6, # Learning rate change 
+            learning_rate = 1e-4, # Learning rate change 
             lr_scheduler_type = "cosine", # Control learning rate change
             warmup_ratio= 0.01,
             weight_decay = 0.01,
@@ -133,7 +133,7 @@ def main():
             fp16 = True, # Use mixed precision training for faster training
             optim = "adafactor",
             # group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/3",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/4",
             max_grad_norm= 1.0  # Apply gradient clipping
         )
     
@@ -219,10 +219,10 @@ def main():
         tokenizer = tokenizer,
         train_dataset = filtered_tokenized_dataset,
         dataset_text_field = "text",
-        packing = False, # Can make training 5x faster for short sequences.
+        # packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
         max_seq_length= 1300,
-        dataset_batch_size= 3000,
+        dataset_batch_size= 5000,
     )
     
     # EVALUATING
