@@ -1,0 +1,167 @@
+
+  0%|                                                                                                                                                   | 0/500 [00:00<?, ?it/s]
+
+  0%|▎                                                                                                                                        | 1/500 [00:08<1:07:36,  8.13s/it]
+
+  0%|▌                                                                                                                                        | 2/500 [00:16<1:06:33,  8.02s/it]
+
+
+  1%|█                                                                                                                                        | 4/500 [00:31<1:05:22,  7.91s/it]
+
+  1%|█▎                                                                                                                                       | 5/500 [00:39<1:05:22,  7.92s/it]
+
+  1%|█▋                                                                                                                                       | 6/500 [00:47<1:05:20,  7.94s/it]
+{'loss': 2.2506, 'grad_norm': 3.7933359146118164, 'learning_rate': 0.014000000000000002, 'epoch': 0.0}
+
+  1%|█▉                                                                                                                                       | 7/500 [00:55<1:05:16,  7.95s/it]
+
+  2%|██▏                                                                                                                                      | 8/500 [01:03<1:04:54,  7.91s/it]
+
+  2%|██▍                                                                                                                                      | 9/500 [01:11<1:04:43,  7.91s/it]
+
+
+  2%|██▉                                                                                                                                     | 11/500 [01:27<1:05:45,  8.07s/it]
+{'loss': 2.3412, 'grad_norm': nan, 'learning_rate': 0.014000000000000002, 'epoch': 0.0}
+
+  2%|███▎                                                                                                                                    | 12/500 [01:35<1:05:19,  8.03s/it]
+
+  3%|███▌                                                                                                                                    | 13/500 [01:43<1:04:59,  8.01s/it]
+
+  3%|███▊                                                                                                                                    | 14/500 [01:51<1:04:33,  7.97s/it]
+
+  3%|████                                                                                                                                    | 15/500 [01:59<1:04:16,  7.95s/it]
+
+  3%|████▎                                                                                                                                   | 16/500 [02:07<1:03:57,  7.93s/it]
+
+  3%|████▌                                                                                                                                   | 17/500 [02:15<1:03:51,  7.93s/it]
+
+  4%|████▉                                                                                                                                   | 18/500 [02:22<1:03:15,  7.88s/it]
+
+  4%|█████▏                                                                                                                                  | 19/500 [02:30<1:03:22,  7.91s/it]
+
+  4%|█████▍                                                                                                                                  | 20/500 [02:38<1:03:07,  7.89s/it]
+
+  4%|█████▋                                                                                                                                  | 21/500 [02:47<1:04:29,  8.08s/it]
+
+  4%|█████▉                                                                                                                                  | 22/500 [02:55<1:03:50,  8.01s/it]
+
+  5%|██████▎                                                                                                                                 | 23/500 [03:03<1:03:26,  7.98s/it]
+
+  5%|██████▌                                                                                                                                 | 24/500 [03:10<1:03:06,  7.95s/it]
+
+  5%|██████▊                                                                                                                                 | 25/500 [03:18<1:02:47,  7.93s/it]
+
+  5%|███████                                                                                                                                 | 26/500 [03:26<1:02:29,  7.91s/it]
+
+  5%|███████▎                                                                                                                                | 27/500 [03:34<1:02:07,  7.88s/it]
+
+  6%|███████▌                                                                                                                                | 28/500 [03:42<1:01:51,  7.86s/it]
+
+  6%|███████▉                                                                                                                                | 29/500 [03:50<1:01:40,  7.86s/it]
+
+  6%|████████▏                                                                                                                               | 30/500 [03:58<1:01:36,  7.87s/it]
+
+  6%|████████▍                                                                                                                               | 31/500 [04:06<1:02:44,  8.03s/it]
+
+  6%|████████▋                                                                                                                               | 32/500 [04:14<1:02:20,  7.99s/it]
+
+  7%|████████▉                                                                                                                               | 33/500 [04:22<1:01:47,  7.94s/it]
+
+
+  7%|█████████▌                                                                                                                              | 35/500 [04:38<1:01:27,  7.93s/it]
+
+  7%|█████████▊                                                                                                                              | 36/500 [04:45<1:01:14,  7.92s/it]
+{'loss': 1.4694, 'grad_norm': 23.167264938354492, 'learning_rate': 0.06998086400693242, 'epoch': 0.01}
+
+  7%|██████████                                                                                                                              | 37/500 [04:53<1:00:53,  7.89s/it]
+
+  8%|██████████▎                                                                                                                             | 38/500 [05:01<1:00:36,  7.87s/it]
+
+  8%|██████████▌                                                                                                                             | 39/500 [05:09<1:00:28,  7.87s/it]
+
+  8%|██████████▉                                                                                                                             | 40/500 [05:17<1:00:12,  7.85s/it]
+
+
+  8%|███████████▍                                                                                                                            | 42/500 [05:34<1:01:38,  8.08s/it]
+{'loss': 1.9933, 'grad_norm': 51.87581253051758, 'learning_rate': 0.06990741420108817, 'epoch': 0.01}
+
+  9%|███████████▋                                                                                                                            | 43/500 [05:41<1:00:56,  8.00s/it]
+
+  9%|███████████▉                                                                                                                            | 44/500 [05:49<1:00:25,  7.95s/it]
+
+  9%|████████████▏                                                                                                                           | 45/500 [05:57<1:00:13,  7.94s/it]
+
+  9%|████████████▌                                                                                                                           | 46/500 [06:05<1:00:16,  7.97s/it]
+
+  9%|████████████▊                                                                                                                           | 47/500 [06:13<1:00:00,  7.95s/it]
+
+ 10%|█████████████▏                                                                                                                            | 48/500 [06:21<59:50,  7.94s/it]
+
+ 10%|█████████████▌                                                                                                                            | 49/500 [06:29<59:34,  7.93s/it]
+
+ 10%|█████████████▊                                                                                                                            | 50/500 [06:37<59:21,  7.92s/it]
+
+ 10%|█████████████▊                                                                                                                          | 51/500 [06:45<1:00:40,  8.11s/it]
+
+ 10%|██████████████▏                                                                                                                         | 52/500 [06:53<1:00:09,  8.06s/it]
+
+ 11%|██████████████▋                                                                                                                           | 53/500 [07:01<59:50,  8.03s/it]
+
+ 11%|██████████████▉                                                                                                                           | 54/500 [07:09<59:19,  7.98s/it]
+
+ 11%|███████████████▏                                                                                                                          | 55/500 [07:17<58:57,  7.95s/it]
+
+ 11%|███████████████▍                                                                                                                          | 56/500 [07:25<58:33,  7.91s/it]
+
+ 11%|███████████████▋                                                                                                                          | 57/500 [07:33<58:19,  7.90s/it]
+
+ 12%|████████████████                                                                                                                          | 58/500 [07:41<58:07,  7.89s/it]
+
+ 12%|████████████████▎                                                                                                                         | 59/500 [07:48<57:48,  7.87s/it]
+
+ 12%|████████████████▌                                                                                                                         | 60/500 [07:56<57:54,  7.90s/it]
+
+ 12%|████████████████▊                                                                                                                         | 61/500 [08:05<59:40,  8.16s/it]
+
+ 12%|█████████████████                                                                                                                         | 62/500 [08:13<58:46,  8.05s/it]
+
+ 13%|█████████████████▍                                                                                                                        | 63/500 [08:21<58:08,  7.98s/it]
+
+ 13%|█████████████████▋                                                                                                                        | 64/500 [08:29<57:47,  7.95s/it]
+
+ 13%|█████████████████▉                                                                                                                        | 65/500 [08:36<57:30,  7.93s/it]
+
+ 13%|██████████████████▏                                                                                                                       | 66/500 [08:44<57:08,  7.90s/it]
+
+ 13%|██████████████████▍                                                                                                                       | 67/500 [08:52<56:48,  7.87s/it]
+
+
+ 14%|███████████████████                                                                                                                       | 69/500 [09:08<56:28,  7.86s/it]
+
+ 14%|███████████████████▎                                                                                                                      | 70/500 [09:16<56:28,  7.88s/it]
+ 14%|███████████████████▎                                                                                                                      | 70/500 [09:16<56:28,  7.88s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 243, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 239, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2289, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3359, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\accelerator.py", line 2155, in backward
+    self.scaler.scale(loss).backward(**kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

@@ -1,0 +1,42 @@
+
+
+  0%|▎                                                                                                                                          | 1/500 [00:03<28:05,  3.38s/it]
+
+  0%|▌                                                                                                                                          | 2/500 [00:11<52:26,  6.32s/it]
+{'loss': 2.0816, 'grad_norm': nan, 'learning_rate': 0.0, 'epoch': 0.0}
+
+
+  1%|█                                                                                                                                        | 4/500 [00:43<1:43:24, 12.51s/it]
+{'loss': 2.4533, 'grad_norm': nan, 'learning_rate': 4.000000000000001e-06, 'epoch': 0.0}
+
+  1%|█▎                                                                                                                                       | 5/500 [01:02<2:04:20, 15.07s/it]
+
+
+  1%|█▉                                                                                                                                       | 7/500 [01:35<2:11:11, 15.97s/it]
+{'loss': 2.3056, 'grad_norm': 4.461056232452393, 'learning_rate': 1.6000000000000003e-05, 'epoch': 0.0}
+
+  2%|██▏                                                                                                                                      | 8/500 [01:54<2:16:55, 16.70s/it]
+
+
+  2%|██▋                                                                                                                                     | 10/500 [02:25<2:12:11, 16.19s/it]
+{'loss': 2.3259, 'grad_norm': 4.667393684387207, 'learning_rate': 2.8000000000000003e-05, 'epoch': 0.0}
+
+  2%|██▉                                                                                                                                     | 11/500 [02:46<2:25:25, 17.84s/it]
+
+
+  3%|███▌                                                                                                                                   | 13/500 [06:45<10:29:09, 77.52s/it]
+  3%|███▌                                                                                                                                   | 13/500 [06:45<10:29:09, 77.52s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 243, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 239, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2294, in _inner_training_loop
+    and (torch.isnan(tr_loss_step) or torch.isinf(tr_loss_step))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

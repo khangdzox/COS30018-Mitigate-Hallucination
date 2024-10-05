@@ -1,0 +1,74 @@
+
+  0%|                                                                                                                                                   | 0/500 [00:00<?, ?it/s]
+
+  0%|▎                                                                                                                                        | 1/500 [00:10<1:24:06, 10.11s/it]
+
+  0%|▌                                                                                                                                        | 2/500 [00:19<1:22:29,  9.94s/it]
+
+  1%|▊                                                                                                                                        | 3/500 [00:29<1:21:23,  9.82s/it]
+
+  1%|█                                                                                                                                        | 4/500 [00:39<1:21:25,  9.85s/it]
+
+  1%|█▎                                                                                                                                       | 5/500 [00:49<1:21:24,  9.87s/it]
+
+  1%|█▋                                                                                                                                       | 6/500 [00:59<1:21:03,  9.84s/it]
+
+  1%|█▉                                                                                                                                       | 7/500 [01:08<1:20:34,  9.81s/it]
+
+  2%|██▏                                                                                                                                      | 8/500 [01:18<1:20:30,  9.82s/it]
+
+  2%|██▍                                                                                                                                      | 9/500 [01:28<1:20:10,  9.80s/it]
+
+  2%|██▋                                                                                                                                     | 10/500 [01:38<1:20:11,  9.82s/it]
+
+  2%|██▉                                                                                                                                     | 11/500 [01:49<1:23:07, 10.20s/it]
+
+  2%|███▎                                                                                                                                    | 12/500 [01:59<1:22:00, 10.08s/it]
+
+  3%|███▌                                                                                                                                    | 13/500 [02:09<1:21:16, 10.01s/it]
+
+  3%|███▊                                                                                                                                    | 14/500 [02:18<1:20:21,  9.92s/it]
+
+  3%|████                                                                                                                                    | 15/500 [02:28<1:20:00,  9.90s/it]
+
+  3%|████▎                                                                                                                                   | 16/500 [02:38<1:20:19,  9.96s/it]
+
+  3%|████▌                                                                                                                                   | 17/500 [02:48<1:20:19,  9.98s/it]
+
+  4%|████▉                                                                                                                                   | 18/500 [02:58<1:19:43,  9.92s/it]
+
+  4%|█████▏                                                                                                                                  | 19/500 [03:08<1:19:38,  9.93s/it]
+
+  4%|█████▍                                                                                                                                  | 20/500 [03:18<1:19:24,  9.93s/it]
+
+  4%|█████▋                                                                                                                                  | 21/500 [03:28<1:20:21, 10.07s/it]
+
+  4%|█████▉                                                                                                                                  | 22/500 [03:38<1:19:18,  9.95s/it]
+
+  5%|██████▎                                                                                                                                 | 23/500 [03:48<1:18:55,  9.93s/it]
+  5%|██████▌                                                                                                                                 | 24/500 [03:58<1:18:33,  9.90s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 243, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 239, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2289, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3359, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\accelerator.py", line 2155, in backward
+    self.scaler.scale(loss).backward(**kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

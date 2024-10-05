@@ -1,0 +1,159 @@
+
+  0%|                                                                                                                                                                           | 0/500 [00:00<?, ?it/s]
+
+  0%|▎                                                                                                                                                                | 1/500 [00:08<1:07:54,  8.16s/it]
+
+  0%|▋                                                                                                                                                                | 2/500 [00:15<1:05:57,  7.95s/it]
+
+
+  1%|█▎                                                                                                                                                               | 4/500 [00:31<1:05:22,  7.91s/it]
+{'loss': 2.3717, 'grad_norm': 2.396531820297241, 'learning_rate': 1.6000000000000003e-05, 'epoch': 0.0}
+
+  1%|█▌                                                                                                                                                               | 5/500 [00:39<1:05:02,  7.88s/it]
+
+  1%|█▉                                                                                                                                                               | 6/500 [00:47<1:04:36,  7.85s/it]
+
+  1%|██▎                                                                                                                                                              | 7/500 [00:55<1:04:30,  7.85s/it]
+
+  2%|██▌                                                                                                                                                              | 8/500 [01:03<1:04:19,  7.84s/it]
+
+  2%|██▉                                                                                                                                                              | 9/500 [01:10<1:04:04,  7.83s/it]
+
+  2%|███▏                                                                                                                                                            | 10/500 [01:18<1:04:03,  7.84s/it]
+
+  2%|███▌                                                                                                                                                            | 11/500 [01:27<1:05:44,  8.07s/it]
+
+  2%|███▊                                                                                                                                                            | 12/500 [01:35<1:04:46,  7.96s/it]
+
+  3%|████▏                                                                                                                                                           | 13/500 [01:42<1:04:23,  7.93s/it]
+
+  3%|████▍                                                                                                                                                           | 14/500 [01:50<1:04:11,  7.92s/it]
+
+  3%|████▊                                                                                                                                                           | 15/500 [01:58<1:03:47,  7.89s/it]
+
+  3%|█████                                                                                                                                                           | 16/500 [02:06<1:03:36,  7.89s/it]
+
+  3%|█████▍                                                                                                                                                          | 17/500 [02:14<1:03:34,  7.90s/it]
+
+  4%|█████▊                                                                                                                                                          | 18/500 [02:22<1:03:07,  7.86s/it]
+
+  4%|██████                                                                                                                                                          | 19/500 [02:30<1:03:21,  7.90s/it]
+
+  4%|██████▍                                                                                                                                                         | 20/500 [02:38<1:03:15,  7.91s/it]
+
+  4%|██████▋                                                                                                                                                         | 21/500 [02:47<1:05:31,  8.21s/it]
+
+  4%|███████                                                                                                                                                         | 22/500 [02:54<1:04:24,  8.09s/it]
+
+  5%|███████▎                                                                                                                                                        | 23/500 [03:02<1:03:37,  8.00s/it]
+
+  5%|███████▋                                                                                                                                                        | 24/500 [03:10<1:03:15,  7.97s/it]
+
+  5%|████████                                                                                                                                                        | 25/500 [03:18<1:03:31,  8.02s/it]
+
+  5%|████████▎                                                                                                                                                       | 26/500 [03:26<1:03:25,  8.03s/it]
+
+  5%|████████▋                                                                                                                                                       | 27/500 [03:34<1:03:01,  7.99s/it]
+
+  6%|████████▉                                                                                                                                                       | 28/500 [03:42<1:02:36,  7.96s/it]
+
+
+  6%|█████████▌                                                                                                                                                      | 30/500 [03:58<1:01:40,  7.87s/it]
+{'loss': 1.287, 'grad_norm': 2.47989821434021, 'learning_rate': 9.826044551386744e-05, 'epoch': 0.01}
+
+  6%|█████████▉                                                                                                                                                      | 31/500 [04:06<1:03:08,  8.08s/it]
+
+  6%|██████████▏                                                                                                                                                     | 32/500 [04:14<1:02:28,  8.01s/it]
+
+  7%|██████████▌                                                                                                                                                     | 33/500 [04:22<1:02:02,  7.97s/it]
+
+  7%|██████████▉                                                                                                                                                     | 34/500 [04:30<1:01:34,  7.93s/it]
+
+  7%|███████████▏                                                                                                                                                    | 35/500 [04:37<1:00:59,  7.87s/it]
+
+  7%|███████████▌                                                                                                                                                    | 36/500 [04:45<1:01:03,  7.90s/it]
+
+  7%|███████████▊                                                                                                                                                    | 37/500 [04:53<1:00:49,  7.88s/it]
+
+  8%|████████████▏                                                                                                                                                   | 38/500 [05:01<1:01:05,  7.93s/it]
+
+  8%|████████████▍                                                                                                                                                   | 39/500 [05:09<1:01:05,  7.95s/it]
+
+  8%|████████████▊                                                                                                                                                   | 40/500 [05:17<1:01:10,  7.98s/it]
+
+  8%|█████████████                                                                                                                                                   | 41/500 [05:26<1:03:39,  8.32s/it]
+
+  8%|█████████████▍                                                                                                                                                  | 42/500 [05:34<1:02:17,  8.16s/it]
+
+  9%|█████████████▊                                                                                                                                                  | 43/500 [05:42<1:01:19,  8.05s/it]
+
+  9%|██████████████                                                                                                                                                  | 44/500 [05:50<1:00:42,  7.99s/it]
+
+
+  9%|██████████████▉                                                                                                                                                   | 46/500 [06:06<59:50,  7.91s/it]
+
+  9%|███████████████▏                                                                                                                                                  | 47/500 [06:14<59:59,  7.95s/it]
+{'loss': 1.0384, 'grad_norm': 1.1839509010314941, 'learning_rate': 5.90440267166055e-05, 'epoch': 0.01}
+
+
+ 10%|███████████████▋                                                                                                                                                | 49/500 [06:30<1:00:07,  8.00s/it]
+
+ 10%|████████████████▏                                                                                                                                                 | 50/500 [06:38<59:39,  7.95s/it]
+{'loss': 1.1509, 'grad_norm': 1.282396912574768, 'learning_rate': 4.917330276168208e-05, 'epoch': 0.01}
+
+ 10%|████████████████▎                                                                                                                                               | 51/500 [06:46<1:00:35,  8.10s/it]
+
+ 10%|████████████████▋                                                                                                                                               | 52/500 [06:54<1:00:59,  8.17s/it]
+
+ 11%|████████████████▉                                                                                                                                               | 53/500 [07:02<1:00:26,  8.11s/it]
+
+ 11%|█████████████████▎                                                                                                                                              | 54/500 [07:11<1:00:28,  8.14s/it]
+
+ 11%|█████████████████▊                                                                                                                                                | 55/500 [07:18<59:56,  8.08s/it]
+
+ 11%|██████████████████▏                                                                                                                                               | 56/500 [07:26<59:20,  8.02s/it]
+
+ 11%|██████████████████▍                                                                                                                                               | 57/500 [07:34<58:57,  7.99s/it]
+
+ 12%|██████████████████▊                                                                                                                                               | 58/500 [07:42<58:34,  7.95s/it]
+
+ 12%|███████████████████                                                                                                                                               | 59/500 [07:50<58:22,  7.94s/it]
+
+ 12%|███████████████████▍                                                                                                                                              | 60/500 [07:58<58:32,  7.98s/it]
+
+ 12%|███████████████████▌                                                                                                                                            | 61/500 [08:07<1:00:00,  8.20s/it]
+
+ 12%|████████████████████                                                                                                                                              | 62/500 [08:15<59:38,  8.17s/it]
+
+ 13%|████████████████████▍                                                                                                                                             | 63/500 [08:23<59:27,  8.16s/it]
+
+ 13%|████████████████████▋                                                                                                                                             | 64/500 [08:31<58:59,  8.12s/it]
+
+ 13%|█████████████████████                                                                                                                                             | 65/500 [08:39<58:39,  8.09s/it]
+
+ 13%|█████████████████████▍                                                                                                                                            | 66/500 [08:47<58:16,  8.06s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 243, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 239, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2289, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3359, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\accelerator.py", line 2155, in backward
+    self.scaler.scale(loss).backward(**kwargs)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

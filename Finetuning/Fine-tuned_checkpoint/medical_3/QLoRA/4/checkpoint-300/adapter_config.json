@@ -16,7 +16,7 @@
   "megatron_core": "megatron.core",
   "modules_to_save": null,
   "peft_type": "LORA",
-  "r": 2,
+  "r": 8,
   "rank_pattern": {},
   "revision": null,
   "target_modules": [

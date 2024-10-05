@@ -1,0 +1,183 @@
+
+  0%|                                                                                                                                                   | 0/500 [00:00<?, ?it/s]
+
+  0%|▎                                                                                                                                        | 1/500 [00:08<1:08:06,  8.19s/it]
+
+  0%|▌                                                                                                                                        | 2/500 [00:16<1:07:04,  8.08s/it]
+
+  1%|▊                                                                                                                                        | 3/500 [00:24<1:06:24,  8.02s/it]
+
+  1%|█                                                                                                                                        | 4/500 [00:32<1:05:47,  7.96s/it]
+
+  1%|█▎                                                                                                                                       | 5/500 [00:39<1:05:33,  7.95s/it]
+
+  1%|█▋                                                                                                                                       | 6/500 [00:47<1:05:20,  7.94s/it]
+
+  1%|█▉                                                                                                                                       | 7/500 [00:55<1:05:36,  7.98s/it]
+
+  2%|██▏                                                                                                                                      | 8/500 [01:03<1:05:33,  8.00s/it]
+
+  2%|██▍                                                                                                                                      | 9/500 [01:12<1:05:36,  8.02s/it]
+
+  2%|██▋                                                                                                                                     | 10/500 [01:20<1:05:34,  8.03s/it]
+
+  2%|██▉                                                                                                                                     | 11/500 [01:29<1:07:57,  8.34s/it]
+
+  2%|███▎                                                                                                                                    | 12/500 [01:37<1:07:03,  8.25s/it]
+
+  3%|███▌                                                                                                                                    | 13/500 [01:45<1:06:38,  8.21s/it]
+
+  3%|███▊                                                                                                                                    | 14/500 [01:53<1:05:53,  8.13s/it]
+
+  3%|████                                                                                                                                    | 15/500 [02:01<1:05:17,  8.08s/it]
+
+  3%|████▎                                                                                                                                   | 16/500 [02:09<1:04:53,  8.04s/it]
+
+  3%|████▌                                                                                                                                   | 17/500 [02:17<1:04:44,  8.04s/it]
+
+  4%|████▉                                                                                                                                   | 18/500 [02:24<1:04:01,  7.97s/it]
+
+  4%|█████▏                                                                                                                                  | 19/500 [02:33<1:04:07,  8.00s/it]
+
+  4%|█████▍                                                                                                                                  | 20/500 [02:40<1:03:46,  7.97s/it]
+
+  4%|█████▋                                                                                                                                  | 21/500 [02:49<1:04:50,  8.12s/it]
+
+  4%|█████▉                                                                                                                                  | 22/500 [02:57<1:04:21,  8.08s/it]
+
+  5%|██████▎                                                                                                                                 | 23/500 [03:05<1:04:12,  8.08s/it]
+
+  5%|██████▌                                                                                                                                 | 24/500 [03:13<1:03:53,  8.05s/it]
+
+  5%|██████▊                                                                                                                                 | 25/500 [03:21<1:03:26,  8.01s/it]
+
+  5%|███████                                                                                                                                 | 26/500 [03:29<1:03:00,  7.98s/it]
+
+  5%|███████▎                                                                                                                                | 27/500 [03:37<1:02:32,  7.93s/it]
+
+  6%|███████▌                                                                                                                                | 28/500 [03:44<1:02:11,  7.91s/it]
+
+  6%|███████▉                                                                                                                                | 29/500 [03:52<1:01:38,  7.85s/it]
+
+  6%|████████▏                                                                                                                               | 30/500 [04:00<1:01:04,  7.80s/it]
+
+  6%|████████▍                                                                                                                               | 31/500 [04:09<1:02:55,  8.05s/it]
+
+  6%|████████▋                                                                                                                               | 32/500 [04:16<1:02:06,  7.96s/it]
+
+  7%|████████▉                                                                                                                               | 33/500 [04:24<1:01:21,  7.88s/it]
+
+  7%|█████████▏                                                                                                                              | 34/500 [04:32<1:01:04,  7.86s/it]
+
+  7%|█████████▌                                                                                                                              | 35/500 [04:40<1:00:54,  7.86s/it]
+
+  7%|█████████▊                                                                                                                              | 36/500 [04:47<1:00:27,  7.82s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 243, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 239, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2289, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3328, in training_step
+    loss = self.compute_loss(model, inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3373, in compute_loss
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\utils\operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\utils\operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\amp\autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\peft_model.py", line 1577, in forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\tuners\tuners_utils.py", line 188, in forward
+    return self.model.forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 1189, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 1001, in forward
+    layer_outputs = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 734, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+                                                          ^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 617, in forward
+    query_states = self.q_proj(hidden_states)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\tuners\lora\bnb.py", line 489, in forward
+    output = lora_B(lora_A(dropout(x))) * scaling
+                    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\linear.py", line 117, in forward
+    return F.linear(input, self.weight, self.bias)
+                                        ^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1716, in __getattr__
+    def __getattr__(self, name: str) -> Any:
+KeyboardInterrupt

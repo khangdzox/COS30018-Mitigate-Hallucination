@@ -1,0 +1,203 @@
+
+  0%|▌                                                                                                                                          | 2/500 [00:01<06:17,  1.32it/s]
+{'loss': 2.2838, 'grad_norm': nan, 'learning_rate': 0.0, 'epoch': 0.0}
+{'loss': 2.1345, 'grad_norm': nan, 'learning_rate': 0.0, 'epoch': 0.0}
+
+  1%|█▋                                                                                                                                         | 6/500 [00:03<04:36,  1.79it/s]
+{'loss': 2.0241, 'grad_norm': 5.14491081237793, 'learning_rate': 2e-05, 'epoch': 0.0}
+{'loss': 2.3463, 'grad_norm': nan, 'learning_rate': 2e-05, 'epoch': 0.0}
+{'loss': 2.2425, 'grad_norm': 6.522307395935059, 'learning_rate': 4e-05, 'epoch': 0.0}
+
+  2%|██▌                                                                                                                                        | 9/500 [00:05<04:28,  1.83it/s]
+{'loss': 1.9142, 'grad_norm': 5.682894229888916, 'learning_rate': 8e-05, 'epoch': 0.0}
+{'loss': 1.6009, 'grad_norm': 5.884624004364014, 'learning_rate': 0.0001, 'epoch': 0.0}
+
+  2%|███                                                                                                                                       | 11/500 [00:07<07:00,  1.16it/s]
+{'loss': 1.8595, 'grad_norm': 4.7094597816467285, 'learning_rate': 9.999597205514297e-05, 'epoch': 0.0}
+{'loss': 2.2935, 'grad_norm': 6.10496187210083, 'learning_rate': 9.99909372761763e-05, 'epoch': 0.0}
+
+  3%|████▏                                                                                                                                     | 15/500 [00:09<04:54,  1.65it/s]
+{'loss': 2.1609, 'grad_norm': 6.2834320068359375, 'learning_rate': 9.997482711915927e-05, 'epoch': 0.0}
+{'loss': 2.1595, 'grad_norm': 8.401592254638672, 'learning_rate': 9.996375239002369e-05, 'epoch': 0.0}
+
+  4%|█████▏                                                                                                                                    | 19/500 [00:11<04:23,  1.83it/s]
+{'loss': 1.8718, 'grad_norm': 12.276504516601562, 'learning_rate': 9.993556586092281e-05, 'epoch': 0.0}
+{'loss': 1.493, 'grad_norm': 9.919074058532715, 'learning_rate': 9.991845519630678e-05, 'epoch': 0.0}
+{'loss': 2.0672, 'grad_norm': 6.911754131317139, 'learning_rate': 9.989933382359422e-05, 'epoch': 0.0}
+
+  4%|█████▊                                                                                                                                    | 21/500 [00:13<05:46,  1.38it/s]
+{'loss': 1.6409, 'grad_norm': 13.931437492370605, 'learning_rate': 9.985506211566388e-05, 'epoch': 0.0}
+{'loss': 1.3701, 'grad_norm': 12.972184181213379, 'learning_rate': 9.982991356370404e-05, 'epoch': 0.0}
+
+  5%|██████▉                                                                                                                                   | 25/500 [00:15<04:38,  1.70it/s]
+{'loss': 1.5666, 'grad_norm': 8.202753067016602, 'learning_rate': 9.977359612865423e-05, 'epoch': 0.0}
+{'loss': 1.8865, 'grad_norm': 15.227367401123047, 'learning_rate': 9.974242951402235e-05, 'epoch': 0.0}
+
+  6%|███████▋                                                                                                                                  | 28/500 [00:17<04:28,  1.76it/s]
+{'loss': 1.1774, 'grad_norm': 8.507072448730469, 'learning_rate': 9.967408676742751e-05, 'epoch': 0.0}
+{'loss': 1.0544, 'grad_norm': 7.861714839935303, 'learning_rate': 9.963691338830044e-05, 'epoch': 0.0}
+{'loss': 1.6552, 'grad_norm': 9.737261772155762, 'learning_rate': 9.959774064153977e-05, 'epoch': 0.0}
+
+  6%|████████▎                                                                                                                                 | 30/500 [00:18<04:21,  1.80it/s]
+{'loss': 1.1859, 'grad_norm': 6.256202220916748, 'learning_rate': 9.951340343707852e-05, 'epoch': 0.0}
+
+  7%|█████████▍                                                                                                                                | 34/500 [00:21<05:08,  1.51it/s]
+{'loss': 1.1732, 'grad_norm': 8.599576950073242, 'learning_rate': 9.942108874226811e-05, 'epoch': 0.0}
+{'loss': 1.7449, 'grad_norm': 11.801898956298828, 'learning_rate': 9.937194443381972e-05, 'epoch': 0.0}
+
+  8%|██████████▍                                                                                                                               | 38/500 [00:23<04:20,  1.78it/s]
+{'loss': 0.8662, 'grad_norm': 6.490636825561523, 'learning_rate': 9.926769179238466e-05, 'epoch': 0.0}
+{'loss': 0.8551, 'grad_norm': 13.667232513427734, 'learning_rate': 9.921258765867919e-05, 'epoch': 0.0}
+{'loss': 1.2585, 'grad_norm': 7.125370979309082, 'learning_rate': 9.915550124911866e-05, 'epoch': 0.0}
+
+  8%|███████████                                                                                                                               | 40/500 [00:24<04:10,  1.84it/s]
+{'loss': 1.4209, 'grad_norm': 16.38896942138672, 'learning_rate': 9.903539087991462e-05, 'epoch': 0.0}
+{'loss': 1.0684, 'grad_norm': 9.822884559631348, 'learning_rate': 9.897237175829926e-05, 'epoch': 0.0}
+
+  9%|████████████▏                                                                                                                             | 44/500 [00:27<04:30,  1.69it/s]
+{'loss': 1.6029, 'grad_norm': 17.33081817626953, 'learning_rate': 9.884041833294476e-05, 'epoch': 0.0}
+{'loss': 1.0184, 'grad_norm': 8.373119354248047, 'learning_rate': 9.877148934427037e-05, 'epoch': 0.0}
+{'loss': 0.9855, 'grad_norm': 11.548430442810059, 'learning_rate': 9.870059584711668e-05, 'epoch': 0.0}
+
+ 10%|█████████████▏                                                                                                                            | 48/500 [00:29<03:59,  1.89it/s]
+{'loss': 0.7662, 'grad_norm': 5.876047134399414, 'learning_rate': 9.855292682870551e-05, 'epoch': 0.0}
+{'loss': 0.6701, 'grad_norm': nan, 'learning_rate': 9.855292682870551e-05, 'epoch': 0.0}
+
+ 10%|█████████████▊                                                                                                                            | 50/500 [00:30<04:04,  1.84it/s]
+{'loss': 1.3189, 'grad_norm': 7.391770839691162, 'learning_rate': 9.839743506981782e-05, 'epoch': 0.0}
+{'loss': 1.105, 'grad_norm': 6.845169544219971, 'learning_rate': 9.831676344247342e-05, 'epoch': 0.0}
+
+ 11%|██████████████▉                                                                                                                           | 54/500 [00:33<04:26,  1.67it/s]
+{'loss': 0.8359, 'grad_norm': 8.038119316101074, 'learning_rate': 9.814958493905963e-05, 'epoch': 0.0}
+{'loss': 0.9549, 'grad_norm': 7.162867069244385, 'learning_rate': 9.806308479691595e-05, 'epoch': 0.0}
+{'loss': 1.3502, 'grad_norm': 7.423880100250244, 'learning_rate': 9.797464868072488e-05, 'epoch': 0.0}
+
+ 12%|████████████████                                                                                                                          | 58/500 [00:35<04:03,  1.81it/s]
+{'loss': 0.9944, 'grad_norm': 7.976219177246094, 'learning_rate': 9.779198285281325e-05, 'epoch': 0.0}
+{'loss': 1.5672, 'grad_norm': 7.907464504241943, 'learning_rate': 9.769776049884563e-05, 'epoch': 0.0}
+
+ 12%|████████████████▌                                                                                                                         | 60/500 [00:36<03:57,  1.85it/s]
+{'loss': 1.1032, 'grad_norm': 10.482194900512695, 'learning_rate': 9.750355588704727e-05, 'epoch': 0.0}
+{'loss': 1.605, 'grad_norm': 8.980368614196777, 'learning_rate': 9.740358145174998e-05, 'epoch': 0.0}
+
+ 13%|█████████████████▋                                                                                                                        | 64/500 [00:39<04:23,  1.66it/s]
+{'loss': 1.3223, 'grad_norm': 6.938973903656006, 'learning_rate': 9.719790845697533e-05, 'epoch': 0.0}
+{'loss': 0.4572, 'grad_norm': 15.231147766113281, 'learning_rate': 9.709221818197624e-05, 'epoch': 0.0}
+{'loss': 1.7858, 'grad_norm': 9.283012390136719, 'learning_rate': 9.698463103929542e-05, 'epoch': 0.0}
+
+ 14%|██████████████████▊                                                                                                                       | 68/500 [00:41<03:58,  1.81it/s]
+{'loss': 1.2655, 'grad_norm': 7.50054407119751, 'learning_rate': 9.676378356149734e-05, 'epoch': 0.0}
+{'loss': 1.2147, 'grad_norm': 8.485723495483398, 'learning_rate': 9.665053212208426e-05, 'epoch': 0.0}
+
+ 14%|███████████████████▎                                                                                                                      | 70/500 [00:42<03:54,  1.83it/s]
+{'loss': 1.5807, 'grad_norm': 6.663295269012451, 'learning_rate': 9.641839665080363e-05, 'epoch': 0.0}
+{'loss': 1.2026, 'grad_norm': 11.801535606384277, 'learning_rate': 9.629952196931901e-05, 'epoch': 0.0}
+
+ 15%|████████████████████▍                                                                                                                     | 74/500 [00:45<04:22,  1.62it/s]
+{'loss': 1.1162, 'grad_norm': 6.592102527618408, 'learning_rate': 9.60561826557425e-05, 'epoch': 0.0}
+{'loss': 0.8937, 'grad_norm': 8.748127937316895, 'learning_rate': 9.593172782532268e-05, 'epoch': 0.0}
+{'loss': 0.4786, 'grad_norm': 11.804835319519043, 'learning_rate': 9.580542287160348e-05, 'epoch': 0.0}
+
+ 16%|█████████████████████▌                                                                                                                    | 78/500 [00:47<03:52,  1.81it/s]
+{'loss': 0.9553, 'grad_norm': 11.095373153686523, 'learning_rate': 9.554728301876526e-05, 'epoch': 0.0}
+{'loss': 1.6814, 'grad_norm': 6.250227451324463, 'learning_rate': 9.541545851748186e-05, 'epoch': 0.0}
+
+ 16%|██████████████████████                                                                                                                    | 80/500 [00:48<03:49,  1.83it/s]
+{'loss': 1.0721, 'grad_norm': 9.088769912719727, 'learning_rate': 9.514632691433107e-05, 'epoch': 0.0}
+{'loss': 0.8697, 'grad_norm': 9.433796882629395, 'learning_rate': 9.50090306530454e-05, 'epoch': 0.0}
+ 16%|██████████████████████▎                                                                                                                   | 81/500 [00:49<05:02,  1.39it/s][34m[1mwandb[39m[22m: 429 encountered (Filestream rate limit exceeded, retrying in 2.0 seconds.), retrying request
+ 17%|███████████████████████▏                                                                                                                  | 84/500 [00:51<04:12,  1.65it/s]
+{'loss': 1.6316, 'grad_norm': 8.195612907409668, 'learning_rate': 9.472900486219769e-05, 'epoch': 0.0}
+{'loss': 1.2304, 'grad_norm': 5.51646089553833, 'learning_rate': 9.458628661203367e-05, 'epoch': 0.0}
+{'loss': 1.2812, 'grad_norm': 7.051657676696777, 'learning_rate': 9.444177243274618e-05, 'epoch': 0.0}
+
+ 18%|████████████████████████▎                                                                                                                 | 88/500 [00:53<03:49,  1.79it/s]
+{'loss': 1.1188, 'grad_norm': 6.788662433624268, 'learning_rate': 9.414737964294636e-05, 'epoch': 0.0}
+{'loss': 1.4109, 'grad_norm': 7.004239559173584, 'learning_rate': 9.399751289053267e-05, 'epoch': 0.0}
+
+ 18%|████████████████████████▊                                                                                                                 | 90/500 [00:54<03:45,  1.82it/s]
+{'loss': 1.7475, 'grad_norm': 7.485615253448486, 'learning_rate': 9.369246885348926e-05, 'epoch': 0.0}
+{'loss': 0.9161, 'grad_norm': 12.245627403259277, 'learning_rate': 9.353730385598887e-05, 'epoch': 0.0}
+
+ 19%|█████████████████████████▉                                                                                                                | 94/500 [00:57<04:21,  1.55it/s]
+{'loss': 1.511, 'grad_norm': 6.161060333251953, 'learning_rate': 9.322171915289635e-05, 'epoch': 0.0}
+{'loss': 1.7148, 'grad_norm': 8.45998477935791, 'learning_rate': 9.306131215901003e-05, 'epoch': 0.0}
+
+ 20%|███████████████████████████                                                                                                               | 98/500 [00:59<03:48,  1.76it/s]
+{'loss': 0.8889, 'grad_norm': 5.5094757080078125, 'learning_rate': 9.273530119214868e-05, 'epoch': 0.0}
+{'loss': 1.1411, 'grad_norm': 12.376433372497559, 'learning_rate': 9.256971035084785e-05, 'epoch': 0.0}
+{'loss': 0.5727, 'grad_norm': 11.31010913848877, 'learning_rate': 9.24024048078213e-05, 'epoch': 0.0}
+
+ 20%|███████████████████████████▍                                                                                                             | 100/500 [01:01<03:54,  1.70it/s]
+{'loss': 2.0166, 'grad_norm': 13.186777114868164, 'learning_rate': 9.206267664155907e-05, 'epoch': 0.0}
+
+ 21%|████████████████████████████▏                                                                                                            | 103/500 [01:03<04:37,  1.43it/s]
+{'loss': 1.2576, 'grad_norm': 5.909392833709717, 'learning_rate': 9.171617142961477e-05, 'epoch': 0.0}
+{'loss': 1.4117, 'grad_norm': 9.657609939575195, 'learning_rate': 9.154039483540273e-05, 'epoch': 0.0}
+
+ 21%|█████████████████████████████▎                                                                                                           | 107/500 [01:05<03:46,  1.73it/s]
+{'loss': 1.0898, 'grad_norm': 11.362393379211426, 'learning_rate': 9.118382907149165e-05, 'epoch': 0.0}
+{'loss': 1.2127, 'grad_norm': 12.709864616394043, 'learning_rate': 9.100305426420956e-05, 'epoch': 0.0}
+{'loss': 1.0622, 'grad_norm': 11.752721786499023, 'learning_rate': 9.082062785988049e-05, 'epoch': 0.0}
+
+ 22%|██████████████████████████████▏                                                                                                          | 110/500 [01:07<03:33,  1.82it/s]
+{'loss': 1.2592, 'grad_norm': 6.653806209564209, 'learning_rate': 9.045084971874738e-05, 'epoch': 0.0}
+{'loss': 1.2196, 'grad_norm': 10.93636417388916, 'learning_rate': 9.026351287655294e-05, 'epoch': 0.0}
+
+ 23%|██████████████████████████████▉                                                                                                          | 113/500 [01:09<04:06,  1.57it/s]
+{'loss': 1.4356, 'grad_norm': 7.784271240234375, 'learning_rate': 8.988398137810777e-05, 'epoch': 0.0}
+{'loss': 1.2674, 'grad_norm': 7.215856075286865, 'learning_rate': 8.969180200933047e-05, 'epoch': 0.0}
+
+ 23%|████████████████████████████████                                                                                                         | 117/500 [01:11<03:38,  1.75it/s]
+{'loss': 0.8105, 'grad_norm': 5.814398288726807, 'learning_rate': 8.930265473713938e-05, 'epoch': 0.0}
+{'loss': 1.4494, 'grad_norm': 5.860457897186279, 'learning_rate': 8.910570250852097e-05, 'epoch': 0.0}
+{'loss': 0.9557, 'grad_norm': 10.01242446899414, 'learning_rate': 8.890717510790763e-05, 'epoch': 0.0}
+
+ 24%|████████████████████████████████▉                                                                                                        | 120/500 [01:13<03:27,  1.83it/s]
+{'loss': 1.1285, 'grad_norm': 6.7507147789001465, 'learning_rate': 8.850542684044078e-05, 'epoch': 0.0}
+{'loss': 1.2692, 'grad_norm': 13.960651397705078, 'learning_rate': 8.83022221559489e-05, 'epoch': 0.0}
+
+ 25%|█████████████████████████████████▋                                                                                                       | 123/500 [01:15<03:59,  1.57it/s]
+{'loss': 0.7088, 'grad_norm': 11.425603866577148, 'learning_rate': 8.789119261039385e-05, 'epoch': 0.0}
+{'loss': 1.3299, 'grad_norm': 6.723862171173096, 'learning_rate': 8.768338430554082e-05, 'epoch': 0.0}
+
+ 25%|██████████████████████████████████▊                                                                                                      | 127/500 [01:17<03:26,  1.81it/s]
+{'loss': 1.7705, 'grad_norm': 7.480711936950684, 'learning_rate': 8.726322248378774e-05, 'epoch': 0.0}
+{'loss': 0.9547, 'grad_norm': 13.897415161132812, 'learning_rate': 8.705088589094459e-05, 'epoch': 0.0}
+ 25%|██████████████████████████████████▊                                                                                                      | 127/500 [01:17<03:26,  1.81it/s]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 242, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 238, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2351, in _inner_training_loop
+    self.optimizer.step()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\optimizer.py", line 157, in step
+    self.scaler.step(self.optimizer, closure)
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\amp\grad_scaler.py", line 454, in step
+    retval = self._maybe_opt_step(optimizer, optimizer_state, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\amp\grad_scaler.py", line 352, in _maybe_opt_step
+    retval = optimizer.step(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\optimizer.py", line 212, in patched_step
+    return method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\optim\lr_scheduler.py", line 130, in wrapper
+    return func.__get__(opt, opt.__class__)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\optim\optimizer.py", line 484, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\optimization.py", line 882, in step
+    exp_avg_sq_row.mul_(beta2t).add_(update.mean(dim=-1), alpha=(1.0 - beta2t))
+                                     ^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
