@@ -110,7 +110,7 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 8,
+        r = 64,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
@@ -119,14 +119,14 @@ def main():
     
     # Config arguments for the training process
     training_args = TrainingArguments(
-            learning_rate = 1e-4, # Learning rate change 
+            learning_rate = 2e-4, # Learning rate change 
             lr_scheduler_type = "cosine_with_restarts", # Control learning rate change
-            lr_scheduler_kwargs= {"num_cycles": 10},
+            lr_scheduler_kwargs= {"num_cycles": 4},
             warmup_ratio= 0.05,
             weight_decay = 0.01,
             save_strategy= "steps",
             save_steps= 10,
-            eval_steps= 25,
+            eval_steps= 50,
             eval_strategy= "steps",
             logging_steps= 1,
             gradient_accumulation_steps = 16, # Accumulate gradients for larger batch size
@@ -138,7 +138,7 @@ def main():
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_torch",
             # group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/4",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/5",
             max_grad_norm= 1.0  # Apply gradient clipping
         )
     

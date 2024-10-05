@@ -28,7 +28,7 @@ def main():
     base_model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct")
     
     # Load Pre-trained model
-    model = PeftModel.from_pretrained(base_model, "./Finetuning/QLoRA/3", device_map = "cuda", torch_dtype = torch.bfloat16)
+    model = PeftModel.from_pretrained(base_model, "./Finetuning/QLoRA/4", device_map = "cuda", torch_dtype = torch.bfloat16)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
