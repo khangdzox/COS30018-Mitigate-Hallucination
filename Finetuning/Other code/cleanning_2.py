@@ -6,10 +6,10 @@ import string
 import re
 
 def main():
-    data = pd.read_csv('../medical_3/Deep Cleaning/final_2.csv')
+    data = pd.read_csv('../medical_3/Deep Cleaning/final_train.csv')
     
-    # Remove all occurrences of "Ans. " in the 'exp' column
-    data['exp'] = data['exp'].str.replace('Ans. ', '', regex=False)
+    # Shuffle the DataFrame
+    data = data.sample(frac=1).reset_index(drop=True)
     
     rows = []
     for i in data.itertuples(index=False):
@@ -27,8 +27,9 @@ def main():
         
     df = pd.DataFrame(rows)
     
+    
     # Save cleaned data to csv
-    df.to_csv('../medical_3/Deep Cleaning/final_2_cleaned.csv', index=False)
+    df.to_csv('../medical_3/Deep Cleaning/final_3.csv', index=False)
 
 if __name__ == '__main__':
     main()
