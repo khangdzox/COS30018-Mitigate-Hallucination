@@ -28,7 +28,7 @@ def main():
     base_model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct")
     
     # Load Pre-trained model
-    model = PeftModel.from_pretrained(base_model, "./Finetuning/QLoRA/6", device_map = "cuda", torch_dtype = torch.bfloat16)
+    model = PeftModel.from_pretrained(base_model, "./Finetuning/QLoRA/1", device_map = "cuda", torch_dtype = torch.bfloat16)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -36,7 +36,7 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
 
     # GENERATE OUTPUT
-    question = "### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma\n###Options:\nA. Hyperplasia\nB. Hyperophy\nC. Atrophy\nD. Dyplasia"
+    question = "### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"
  
     print(generate_output(model, tokenizer, question))
     
