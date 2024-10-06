@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from difflib import SequenceMatcher
 import string
+import re
 
 def main():
     data = pd.read_csv('../medical_3/Deep Cleaning/version_2.csv')
@@ -25,18 +26,20 @@ def main():
     
     rows = []
     for i in data.itertuples(index=False):
-        rows.append(
-            {
-                "question": i.question,
-                "option_a": i.option_a,
-                "option_b": i.option_b,
-                "option_c": i.option_c,
-                "option_d": i.option_d,
-                "cop": i.cop,
-                "exp": i.exp,
-                "clean_question": i.clean_question
-            }
-        )
+        # Check for "a)", "b)", "c)", or "d)" without "(" before them
+        if not re.search(r'(?<!\()[a-d]\)', i.question):
+            rows.append(
+                {
+                    "question": i.question,
+                    "option_a": i.option_a,
+                    "option_b": i.option_b,
+                    "option_c": i.option_c,
+                    "option_d": i.option_d,
+                    "cop": i.cop,
+                    "exp": i.exp,
+                    "clean_question": i.clean_question
+                }
+            )
         
     df = pd.DataFrame(rows)
     

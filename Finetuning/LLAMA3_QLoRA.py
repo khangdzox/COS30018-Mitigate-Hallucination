@@ -110,18 +110,19 @@ def main():
     
     # LoRA config (adapter)
     config = LoraConfig(
-        r = 64,
+        r = 2,
         lora_alpha=32,
         lora_dropout=0.05, #kind of like a regularization dropout
         bias="none",
-        task_type="CAUSAL_LM"
+        task_type="CAUSAL_LM",
+        target_modules= ["q_proj", "k_proj", "v_proj", "o_proj","gate_proj", "up_proj", "down_proj"]
     )
     
     # Config arguments for the training process
     training_args = TrainingArguments(
             learning_rate = 2e-4, # Learning rate change 
-            lr_scheduler_type = "cosine_with_restarts", # Control learning rate change
-            lr_scheduler_kwargs= {"num_cycles": 4},
+            # lr_scheduler_type = "cosine_with_restarts", # Control learning rate change
+            # lr_scheduler_kwargs= {"num_cycles": 2},
             warmup_ratio= 0.05,
             weight_decay = 0.01,
             save_strategy= "steps",
@@ -129,16 +130,16 @@ def main():
             eval_steps= 50,
             eval_strategy= "steps",
             logging_steps= 1,
-            gradient_accumulation_steps = 16, # Accumulate gradients for larger batch size
-            eval_accumulation_steps= 16,
+            gradient_accumulation_steps = 8, # Accumulate gradients for larger batch size
+            eval_accumulation_steps= 32,
             per_device_train_batch_size= 1, # Batch size per GPU 
-            per_device_eval_batch_size= 1,
+            per_device_eval_batch_size= 2,
             max_steps = 500,
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
-            optim = "adamw_torch",
+            optim = "adafactor",
             # group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/5",
+            output_dir = "Finetuning/Fine-tuned_checkpoint/medical_3/QLoRA/7",
             max_grad_norm= 1.0  # Apply gradient clipping
         )
     
@@ -211,13 +212,14 @@ def main():
     tokenized_dataset = dataset.map(tokenize_function, fn_kwargs= {"prompt": prompt, "EOS_TOKEN": EOS_TOKEN} , batched=True)
     
     # Limit token number
-    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 1024})
+    filtered_tokenized_dataset = tokenized_dataset['train'].filter(filter_max_tokens, fn_kwargs={"max_tokens": 1200})
     
     filtered_tokenized_dataset = filtered_tokenized_dataset.train_test_split(test_size=0.05, shuffle=True)
     
     # print(filtered_tokenized_dataset['text'][0])
     # Visualize token number
-    # visualize_token_lengths(filtered_tokenized_dataset)
+    # print(len(filtered_tokenized_dataset['train']))
+    # visualize_token_lengths(filtered_tokenized_dataset['train'])
     
     # TRAINING
     
@@ -230,8 +232,8 @@ def main():
         dataset_text_field = "text",
         # packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
-        max_seq_length= 1024,
-        dataset_batch_size= 2048,
+        max_seq_length= 1200,
+        dataset_batch_size= 1024,
     )
     
     # EVALUATING
