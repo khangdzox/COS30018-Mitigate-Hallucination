@@ -1,62 +1,50 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from difflib import SequenceMatcher
-
-def similar(a, b):
-    return SequenceMatcher(None, a, b).ratio()
+import string
+import re
 
 def main():
-    data = pd.read_csv('../medical_3/Deep Cleaning/final.csv')
+    data = pd.read_csv('../medical_3/Deep Cleaning/version_2.csv')
+    
+    # Lowercase the 'clean_question' column
+    data['clean_question'] = data['clean_question'].str.lower()
+    
+    # Remove all spaces from the 'clean_question' column
+    data['clean_question'] = data['clean_question'].str.replace(" ", "")
+    
+    # Remove punctuation from the 'clean_question' column
+    data['clean_question'] = data['clean_question'].str.replace(f"[{string.punctuation}]", "", regex=True)
+    
+    # Count and print the number of duplicate rows based on the 'clean_question' column
+    num_duplicates = data.duplicated(subset=['clean_question']).sum()
+    print(f"Number of duplicate rows: {num_duplicates}")
+    
+    # Remove duplicated rows based on the 'clean_question' column
+    data = data.drop_duplicates(subset=['clean_question'])
     
     rows = []
-    for i in data.iloc:
-        rows.append(
-            {
-                "question": i["question"],
-                "option_a": i['option_a'],
-                "option_b": i['option_b'],
-                "option_c": i['option_c'],
-                "option_d": i['option_d'],
-                "cop": i['cop'],
-                "exp": i["exp"],
-            }
-        )
+    for i in data.itertuples(index=False):
+        # Check for "a)", "b)", "c)", or "d)" without "(" before them
+        if not re.search(r'(?<!\()[a-d]\)', i.question):
+            rows.append(
+                {
+                    "question": i.question,
+                    "option_a": i.option_a,
+                    "option_b": i.option_b,
+                    "option_c": i.option_c,
+                    "option_d": i.option_d,
+                    "cop": i.cop,
+                    "exp": i.exp,
+                    "clean_question": i.clean_question
+                }
+            )
         
     df = pd.DataFrame(rows)
     
-    # Replace specified characters with space in all columns
-    # for column in df.columns:
-        # df[column] = df[column].str.replace(r'<\\p>|<p>|&;|&;s|<img alt="" src="/>', '', regex=True)
-
-    # Count rows containing specified characters after replacement
-    # count = df.apply(lambda x: x.str.contains(r'<\\p>|<p>|&;|<img alt="" src="/>').any(), axis=1).sum()
-    # print(f"Rows containing specified characters after replacement: {count}")
-    
-    # Check if the question is exactly same as answer then drop that raw
-    # df = df[~df.apply(lambda x: x['exp'] in [x['option_a'], x['option_b'], x['option_c'], x['option_d']], axis=1)]
-
-    def replace_cop(row):
-        if row['cop'] == 'A':
-            return row['option_a']
-        elif row['cop'] == 'B':
-            return row['option_b']
-        elif row['cop'] == 'C':
-            return row['option_c']
-        elif row['cop'] == 'D':
-            return row['option_d']
-        return row['cop']
-    
-    # Apply the function to the cop column
-    df['cop'] = df.apply(replace_cop, axis=1)
-
-    # Verify replacement
-    print(df)
-
     # Save cleaned data to csv
     df.to_csv('../medical_3/Deep Cleaning/final.csv', index=False)
 
 if __name__ == '__main__':
     main()
-

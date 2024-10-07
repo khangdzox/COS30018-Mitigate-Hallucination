@@ -36,7 +36,7 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
 
     # GENERATE OUTPUT
-    question = "Chronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"
+    question = "### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"
  
     print(generate_output(model, tokenizer, question))
     

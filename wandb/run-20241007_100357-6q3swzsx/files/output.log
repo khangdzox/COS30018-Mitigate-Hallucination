@@ -1,0 +1,660 @@
+
+
+  0%|▎                                                                                                                                                       | 1/500 [00:08<1:13:22,  8.82s/it]
+
+  0%|▌                                                                                                                                                       | 2/500 [00:17<1:11:27,  8.61s/it]
+
+  1%|▉                                                                                                                                                       | 3/500 [00:27<1:15:41,  9.14s/it]
+
+  1%|█▏                                                                                                                                                      | 4/500 [00:37<1:18:33,  9.50s/it]
+
+  1%|█▌                                                                                                                                                      | 5/500 [00:47<1:20:17,  9.73s/it]
+
+  1%|█▊                                                                                                                                                      | 6/500 [00:57<1:20:59,  9.84s/it]
+
+  1%|██▏                                                                                                                                                     | 7/500 [01:07<1:21:08,  9.87s/it]
+
+  2%|██▍                                                                                                                                                     | 8/500 [01:17<1:21:36,  9.95s/it]
+
+  2%|██▋                                                                                                                                                     | 9/500 [01:27<1:21:51, 10.00s/it]
+
+  2%|███                                                                                                                                                    | 10/500 [01:37<1:22:30, 10.10s/it]
+
+  2%|███▎                                                                                                                                                   | 11/500 [01:48<1:24:57, 10.42s/it]
+
+  2%|███▌                                                                                                                                                   | 12/500 [01:58<1:23:42, 10.29s/it]
+
+  3%|███▉                                                                                                                                                   | 13/500 [02:09<1:23:02, 10.23s/it]
+
+  3%|████▏                                                                                                                                                  | 14/500 [02:19<1:22:45, 10.22s/it]
+
+  3%|████▌                                                                                                                                                  | 15/500 [02:29<1:21:54, 10.13s/it]
+
+  3%|████▊                                                                                                                                                  | 16/500 [02:39<1:21:36, 10.12s/it]
+
+  3%|█████▏                                                                                                                                                 | 17/500 [02:49<1:21:19, 10.10s/it]
+
+  4%|█████▍                                                                                                                                                 | 18/500 [02:59<1:21:06, 10.10s/it]
+
+  4%|█████▋                                                                                                                                                 | 19/500 [03:09<1:20:38, 10.06s/it]
+
+  4%|██████                                                                                                                                                 | 20/500 [03:19<1:20:16, 10.03s/it]
+{'loss': 1.2005, 'grad_norm': 3.681173324584961, 'learning_rate': 0.000144, 'epoch': 0.0}
+
+
+  4%|██████▋                                                                                                                                                | 22/500 [03:40<1:20:58, 10.16s/it]
+{'loss': 1.0035, 'grad_norm': 3.6076371669769287, 'learning_rate': 0.00016, 'epoch': 0.0}
+
+  5%|██████▉                                                                                                                                                | 23/500 [03:50<1:20:43, 10.16s/it]
+
+
+  5%|███████▌                                                                                                                                               | 25/500 [04:10<1:19:35, 10.05s/it]
+
+  5%|███████▊                                                                                                                                               | 26/500 [04:21<1:22:29, 10.44s/it]
+
+  5%|████████▏                                                                                                                                              | 27/500 [04:34<1:29:28, 11.35s/it]
+
+  6%|████████▍                                                                                                                                              | 28/500 [04:47<1:32:42, 11.79s/it]
+
+  6%|████████▊                                                                                                                                              | 29/500 [05:00<1:35:50, 12.21s/it]
+{'loss': 1.1369, 'grad_norm': 2.4553282260894775, 'learning_rate': 0.00019986005377693825, 'epoch': 0.01}
+
+
+  6%|█████████▎                                                                                                                                             | 31/500 [05:29<1:43:06, 13.19s/it]
+
+  6%|█████████▋                                                                                                                                             | 32/500 [05:41<1:42:08, 13.09s/it]
+
+  7%|█████████▉                                                                                                                                             | 33/500 [05:54<1:41:32, 13.05s/it]
+{'loss': 1.0879, 'grad_norm': 2.714616537094116, 'learning_rate': 0.00019874283308955057, 'epoch': 0.01}
+
+
+  7%|██████████▌                                                                                                                                            | 35/500 [06:21<1:42:53, 13.28s/it]
+
+  7%|██████████▊                                                                                                                                            | 36/500 [06:35<1:42:26, 13.25s/it]
+
+  7%|███████████▏                                                                                                                                           | 37/500 [06:48<1:41:53, 13.20s/it]
+
+  8%|███████████▍                                                                                                                                           | 38/500 [07:01<1:41:54, 13.23s/it]
+
+  8%|███████████▊                                                                                                                                           | 39/500 [07:14<1:41:59, 13.27s/it]
+
+  8%|████████████                                                                                                                                           | 40/500 [07:28<1:41:51, 13.29s/it]
+
+  8%|████████████▍                                                                                                                                          | 41/500 [07:42<1:43:08, 13.48s/it]
+
+  8%|████████████▋                                                                                                                                          | 42/500 [07:55<1:42:15, 13.40s/it]
+{'loss': 1.0722, 'grad_norm': 2.0846669673919678, 'learning_rate': 0.00019222897549773848, 'epoch': 0.01}
+
+  9%|████████████▉                                                                                                                                          | 43/500 [08:08<1:42:24, 13.44s/it]
+
+
+  9%|█████████████▌                                                                                                                                         | 45/500 [08:42<1:55:27, 15.23s/it]
+
+  9%|█████████████▉                                                                                                                                         | 46/500 [09:00<2:00:41, 15.95s/it]
+
+  9%|██████████████▏                                                                                                                                        | 47/500 [09:17<2:04:21, 16.47s/it]
+
+ 10%|██████████████▍                                                                                                                                        | 48/500 [09:35<2:07:11, 16.88s/it]
+
+ 10%|██████████████▊                                                                                                                                        | 49/500 [09:53<2:08:15, 17.06s/it]
+
+ 10%|███████████████                                                                                                                                        | 50/500 [10:10<2:08:28, 17.13s/it]We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+{'loss': 1.0903, 'grad_norm': 2.0095040798187256, 'learning_rate': 0.00018205196052684447, 'epoch': 0.01}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 10%|███████████████▎                                                                                                                                      | 51/500 [23:07<30:34:50, 245.19s/it]
+
+ 10%|███████████████▌                                                                                                                                      | 52/500 [23:16<21:40:20, 174.15s/it]
+
+ 11%|███████████████▉                                                                                                                                      | 53/500 [23:24<15:26:47, 124.40s/it]
+{'loss': 0.9276, 'grad_norm': 2.4843032360076904, 'learning_rate': 0.00017726169484853438, 'epoch': 0.01}
+
+
+ 11%|████████████████▋                                                                                                                                       | 55/500 [23:41<8:03:59, 65.26s/it]
+
+ 11%|█████████████████                                                                                                                                       | 56/500 [23:49<5:56:24, 48.16s/it]
+
+ 11%|█████████████████▎                                                                                                                                      | 57/500 [23:57<4:27:30, 36.23s/it]
+
+ 12%|█████████████████▋                                                                                                                                      | 58/500 [24:06<3:25:26, 27.89s/it]
+{'loss': 1.024, 'grad_norm': 2.053908586502075, 'learning_rate': 0.00016821327120267567, 'epoch': 0.01}
+
+
+ 12%|██████████████████▏                                                                                                                                     | 60/500 [24:23<2:11:42, 17.96s/it]
+
+ 12%|██████████████████▌                                                                                                                                     | 61/500 [24:32<1:52:00, 15.31s/it]
+{'loss': 1.1098, 'grad_norm': 2.100918769836426, 'learning_rate': 0.0001622011278378801, 'epoch': 0.01}
+
+
+ 13%|███████████████████▏                                                                                                                                    | 63/500 [24:49<1:25:48, 11.78s/it]
+
+ 13%|███████████████████▍                                                                                                                                    | 64/500 [24:57<1:18:19, 10.78s/it]
+
+ 13%|███████████████████▊                                                                                                                                    | 65/500 [25:09<1:20:12, 11.06s/it]
+
+ 13%|████████████████████                                                                                                                                    | 66/500 [25:23<1:26:04, 11.90s/it]
+{'loss': 1.1101, 'grad_norm': 1.7767386436462402, 'learning_rate': 0.00015133047684905916, 'epoch': 0.01}
+
+
+ 14%|████████████████████▋                                                                                                                                   | 68/500 [25:50<1:32:41, 12.87s/it]
+
+ 14%|████████████████████▉                                                                                                                                   | 69/500 [26:04<1:34:48, 13.20s/it]
+
+ 14%|█████████████████████▎                                                                                                                                  | 70/500 [26:18<1:35:57, 13.39s/it]
+
+ 14%|█████████████████████▌                                                                                                                                  | 71/500 [26:33<1:39:06, 13.86s/it]
+
+ 14%|█████████████████████▉                                                                                                                                  | 72/500 [29:58<8:27:55, 71.20s/it]
+{'loss': 1.1381, 'grad_norm': 1.9300155639648438, 'learning_rate': 0.00013711972489182208, 'epoch': 0.02}
+
+
+ 15%|██████████████████████▍                                                                                                                                 | 74/500 [32:20<8:24:10, 71.01s/it]
+
+ 15%|██████████████████████▌                                                                                                                               | 75/500 [40:36<23:24:55, 198.34s/it]
+
+ 15%|██████████████████████▊                                                                                                                               | 76/500 [41:50<18:58:06, 161.05s/it]
+
+ 15%|██████████████████████▊                                                                                                                             | 77/500 [1:00:14<52:10:24, 444.03s/it]
+ 15%|██████████████████████▊                                                                                                                             | 77/500 [1:00:14<52:10:24, 444.03s/it]Traceback (most recent call last):
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 253, in <module>
+    main()
+  File "c:\Users\pink\Documents\Study\Intelligent Systems\COS30018-Mitigate-Hallucination\Finetuning\LLAMA3_QLoRA.py", line 249, in main
+    trainer.train()
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\trl\trainer\sft_trainer.py", line 451, in train
+    output = super().train(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 1948, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 2289, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3328, in training_step
+    loss = self.compute_loss(model, inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\trainer.py", line 3373, in compute_loss
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\utils\operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\utils\operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\amp\autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\peft_model.py", line 1577, in forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\tuners\tuners_utils.py", line 188, in forward
+    return self.model.forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 1189, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 1001, in forward
+    layer_outputs = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 734, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+                                                          ^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\transformers\models\llama\modeling_llama.py", line 617, in forward
+    query_states = self.q_proj(hidden_states)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\peft\tuners\lora\bnb.py", line 467, in forward
+    result = self.base_layer(x, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\accelerate\hooks.py", line 169, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\bitsandbytes\nn\modules.py", line 477, in forward
+    out = bnb.matmul_4bit(x, self.weight.t(), bias=bias, quant_state=self.weight.quant_state)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\bitsandbytes\autograd\_functions.py", line 579, in matmul_4bit
+    return MatMul4Bit.apply(A, B, out, bias, quant_state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\torch\autograd\function.py", line 574, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pink\anaconda3\envs\LLama3-hallucinate\Lib\site-packages\bitsandbytes\autograd\_functions.py", line 509, in forward
+    output = torch.nn.functional.linear(A, F.dequantize_4bit(B, quant_state).to(A.dtype).t(), bias)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

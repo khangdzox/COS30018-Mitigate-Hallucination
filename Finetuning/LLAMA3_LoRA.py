@@ -119,8 +119,9 @@ def main():
     
     # Config arguments for the training process
     training_args = TrainingArguments(
-            learning_rate = 2e-4, # Learning rate change
-            lr_scheduler_type = "cosine", # Control learning rate change
+            learning_rate = 1e-4, # Learning rate change
+            lr_scheduler_type = "cosine_with_restarts", # Control learning rate change
+            lr_scheduler_kwargs = {'num_cycles': 10},
             warmup_steps= 5,
             weight_decay = 0.01,
             save_strategy= "steps",
@@ -132,8 +133,8 @@ def main():
             seed = 3407,
             fp16 = True, # Use mixed precision training for faster training
             optim = "adamw_8bit",
-            group_by_length = True, # Group samples of same length to reduce padding and speed up training
-            output_dir = "Finetuning/Fine-tuned_checkpoint/LoRA/2",
+            # group_by_length = True, # Group samples of same length to reduce padding and speed up training
+            output_dir = "Finetuning/Fine-tuned_checkpoint/LoRA/10",
         )
     
     # LOADDING
@@ -199,7 +200,7 @@ def main():
         packing = False, # Can make training 5x faster for short sequences.
         args = training_args,
         max_seq_length= 1024,
-        dataset_batch_size= 1000,
+        dataset_batch_size= 100,
     )
     
     # EVALUATING
