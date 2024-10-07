@@ -34,7 +34,7 @@ def low_confidence_generation(
     answer_tokens = tokenizer.encode(answer)[1:]
 
     # calculate the transition scores (log probabilities) for each token in the answer
-    answer_probs = compute_log_prob_from_string(model, full_string_tokens, start_idx=full_string_tokens.shape[-1] - len(answer_tokens) + 1)
+    answer_probs = compute_log_prob_from_string(model, full_string_tokens, start_idx=full_string_tokens.shape[-1] - len(answer_tokens) - 1)
 
     # get the keywords from the answer
     # keywords_input_template = [
