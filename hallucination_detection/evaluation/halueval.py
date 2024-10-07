@@ -67,7 +67,7 @@ for method in ['self_evaluation', 'low_confidence_generation']:
             knowledge += "."
 
         question_with_context = f"{knowledge} {question}"
-
+        print(question_with_context, answer) 
         if method == 'self_evaluation':
             predict = self_evaluation(question_with_context, answer, 5, model, tokenizer, terminators)
         elif method == 'low_confidence_generation':
