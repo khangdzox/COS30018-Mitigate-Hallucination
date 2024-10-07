@@ -73,13 +73,10 @@ keywords_output_tokens = model.generate(
     eos_token_id=terminators,
 ).cpu() # type: ignore
 
-# keywords = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True).split(",")
-# keywords = [keyword.strip() for keyword in keywords]
-
-keywords_output = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True)
+keywords_output = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens["input_ids"].shape[-1]:], skip_special_tokens=True) # type: ignore
 keywords_output = keywords_output[:keywords_output.find("Q:")].strip()
-keywords = keywords_output.split(", ")
 
+keywords = keywords_output.split(", ")
 keywords = [keyword.strip() for keyword in keywords]
 
 print(keywords)
