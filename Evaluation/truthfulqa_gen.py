@@ -54,7 +54,7 @@ try:
     dataset = pd.read_csv(f"{model_name}_truthfulqa_gen.csv")
 
 except FileNotFoundError:
-    dataset = datasets.load_dataset("truthfulqa/truthful_qa", "multiple_choice", split="validation")
+    dataset = datasets.load_dataset("truthfulqa/truthful_qa", "generation", split="validation")
     assert isinstance(dataset, datasets.Dataset), "Something gone wrong! TruthfulQA dataset should be of type Dataset"
     # Dataset({
     #     features: ['type', 'category', 'question', 'best_answer', 'correct_answers', 'incorrect_answers', 'source'],
