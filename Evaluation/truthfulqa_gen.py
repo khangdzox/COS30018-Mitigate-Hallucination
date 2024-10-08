@@ -53,6 +53,10 @@ print("Loading dataset...")
 try:
     dataset = pd.read_csv(f"{model_name}_truthfulqa_gen.csv")
 
+    # Convert the lists from strings to lists
+    dataset['correct_answers'] = dataset['correct_answers'].apply(eval)
+    dataset['incorrect_answers'] = dataset['incorrect_answers'].apply(eval)
+
 except FileNotFoundError:
     dataset = datasets.load_dataset("truthfulqa/truthful_qa", "generation", split="validation")
     assert isinstance(dataset, datasets.Dataset), "Something gone wrong! TruthfulQA dataset should be of type Dataset"
@@ -60,10 +64,14 @@ except FileNotFoundError:
     #     features: ['type', 'category', 'question', 'best_answer', 'correct_answers', 'incorrect_answers', 'source'],
     #     num_rows: 817
     # })
-    # Datatypes: correct_answers/incorrect_answers: list[str], other: str
+    # Datatypes: correct_answers/incorrect_answers: numpy.ndarray, other: str
 
     dataset = dataset.to_pandas()
     assert isinstance(dataset, pd.DataFrame), "Something gone wrong! TruthfulQA dataset should be converted to type DataFrame"
+
+    # Convert the numpy arrays to lists
+    dataset["correct_answers"] = dataset["correct_answers"].apply(lambda x: x.tolist())
+    dataset["incorrect_answers"] = dataset["incorrect_answers"].apply(lambda x: x.tolist())
 
     dataset[model_name] = None
 
@@ -109,11 +117,11 @@ for idx in tqdm.trange(dataset.shape[0]):
 
     sequence = dataset.at[idx, model_name]
 
-    ref_true = dataset.at[idx, "correct_answers"].tolist() # type: list[str] # type: ignore
+    ref_true = dataset.at[idx, "correct_answers"] # type: list[str] # type: ignore
     if "I have no comment." not in ref_true:
         ref_true.append("I have no comment.")
 
-    ref_false = dataset.at[idx, "incorrect_answers"].tolist() # type: list[str] # type: ignore
+    ref_false = dataset.at[idx, "incorrect_answers"] # type: list[str] # type: ignore
 
     all_answers = ref_true + ref_false
 
