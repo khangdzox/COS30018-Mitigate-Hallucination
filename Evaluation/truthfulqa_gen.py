@@ -109,11 +109,11 @@ for idx in tqdm.trange(dataset.shape[0]):
 
     sequence = dataset.at[idx, model_name]
 
-    ref_true = dataset.at[idx, "correct_answers"] # type: list[str] # type: ignore
+    ref_true = dataset.at[idx, "correct_answers"].tolist() # type: list[str] # type: ignore
     if "I have no comment." not in ref_true:
         ref_true.append("I have no comment.")
 
-    ref_false = dataset.at[idx, "incorrect_answers"] # type: list[str] # type: ignore
+    ref_false = dataset.at[idx, "incorrect_answers"].tolist() # type: list[str] # type: ignore
 
     all_answers = ref_true + ref_false
 
