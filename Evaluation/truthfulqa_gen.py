@@ -167,8 +167,8 @@ for idx in tqdm.trange(dataset.shape[0]):
     # bleurt
     bleurt = evaluate.load("bleurt")
 
-    bleurt_true = bleurt.compute(predictions=[frame.at[idx, model_name]] * len(ref_true), references=ref_true)["scores"] # type: list[float] # type: ignore
-    bleurt_false = bleurt.compute(predictions=[frame.at[idx, model_name]] * len(ref_false), references=ref_false)["scores"] # type: list[float] # type: ignore
+    bleurt_true = bleurt.compute(predictions=[dataset.at[idx, model_name]] * len(ref_true), references=ref_true)["scores"] # type: list[float] # type: ignore
+    bleurt_false = bleurt.compute(predictions=[dataset.at[idx, model_name]] * len(ref_false), references=ref_false)["scores"] # type: list[float] # type: ignore
 
     dataset.at[idx, f"bleurt_max"] = max(bleurt_true)
     dataset.at[idx, f"bleurt_diff"] = max(bleurt_true) - max(bleurt_false)
