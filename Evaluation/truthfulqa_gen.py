@@ -96,7 +96,7 @@ for idx in tqdm.trange(dataset.shape[0]):
             top_k=1,
         ).cpu() # type: ignore
 
-        answer_tokens = answer_tokens[0, question_tokens.shape[-1]:]
+        answer_tokens = answer_tokens[0, question_tokens["input_ids"].shape[-1]:] # type: ignore
         answer = tokenizer.decode(answer_tokens, skip_special_tokens=True)
         answer = answer[:answer.find("Q:")].strip()
 
