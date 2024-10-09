@@ -3,7 +3,9 @@ Evaluating hallucination detection methods on HaluEval dataset, QA_samples subse
 """
 
 import transformers, torch, datasets, evaluate, tqdm, pandas as pd
-from ..detection import self_evaluation, low_confidence_generation
+from self_evaluation import self_evaluation
+from low_confidence_generation import low_confidence_generation
+from hallucinationdetection import detect_hallucination
 
 save_file = "halueval_results.csv"
 save_interval = 10
@@ -45,14 +47,18 @@ print("Loading previous results...")
 try:
     results = pd.read_csv(save_file)
 except FileNotFoundError:
-    results = pd.DataFrame(columns=['targets', 'self_evaluation', 'low_confidence_generation'])
+    #results = pd.DataFrame(columns=['targets', 'self_evaluation', 'low_confidence_generation'])
+    results = pd.DataFrame(columns=['targets','selfcheckGPT'])
+
     results['question'] = dataset['question']
     results['targets'] = list(map(lambda x: 1 if x == "yes" else 0, dataset['hallucination']))
     results.to_csv(save_file)
 finally:
     results.set_index('question', inplace=True)
 
-for method in ['self_evaluation', 'low_confidence_generation']:
+#for method in ['self_evaluation', 'low_confidence_generation']:
+for method in ['selfcheckGPT']:
+
 
     print(f"Running {method}...")
 
@@ -69,10 +75,12 @@ for method in ['self_evaluation', 'low_confidence_generation']:
         question_with_context = f"{knowledge} {question}"
         print(question_with_context, answer)
 
-        if method == 'self_evaluation':
-            predict = self_evaluation(question_with_context, answer, 5, model, tokenizer, terminators)
-        elif method == 'low_confidence_generation':
-            predict = low_confidence_generation(question_with_context, answer, model, tokenizer, terminators)
+        # if method == 'self_evaluation':
+        #     predict = self_evaluation(question_with_context, answer, 5, model, tokenizer, terminators)
+        # elif method == 'low_confidence_generation':
+        #     predict = low_confidence_generation(question_with_context, answer, model, tokenizer, terminators)
+        if method == 'selfcheckGPT':
+            predict = detect_hallucination(question_with_context, answer, model, torch.device("cuda"))
 
         results.loc[question, method] = int(predict)
 
@@ -83,7 +91,9 @@ metrics = evaluate.combine(['accuracy', 'f1', 'precision', 'recall'])
 
 scores = {}
 
-for method in ['self_evaluation', 'low_confidence_generation']:
+# for method in ['self_evaluation', 'low_confidence_generation']:
+for method in ['selfcheckGPT']:
+
 
     print(f"Computing scores for {method}...")
     scores[method] = metrics.compute(results['targets'], results[method])

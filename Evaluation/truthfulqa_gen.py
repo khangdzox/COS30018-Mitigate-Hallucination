@@ -53,17 +53,25 @@ print("Loading dataset...")
 try:
     dataset = pd.read_csv(f"{model_name}_truthfulqa_gen.csv")
 
+    # Convert the lists from strings to lists
+    dataset['correct_answers'] = dataset['correct_answers'].apply(eval)
+    dataset['incorrect_answers'] = dataset['incorrect_answers'].apply(eval)
+
 except FileNotFoundError:
-    dataset = datasets.load_dataset("truthfulqa/truthful_qa", "multiple_choice", split="validation")
+    dataset = datasets.load_dataset("truthfulqa/truthful_qa", "generation", split="validation")
     assert isinstance(dataset, datasets.Dataset), "Something gone wrong! TruthfulQA dataset should be of type Dataset"
     # Dataset({
     #     features: ['type', 'category', 'question', 'best_answer', 'correct_answers', 'incorrect_answers', 'source'],
     #     num_rows: 817
     # })
-    # Datatypes: correct_answers/incorrect_answers: list[str], other: str
+    # Datatypes: correct_answers/incorrect_answers: numpy.ndarray, other: str
 
     dataset = dataset.to_pandas()
     assert isinstance(dataset, pd.DataFrame), "Something gone wrong! TruthfulQA dataset should be converted to type DataFrame"
+
+    # Convert the numpy arrays to lists
+    dataset["correct_answers"] = dataset["correct_answers"].apply(lambda x: x.tolist())
+    dataset["incorrect_answers"] = dataset["incorrect_answers"].apply(lambda x: x.tolist())
 
     dataset[model_name] = None
 
@@ -96,7 +104,7 @@ for idx in tqdm.trange(dataset.shape[0]):
             top_k=1,
         ).cpu() # type: ignore
 
-        answer_tokens = answer_tokens[0, question_tokens.shape[-1]:]
+        answer_tokens = answer_tokens[0, question_tokens["input_ids"].shape[-1]:] # type: ignore
         answer = tokenizer.decode(answer_tokens, skip_special_tokens=True)
         answer = answer[:answer.find("Q:")].strip()
 
@@ -159,8 +167,8 @@ for idx in tqdm.trange(dataset.shape[0]):
     # bleurt
     bleurt = evaluate.load("bleurt")
 
-    bleurt_true = bleurt.compute(predictions=[frame.at[idx, model_name]] * len(ref_true), references=ref_true)["scores"] # type: list[float] # type: ignore
-    bleurt_false = bleurt.compute(predictions=[frame.at[idx, model_name]] * len(ref_false), references=ref_false)["scores"] # type: list[float] # type: ignore
+    bleurt_true = bleurt.compute(predictions=[dataset.at[idx, model_name]] * len(ref_true), references=ref_true)["scores"] # type: list[float] # type: ignore
+    bleurt_false = bleurt.compute(predictions=[dataset.at[idx, model_name]] * len(ref_false), references=ref_false)["scores"] # type: list[float] # type: ignore
 
     dataset.at[idx, f"bleurt_max"] = max(bleurt_true)
     dataset.at[idx, f"bleurt_diff"] = max(bleurt_true) - max(bleurt_false)

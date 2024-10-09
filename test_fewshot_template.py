@@ -29,32 +29,54 @@ answer = "First for Women was started first."
 
 answer_tokens = tokenizer.encode(answer, return_tensors="pt").to(model.device) # type: ignore
 
-keywords_input_template = [
-    {"role": "system", "content": "Identify all the important keyphrases from the provided sentence and return a comma separated list."},
-    {"role": "user", "content": "John Russell Reynolds was an English physician and neurologist who made significant contributions to the field of neurology."},
-    {"role": "assistant", "content": "John Russell Reynolds, English, physician, neurologist, neurology"},
-    {"role": "user", "content": "He was born in London in 1820 and studied medicine at the University of London."},
-    {"role": "assistant", "content": "London, 1820, medicine, University of London"},
-    {"role": "user", "content": "After college, he worked as a lawyer for the PGA Tour, eventually becoming the Tour's Deputy Commissioner in 1989."},
-    {"role": "assistant", "content": "college, lawyer, PGA Tour, Deputy Commissioner, 1989"},
-    {"role": "user", "content": "Nature Discovery"},
-    {"role": "assistant", "content": "Nature Discovery"},
-    {"role": "user", "content": answer},
-]
+# keywords_input_template = [
+#     {"role": "system", "content": "Identify all the important keyphrases from the provided sentence and return a comma separated list."},
+#     {"role": "user", "content": "John Russell Reynolds was an English physician and neurologist who made significant contributions to the field of neurology."},
+#     {"role": "assistant", "content": "John Russell Reynolds, English, physician, neurologist, neurology"},
+#     {"role": "user", "content": "He was born in London in 1820 and studied medicine at the University of London."},
+#     {"role": "assistant", "content": "London, 1820, medicine, University of London"},
+#     {"role": "user", "content": "After college, he worked as a lawyer for the PGA Tour, eventually becoming the Tour's Deputy Commissioner in 1989."},
+#     {"role": "assistant", "content": "college, lawyer, PGA Tour, Deputy Commissioner, 1989"},
+#     {"role": "user", "content": "Nature Discovery"},
+#     {"role": "assistant", "content": "Nature Discovery"},
+#     {"role": "user", "content": answer},
+# ]
 
-keywords_input_tokens = tokenizer.apply_chat_template(
-    keywords_input_template,
-    add_generation_prompt=True,
-    return_tensors="pt",
-).to(model.device) # type: ignore
+# keywords_input_tokens = tokenizer.apply_chat_template(
+#     keywords_input_template,
+#     add_generation_prompt=True,
+#     return_tensors="pt",
+# ).to(model.device) # type: ignore
+
+keywords_input = f"""Identify all the important keyphrases from the provided sentence and return a comma separated list.
+
+Q: John Russell Reynolds was an English physician and neurologist who made significant contributions to the field of neurology.
+A: John Russell Reynolds, English, physician, neurologist, neurology
+
+Q: He was born in London in 1820 and studied medicine at the University of London.
+A: London, 1820, medicine, University of London
+
+Q: After college, he worked as a lawyer for the PGA Tour, eventually becoming the Tour's Deputy Commissioner in 1989.
+A: college, lawyer, PGA Tour, Deputy Commissioner, 1989
+
+Q: Nature Discovery
+A: Nature Discovery
+
+Q: {answer}
+A: """
+
+keywords_input_tokens = tokenizer(keywords_input, return_tensors="pt").to(model.device)
 
 keywords_output_tokens = model.generate(
-    keywords_input_tokens, # type: ignore
+    **keywords_input_tokens, # type: ignore
     max_new_tokens=answer_tokens.shape[-1] * 2, # double the number of tokens in the answer
     eos_token_id=terminators,
 ).cpu() # type: ignore
 
-keywords = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True).split(",")
+keywords_output = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens["input_ids"].shape[-1]:], skip_special_tokens=True) # type: ignore
+keywords_output = keywords_output[:keywords_output.find("Q:")].strip()
+
+keywords = keywords_output.split(", ")
 keywords = [keyword.strip() for keyword in keywords]
 
 print(keywords)

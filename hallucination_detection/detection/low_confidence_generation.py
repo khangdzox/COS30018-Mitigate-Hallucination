@@ -34,7 +34,7 @@ def low_confidence_generation(
     answer_tokens = tokenizer.encode(answer)[1:]
 
     # calculate the transition scores (log probabilities) for each token in the answer
-    answer_probs = compute_log_prob_from_string(model, full_string_tokens, start_idx=full_string_tokens.shape[-1] - len(answer_tokens) + 1)
+    answer_probs = compute_log_prob_from_string(model, full_string_tokens, start_idx=full_string_tokens.shape[-1] - len(answer_tokens) - 1)
 
     # get the keywords from the answer
     # keywords_input_template = [
@@ -73,7 +73,7 @@ A: """
         eos_token_id=terminators,
     ).cpu() # type: ignore
 
-    keywords_output = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens.shape[-1]:], skip_special_tokens=True)
+    keywords_output = tokenizer.decode(keywords_output_tokens[0, keywords_input_tokens["input_ids"].shape[-1]:], skip_special_tokens=True) # type: ignore
     keywords_output = keywords_output[:keywords_output.find("Q:")].strip()
 
     keywords = keywords_output.split(", ")
