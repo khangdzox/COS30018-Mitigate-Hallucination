@@ -246,7 +246,7 @@ def main():
     #     print(generate_output(model, tokenizer, question, prompt))
     
     # Start training
-    trainer.train()
+    # trainer.train()
     
 if __name__ == "__main__":
     
