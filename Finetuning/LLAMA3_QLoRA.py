@@ -6,7 +6,6 @@ import torch
 from trl import SFTTrainer
 from datasets import load_metric
 from pynvml import nvmlInit, nvmlDeviceGetHandleByIndex, nvmlDeviceGetMemoryInfo
-
 import matplotlib.pyplot as plt
 
 def print_gpu_utilization():
@@ -187,7 +186,7 @@ def main():
     
     # Load the dataset
     data_files = {
-        "train" : "../medical_3/final_train.csv",
+        "train" : "../../medical_3/final_train.csv",
     }
     
     dataset = load_dataset("csv", data_files=data_files)
@@ -246,7 +245,7 @@ def main():
     #     print(generate_output(model, tokenizer, question, prompt))
     
     # Start training
-    # trainer.train()
+    trainer.train()
     
 if __name__ == "__main__":
     
