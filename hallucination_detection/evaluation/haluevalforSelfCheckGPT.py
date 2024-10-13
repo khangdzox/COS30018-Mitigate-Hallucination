@@ -2,8 +2,12 @@
 Evaluating hallucination detection methods on HaluEval dataset, QA_samples subset.
 """
 
+# Add the directory containing hallucination_detection to the Python path
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../detection')))
+
 import transformers, torch, datasets, evaluate, tqdm, pandas as pd
-from selfcheckGPT3 import check_hallucination
+from selfcheckGPT_detection import check_hallucination
 
 save_file = "halueval_results.csv"
 save_interval = 10
