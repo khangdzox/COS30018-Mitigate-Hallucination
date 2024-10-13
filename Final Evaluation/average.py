@@ -12,7 +12,7 @@ def calculate_averages(input_dir, output_file):
     # Walk through the directory
     for root, dirs, files in os.walk(input_dir):
         for file in files:
-            if file.endswith('.csv'):
+            if file.endswith('.csv') and file != 'averages.csv':
                 file_path = os.path.join(root, file)
                 print(f"Processing file: {file_path}")
                 try:
@@ -40,8 +40,8 @@ def calculate_averages(input_dir, output_file):
     print("Done!")
 
 # Define the input directory and output file
-input_dir = '.'
-output_file = 'averages.csv'
+input_dir = './Final Evaluation/'
+output_file = './Final Evaluation/averages.csv'
 
 # Calculate the averages and write to the output file
 calculate_averages(input_dir, output_file)
