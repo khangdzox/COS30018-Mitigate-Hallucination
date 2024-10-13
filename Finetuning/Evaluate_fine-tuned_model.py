@@ -31,7 +31,7 @@ def main():
     base_model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct")
     
     # Load Pre-trained model
-    model = PeftModel.from_pretrained(base_model, "./Finetuning/LoRA/10/Best model", device_map = device, torch_dtype = torch.bfloat16)
+    model = PeftModel.from_pretrained(base_model, "./Finetuning/LoRA/8", device_map = device, torch_dtype = torch.bfloat16)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
