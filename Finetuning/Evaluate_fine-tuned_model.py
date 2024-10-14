@@ -10,12 +10,9 @@ sys.path.append('Finetuning')
 
 def generate_output(model, tokenizer, question):
     streamer = TextStreamer(tokenizer) # Type: ignore
-
-    input_text = {"role": "user", "content": question},
-    input_tokens = tokenizer.apply_chat_template(input_text, return_tensors="pt", add_generation_prompt=True).to(model.device)
     
     with torch.cuda.amp.autocast(): # Make sure the model and input are in the same fp16 format
-        output_tokens = model.generate(input_tokens, streamer=streamer, max_new_tokens=512, do_sample=True, top_p=0.8, pad_token_id=tokenizer.eos_token_id)
+        output_tokens = model.generate(tokenizer.encode(question, return_tensors = "pt").to(model.device), streamer=streamer, max_new_tokens=100, do_sample=True, top_p=0.8, pad_token_id=tokenizer.eos_token_id)
     return output_tokens
 
 def main():
@@ -23,12 +20,18 @@ def main():
  
     # LOADDING
     
+    # Load device
+    def get_device_map() -> str:
+        return 'cuda' if torch.cuda.is_available() else 'cpu'
+        
+    device = get_device_map()
+    
     # Load base model
     model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
     base_model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct")
     
     # Load Pre-trained model
-    model = PeftModel.from_pretrained(base_model, "./Finetuning/QLoRA/1", device_map = "cuda", torch_dtype = torch.bfloat16)
+    model = PeftModel.from_pretrained(base_model, "./Finetuning/LoRA/8", device_map = device, torch_dtype = torch.bfloat16)
     
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -36,7 +39,14 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
 
     # GENERATE OUTPUT
-    question = "### Question:\nChronic urethral obstruction due to benign prismatic hyperplasia can lead to the following change in kidney parenchyma"
+    question = """
+    You are an assistant for question-answering tasks. Answering and explaining the questions appropriately.
+    
+    ### Question:
+    In a patient with fresh blow out fracture of the orbit, best immediate management is
+
+    ### Answer:
+"""
  
     print(generate_output(model, tokenizer, question))
     
