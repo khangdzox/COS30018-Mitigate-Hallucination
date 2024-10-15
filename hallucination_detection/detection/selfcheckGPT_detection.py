@@ -1,8 +1,8 @@
 import numpy as np
 import spacy
-from selfcheckgpt.modeling_selfcheck import SelfCheckLLMPrompt
+from selfcheckgpt.modeling_selfcheck import SelfCheckBERTScore
 import torch
-import transformers
+import transformers, peft
 
 # Load the model and tokenizer
 model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
@@ -10,14 +10,15 @@ model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 #SelfCheckLLMPrompt(model_name): Initializes the hallucination detection class (SelfCheckLLMPrompt) with the model name.
-selfcheck_prompt = SelfCheckLLMPrompt(model_name, device=device)  # Initialize the hallucination detection mechanism
+# selfcheck_prompt = SelfCheckLLMPrompt(model_name, device=device)  # Initialize the hallucination detection mechanism
+selfcheck = SelfCheckBERTScore()
 
 nlp = spacy.load("en_core_web_sm")
 
 def selfcheckgpt(
         question,
         answer,
-        model: transformers.PreTrainedModel,
+        model: transformers.PreTrainedModel | peft.peft_model.PeftModel,
         tokenizer: transformers.PreTrainedTokenizer,
         terminators: list[int],
         num_samples=1) -> bool:
@@ -48,7 +49,7 @@ def selfcheckgpt(
     #selfcheck_prompt.predict(): Compares the generated sentences against the sampled responses.
     #sent_scores_prompt: Stores the hallucination scores for each sentence in the generated response.
     #sentences=sentences, sampled_passages=samples: Inputs the original response sentences and sampled responses for analysis.
-    sent_scores_prompt = selfcheck_prompt.predict(
+    sent_scores_prompt = selfcheck.predict(
         sentences=sentences,
         sampled_passages=samples)
 
