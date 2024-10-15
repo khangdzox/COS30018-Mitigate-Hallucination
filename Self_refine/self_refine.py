@@ -22,6 +22,16 @@ terminators = [
     tokenizer.convert_tokens_to_ids("<|eot_id|>")
 ]
 
+def model_generate(input_msgs, max_new_tokens=100):
+    input_tokens = tokenizer.apply_chat_template(
+        input_msgs,
+        add_generation_prompt=True,
+        return_tensors="pt",
+    ).to(model.device) #type: ignore
+
+    output_tokens = model.generate(input_tokens, max_new_tokens=max_new_tokens, eos_token_id=terminators, do_sample=True, top_p=0.9) #type: ignore
+    return tokenizer.decode(output_tokens[0, input_tokens.shape[-1]:], skip_special_tokens=True)
+
 def self_refine(question: str, max_iterations = 4, max_tokens = 100) -> str:
 
     input_msgs = [
@@ -29,52 +39,31 @@ def self_refine(question: str, max_iterations = 4, max_tokens = 100) -> str:
         {"role": "user", "content": question},
     ]
 
-    input_tokens = tokenizer.apply_chat_template(
-        input_msgs,
-        add_generation_prompt=True,
-        return_tensors="pt",
-    ).to(model.device) #type: ignore
+    answer = model_generate(input_msgs)
 
-    answer_tokens = model.generate(input_tokens, max_new_tokens=max_tokens, eos_token_id=terminators, do_sample=True, top_p=0.9) #type: ignore
-    answer = tokenizer.decode(answer_tokens[0, input_tokens.shape[-1]:], skip_special_tokens=True)
-
-    # print(f"\nInitial answer: {answer}")
+    print(f"\nInitial answer: {answer}")
 
     for _ in range(max_iterations):
 
         # Get the feedback for the answer
         feedback_input_msgs = [
             {"role": "system", "content": "Provide concise, actionable and specific feedbacks to improve the answer."},
-            {"role": "user", "content": answer}
+            {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}"}
         ]
 
-        feedback_input_tokens = tokenizer.apply_chat_template(
-            feedback_input_msgs,
-            add_generation_prompt=True,
-            return_tensors="pt",
-        ).to(model.device) #type: ignore
+        feedback = model_generate(feedback_input_msgs)
 
-        feedback_output_tokens = model.generate(feedback_input_tokens, max_new_tokens=max_tokens, eos_token_id=terminators, do_sample=True, top_p=0.9) #type: ignore
-        feedback = tokenizer.decode(feedback_output_tokens[0, feedback_input_tokens.shape[-1]:], skip_special_tokens=True)
-
-        # print(f"\nFeedback: {feedback}")
+        print(f"\nFeedback: {feedback}")
 
         # Refine the answer based on the feedback
-        refined_input_msgs =[
+        refined_input_msgs = [
             {"role": "system", "content": "Provide new concise, improved answer using the feedback."},
             {"role": "user", "content": f"Feedback: {feedback}\n\nAnswer: {answer}"}
         ]
 
-        refined_input_tokens = tokenizer.apply_chat_template(
-            refined_input_msgs,
-            add_generation_prompt=True,
-            return_tensors="pt",
-        ).to(model.device) #type: ignore
+        refined_answer = model_generate(refined_input_msgs)
 
-        refined_tokens = model.generate(refined_input_tokens, max_new_tokens=max_tokens, eos_token_id=terminators, do_sample=True, top_p=0.9) #type: ignore
-        refined_answer = tokenizer.decode(refined_tokens[0, refined_input_tokens.shape[-1]:], skip_special_tokens=True)
-
-        # print(f"\nRefined answer: {refined_answer}")
+        print(f"\nRefined answer: {refined_answer}")
 
         # If the refinement is not hallucinated then break
         if selfcheckgpt(question, refined_answer, model, tokenizer, terminators, 5):
