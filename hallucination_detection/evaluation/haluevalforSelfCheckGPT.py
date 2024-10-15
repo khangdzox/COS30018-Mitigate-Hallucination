@@ -7,7 +7,7 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../detection')))
 
 import transformers, torch, datasets, evaluate, tqdm, pandas as pd
-from selfcheckGPT_detection import check_hallucination
+from ..detection import selfcheckgpt
 
 save_file = "halueval_results.csv"
 save_interval = 10
@@ -73,13 +73,8 @@ for method in ['selfcheckGPT']:
         question_with_context = f"{knowledge} {question}"
         print(question_with_context, answer)
 
-
-        # elif method == 'low_confidence_generation':
-        #     predict = low_confidence_generation(question_with_context, answer, model, tokenizer, terminators)
         if method == 'selfcheckGPT':
-            _,hallication_score = check_hallucination(question_with_context, model, tokenizer, 5)
-            predict = 1 if hallication_score > 0.5 else 0
-
+            predict = selfcheckgpt(question_with_context, answer, model, tokenizer, terminators, num_samples=5)
 
         results.loc[question, method] = int(predict)
 

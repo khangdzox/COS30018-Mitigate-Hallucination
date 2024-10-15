@@ -1,2 +1,3 @@
 from .self_evaluation import self_evaluation
 from .low_confidence_generation import low_confidence_generation
+from .selfcheckGPT_detection import selfcheckgpt
