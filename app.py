@@ -1,5 +1,5 @@
-import transformers, torch, peft, gradio as gr
-from .Self_refine.self_refine import self_refine
+import transformers, torch, peft, gc, gradio as gr
+from self_refine import self_refine
 
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 lora_ver = "QLoRA/7"
@@ -28,31 +28,37 @@ terminators = [
     tokenizer.convert_tokens_to_ids("<|eot_id|>")
 ]
 
-def change_method(method):
+def change_method(method, prev):
     global model
 
-    if method == 'Self-refine':
-        model = load_model(model_id)
-    elif method == 'Fine-tune':
-        model = load_model(model_id, lora_ver)
+    if method != prev:
+        del model
+        gc.collect()
+        torch.cuda.empty_cache()
+
+        if method == 'Self-refine':
+            model = load_model(model_id)
+        elif method == 'Fine-tune':
+            model = load_model(model_id, lora_ver)
+
+    return method
 
 def generate(message, history):
-    res = self_refine(message, model, tokenizer, terminators)
-    history.append(gr.ChatMessage('user', message))
-    history.append(gr.ChatMessage('assistant', res))
-    return '', history
+    return self_refine(message, model, tokenizer, terminators)
 
-with gr.Blocks() as app:
+chat = gr.ChatInterface(
+    generate,
+    type="messages",
+    examples=[{"text": "Why is Canberra the capital of Australia?"}, {"text": "How COVID-19 spreads?"}, {"text": "What can lacking vitamin D cause?"}],
+)
+
+with gr.Blocks(fill_height=True) as app:
 
     method_selection = gr.Dropdown(["Self-refine", "Fine-tune"], label="Method")
-    chatbot = gr.Chatbot(type='messages')
-    input = gr.Textbox(submit_btn=True, placeholder="Type question here...", show_label=False)
-
     method_selection.change(
-        change_method, method_selection, None
+        change_method, [method_selection, gr.State([])], [gr.State()]
     )
-    input.submit(
-        generate, [input, chatbot], [input, chatbot]
-    )
+
+    chat.render()
 
 app.launch(share=True)
