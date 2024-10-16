@@ -38,18 +38,17 @@ def self_refine(
         feedback_input_msgs = [
             {"role": "system", "content": "Provide concise, actionable and specific feedbacks to improve the answer."},
             {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}"},
-            {"role": "assistant", "content": "Feedback:"},
         ]
 
-        feedback = model_generate(feedback_input_msgs, continuing=True)
+        feedback = model_generate(feedback_input_msgs)
 
         print(f"\nFeedback: {feedback}")
 
         # Refine the answer based on the feedback
         refined_input_msgs = [
-            {"role": "system", "content": "Provide new concise, improved answer using the feedback. Do not provide additional statements."},
+            {"role": "system", "content": "Provide new concise, modified answer using the feedback. Do not provide additional statements."},
             {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}\n\nFeedback: {feedback}"},
-            {"role": "assistant", "content": "Better answer:"},
+            {"role": "assistant", "content": "Modified answer:"},
         ]
 
         refined_answer = model_generate(refined_input_msgs, continuing=True)
