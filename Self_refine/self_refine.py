@@ -1,5 +1,10 @@
 import transformers, peft, warnings
-from ..hallucination_detection.detection import selfcheckgpt
+from selfcheckGPT_detection import selfcheckgpt
+
+fred = "\x1b[38;5;1m"
+fyellow = "\x1b[38;5;3m"
+fgreen = "\x1b[38;5;2m"
+reset = "\x1b[0m"
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
@@ -28,35 +33,36 @@ def self_refine(
         {"role": "user", "content": question},
     ]
 
+    generation_str = tokenizer.apply_chat_template(input_msgs, tokenize=False)
+
     answer = model_generate(input_msgs)
 
-    print(f"\nInitial answer: {answer}")
+    print(f"\n{fred}Question{reset}: {question}\n{fgreen}Initial answer{reset}: {answer}")
 
     for _ in range(max_iterations):
 
         # Get the feedback for the answer
         feedback_input_msgs = [
-            {"role": "system", "content": "Provide concise, actionable and specific feedbacks to improve the answer."},
+            {"role": "system", "content": "Provide short, concise, actionable and specific feedbacks to ensure the correctness of your answer. Do not answer the question or provide example."},
             {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}"},
         ]
 
         feedback = model_generate(feedback_input_msgs)
 
-        print(f"\nFeedback: {feedback}")
+        print(f"{fyellow}Feedback{reset}: {feedback}")
 
         # Refine the answer based on the feedback
         refined_input_msgs = [
-            {"role": "system", "content": "Provide new concise, modified answer using the feedback. Do not provide additional statements."},
+            {"role": "system", "content": "Provide a new short, concise, refined answer using the feedback. Do not provide additional statements."},
             {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}\n\nFeedback: {feedback}"},
-            {"role": "assistant", "content": "Modified answer:"},
         ]
 
-        refined_answer = model_generate(refined_input_msgs, continuing=True)
+        refined_answer = model_generate(refined_input_msgs)
 
-        print(f"\nRefined answer: {refined_answer}")
+        print(f"{fgreen}Refined answer{reset}: {refined_answer}")
 
         # If the refinement is not hallucinated then break
-        if selfcheckgpt(question, refined_answer, model, tokenizer, terminators, 5):
+        if selfcheckgpt(generation_str, refined_answer, model, tokenizer, terminators, 5):
             break
 
         answer = refined_answer
