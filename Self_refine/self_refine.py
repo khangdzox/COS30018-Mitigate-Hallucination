@@ -1,5 +1,6 @@
 import transformers, peft, warnings
 from ..hallucination_detection.detection import selfcheckgpt
+from cov import cov
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
