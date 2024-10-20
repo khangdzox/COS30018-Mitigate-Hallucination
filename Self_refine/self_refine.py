@@ -1,5 +1,5 @@
 import transformers, peft, warnings
-from selfcheckGPT_detection import selfcheckgpt
+from ..hallucination_detection.detection import selfcheckgpt
 
 fred = "\x1b[38;5;1m"
 fyellow = "\x1b[38;5;3m"

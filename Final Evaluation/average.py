@@ -1,24 +1,25 @@
-import os
 import pandas as pd
 
-# Define the directories
-directories = ['Final Evaluation/Truthful_QA/Base_model', 'Final Evaluation/Truthful_QA/QLoRA', 'Final Evaluation/Truthful_QA/LoRA']
+# Load the CSV file
+df = pd.read_csv('Halu_Bench/LoRA/L10_last_model_2.csv')
 
-# Initialize an empty dataframe
-all_data = pd.DataFrame()
+# Calculate the averages
+avg_meteor_score = df['meteor_score'].mean()
+avg_bleu_score = df['bleu_score'].mean()
+avg_rouge_1 = df['rouge_1'].mean()
+avg_rouge_l = df['rouge_l'].mean()
+avg_Accuracy_pred = df['Accuracy_pred'].mean()
+avg_Accuracy_ref = df['Accuracy_ref'].mean()
 
-# Loop through all directories
-for directory in directories:
-    # Loop through all files in the directory
-    for filename in os.listdir(directory):
-        # Check if the filename contains 'result' and is a CSV file
-        if 'result' in filename and filename.endswith('.csv'):
-            # Construct the full file path
-            file_path = os.path.join(directory, filename)
-            # Read the file into a dataframe
-            df = pd.read_csv(file_path)
-            # Append the data to the all_data dataframe
-            all_data = all_data.append(df, ignore_index=True)
+# Create a new DataFrame with the averages
+averages = pd.DataFrame({
+    'avg_Accuracy_pred': [avg_Accuracy_pred],
+    'avg_Accuracy_ref': [avg_Accuracy_ref],
+    'avg_bleu_score': [avg_bleu_score],
+    'avg_meteor_score': [avg_meteor_score],
+    'avg_rouge_1': [avg_rouge_1],
+    'avg_rouge_l': [avg_rouge_l],
+})
 
-# Write the combined data to a new CSV file
-all_data.to_csv('combined_results.csv', index=False)
+# Append the new DataFrame to averages.csv
+averages.to_csv('averages.csv', mode='a', index=False)
