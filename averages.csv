@@ -1,0 +1,4 @@
+metric,average
+bleu_acc,0
+rouge1_acc,0
+bleurt_acc,0
