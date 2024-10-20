@@ -33,7 +33,7 @@ def calculate_averages(input_dir, output_file):
     pivot_results.to_csv(output_file, index=False)
     print("Done!")
 # Define the input directory and output file
-input_dir = '.'
-output_file = 'averages.csv'
+input_dir = 'Final Evaluation/Halu_Bench'
+output_file = 'Final Evaluation/Halu_Bench/averages.csv'
 # Calculate the averages and write to the output file
 calculate_averages(input_dir, output_file)
