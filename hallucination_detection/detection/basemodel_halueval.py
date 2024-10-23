@@ -10,7 +10,12 @@ save_interval = 10
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 
 def load_model() -> transformers.PreTrainedModel:
-    quantization_config = transformers.BitsAndBytesConfig(load_in_4bit=True)
+    quantization_config = transformers.BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.bfloat16,
+        bnb_4bit_use_double_quant = True
+    )
     return transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16, quantization_config=quantization_config)
 
 def load_tokenizer() -> transformers.PreTrainedTokenizer:
