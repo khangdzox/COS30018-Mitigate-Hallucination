@@ -27,7 +27,7 @@ for root, _, files in os.walk(directory):
                 # Store the scores in the results list
                 for metric, score in scores.items():
                     results.append({
-                        'File Name': file_path,
+                        'File Name': os.path.basename(file_path),  # Only keep the file name
                         'Metric': metric,
                         'Average Value': score
                     })
