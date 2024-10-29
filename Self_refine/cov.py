@@ -1,61 +1,77 @@
-import transformers, torch
-from ..hallucination_detection.detection import selfcheckgpt
+import transformers, peft, warnings
 
-model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+colored = False
 
-def load_model() -> transformers.PreTrainedModel:
-    quantization_config = transformers.BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16,
-        bnb_4bit_use_double_quant = True
-    )
-    model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.bfloat16, quantization_config=quantization_config)
-    return model
+fred = "\x1b[38;5;1m" if colored else ""
+fyellow = "\x1b[38;5;3m" if colored else ""
+fgreen = "\x1b[38;5;2m" if colored else ""
+reset = "\x1b[0m" if colored else ""
 
-model = load_model()
+warnings.simplefilter(action="ignore", category=FutureWarning)
 
-tokenizer = transformers.AutoTokenizer.from_pretrained(model_id) # type: transformers.PreTrainedTokenizer # type: ignore
+def cov(
+    question: str,
+    model: transformers.PreTrainedModel | peft.peft_model.PeftModel,
+    tokenizer: transformers.PreTrainedTokenizer,
+    terminators: list[int],
+    max_new_tokens = 100) -> str:
 
-terminators = [
-    tokenizer.eos_token_id,
-    tokenizer.convert_tokens_to_ids("<|eot_id|>")
-]
+    def model_generate(input_msgs: list[dict[str, str]], continuing=False):
 
-def cov(answer: str, question: str):
-    
-    plan_verification_msgs = [
-        {"role": "system", "content": 'Generate different questions for each single fact in the answer.'},
+        input_tokens = tokenizer.apply_chat_template(
+            input_msgs,
+            add_generation_prompt=not continuing,
+            continue_final_message=continuing,
+            return_tensors="pt",
+        ).to(model.device) #type: ignore
+
+        output_tokens = model.generate(input_tokens, max_new_tokens=max_new_tokens, eos_token_id=terminators) #type: ignore
+        return tokenizer.decode(output_tokens[0, input_tokens.shape[-1]:], skip_special_tokens=True)
+
+    input_msgs = [
+        {"role": "system", "content": "You are a virtual assistant. Answer the question directly. Do not provide any unnecessary information. If there is no single correct answer, say \"I have no comment\"."},
+        {"role": "user", "content": question},
+    ]
+
+    answer = model_generate(input_msgs)
+
+    print(f"\n{fred}Question{reset}: {question}\n{fgreen}Initial answer{reset}: {answer}")
+
+    verify_questions_msgs = [
+        {"role": "system", "content": "Generate different questions for each single fact in the answer. Questions must end with a question mark and be separated by semicolons. Do not provide introductory statement."},
         {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}"},
     ]
 
-    input_tokens = tokenizer.apply_chat_template(
-        plan_verification_msgs,
-        add_generation_prompt=True,
-        return_tensors="pt",
-    ).to(model.device) #type: ignore
+    verify_questions = model_generate(verify_questions_msgs)
 
-    verification_question_tokens = model.generate(input_tokens, max_new_tokens=max_tokens, eos_token_id=terminators, do_sample=True, top_p=0.9) #type: ignore
-    verifcation_question = tokenizer.decode(verification_question_tokens[0, input_tokens.shape[-1]:], skip_special_tokens=True)
+    print(f"{fyellow}Verification questions{reset}: {verify_questions}")
 
-    print(verifcation_question)
-
-    excute_verification_msgs = [
-        {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
-        {"role": "user", "content": f"Question: {verifcation_question}"},
+    verify_answers_msgs = [
+        {"role": "system", "content": "Provide a full answer for each question. Do not repeat the questions. Answers must be separated by semicolons. Do not provide any unnecessary information. Do not provide introductory statement."},
+        {"role": "user", "content": verify_questions},
     ]
 
-    input_tokens = tokenizer.apply_chat_template(
-        excute_verification_msgs,
-        add_generation_prompt=True,
-        return_tensors="pt",
-    ).to(model.device) #type: ignore
+    verify_answers = model_generate(verify_answers_msgs)
 
-    verification = model.generate(input_tokens, max_new_tokens=max_tokens, eos_token_id=terminators, do_sample=True, top_p=0.9) #type: ignore
-    verification_answer = tokenizer.decode(verification[0, input_tokens.shape[-1]:], skip_special_tokens=True)
+    print(f"{fyellow}Verification answer{reset}: {verify_answers}")
 
-    print(verification_answer)
+    questions_list = verify_questions.split("; ")
+    questions_list = [q + "?" if q[-1] != "?" else q for q in questions_list]
 
-    return verification_answer
+    answers_list = verify_answers.split("; ")
+    answers_list = [a + "." if a[-1] != "." else a for a in answers_list]
 
-cov("The Mexican American War was an armed conflict between the United States and Mexico from 1864 to 1868. It followed in the wake of the 1845 U.S annexation of Texas, which Mexico considered part of its territory in spite of its de facto secession in the 1835 Texas Revolution.", "What was the primary cause of the Mexican American War?")
+    question_answer_pairs = "\n\n".join([" ".join([q, a]) for q, a in zip(questions_list, answers_list)])
+
+    print(f"{fyellow}Verification QA pairs{reset}: {question_answer_pairs}")
+
+    revise_msgs = [
+        {"role": "system", "content": "Update the answer based on the external sources. Do not provide any unnecessary information. Do not provide introductory statement. If there is no single correct answer, say \"I have no comment\"."},
+        {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}\n\nExternal sources: {question_answer_pairs}"},
+    ]
+
+    revise = model_generate(revise_msgs)
+
+    print(f"{fgreen}Revised answer{reset}: {revise}")
+
+    return revise
