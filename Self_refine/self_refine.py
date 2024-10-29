@@ -1,10 +1,12 @@
 import transformers, peft, warnings
 from ..hallucination_detection.detection import selfcheckgpt
 
-fred = "\x1b[38;5;1m"
-fyellow = "\x1b[38;5;3m"
-fgreen = "\x1b[38;5;2m"
-reset = "\x1b[0m"
+colored = False
+
+fred = "\x1b[38;5;1m" if colored else ""
+fyellow = "\x1b[38;5;3m" if colored else ""
+fgreen = "\x1b[38;5;2m" if colored else ""
+reset = "\x1b[0m" if colored else ""
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
@@ -25,11 +27,11 @@ def self_refine(
             return_tensors="pt",
         ).to(model.device) #type: ignore
 
-        output_tokens = model.generate(input_tokens, max_new_tokens=max_new_tokens, eos_token_id=terminators, do_sample=True, top_p=0.9) #type: ignore
+        output_tokens = model.generate(input_tokens, max_new_tokens=max_new_tokens, eos_token_id=terminators, top_k=1) #type: ignore
         return tokenizer.decode(output_tokens[0, input_tokens.shape[-1]:], skip_special_tokens=True)
 
     input_msgs = [
-        {"role": "system", "content": "Answer the question directly. Do not provide any unnecessary information."},
+        {"role": "system", "content": "You are a virtual assistant. Answer the question directly. Do not provide any unnecessary information. If there is no single correct answer, say \"I have no comment\"."},
         {"role": "user", "content": question},
     ]
 
@@ -43,7 +45,7 @@ def self_refine(
 
         # Get the feedback for the answer
         feedback_input_msgs = [
-            {"role": "system", "content": "Provide short, concise, actionable and specific feedbacks to ensure the correctness of your answer. Do not answer the question or provide example."},
+            {"role": "system", "content": "Provide actionable and specific feedbacks to ensure the correctness of the provided answer of an AI model. Do not answer the question or provide example."},
             {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}"},
         ]
 
@@ -53,7 +55,7 @@ def self_refine(
 
         # Refine the answer based on the feedback
         refined_input_msgs = [
-            {"role": "system", "content": "Provide a new short, concise, refined answer using the feedback. Do not provide additional statements."},
+            {"role": "system", "content": "You are a virtual assistant. Provide a new concise answer using the old answer and the feedback. Do not provide additional statements."},
             {"role": "user", "content": f"Question: {question}\n\nAnswer: {answer}\n\nFeedback: {feedback}"},
         ]
 
