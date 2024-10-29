@@ -1,6 +1,6 @@
 import transformers, torch, datasets, evaluate, tqdm, pandas as pd, numpy as np
-from ..Self_refine import self_refine
-# from ..Self_refine import self_refine_with_history as self_refine
+from ..self_refine import self_refine
+# from ..self_refine import self_refine_with_history as self_refine
 
 # pip install sacrebleu rouge_score
 # pip install git+https://github.com/google-research/bleurt.git
