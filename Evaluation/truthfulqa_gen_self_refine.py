@@ -1,20 +1,13 @@
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument("-m", "--model", action="store", choices=["Base_model", "LoRA", "QLoRA"], required=True, help="The type of model to evaluate.")
-parser.add_argument("-v", "--version", action="store", required=True, help="The version of model to evaluate. If model=Base_model then version=og for non-quantize, version=q for quantize version. If model=Lora/QLora then version=i.")
-args = parser.parse_args()
-
-print(f"Running model {args.model}, version {args.version}")
-
-import transformers, torch, peft, datasets, evaluate, tqdm, pandas as pd, numpy as np, re
+import transformers, torch, datasets, evaluate, tqdm, pandas as pd, numpy as np
+from ..Self_refine import self_refine
+# from ..Self_refine import self_refine_with_history as self_refine
 
 # pip install sacrebleu rouge_score
 # pip install git+https://github.com/google-research/bleurt.git
 
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
-model_name = f"llama3_{args.model.lower()}_{"_".join(re.split(r'[ /]', args.version))}"
-path = f"Evaluation/Truthful_QA/{args.model}/"
+model_name = "llama3_self_refine_new_5"
+path = "Evaluation/Truthful_QA/Self_refine/"
 
 def load_model() -> transformers.PreTrainedModel:
     quantization_config = transformers.BitsAndBytesConfig(
@@ -23,18 +16,9 @@ def load_model() -> transformers.PreTrainedModel:
         bnb_4bit_compute_dtype=torch.bfloat16,
         bnb_4bit_use_double_quant = True
     )
-
-    if args.model.lower() == "base_model":
-        if args.version == "og":
-            return transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="cuda")
-        else:
-            return transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="cuda", quantization_config=quantization_config)
-
-    if args.model.lower() == "lora":
-        model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="cuda")
-    else:
-        model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="cuda", quantization_config=quantization_config)
-    return peft.PeftModel.from_pretrained(model, f"{args.model}/{args.version}", device_map="cuda", torch_dtype=torch.bfloat16) # type:ignore
+    model = transformers.AutoModelForCausalLM.from_pretrained(model_id, device_map="cuda", quantization_config=quantization_config)
+    model.eval()
+    return model
 
 def load_tokenizer() -> transformers.PreTrainedTokenizer:
     return transformers.AutoTokenizer.from_pretrained(model_id) # type: ignore
@@ -118,21 +102,8 @@ for idx in tqdm.trange(dataset.shape[0]):
 
         question: str = dataset.at[idx, "question"] # type: ignore
 
-        # Tokenize the question
-        question_prompt = make_input_prompt(question)
-        question_tokens = tokenizer(question_prompt, return_tensors="pt").to(model.device) # type: ignore
-
-        # Generate the answer
-        answer_tokens = model.generate(
-            **question_tokens, # type: ignore
-            max_new_tokens=100,
-            eos_token_id=terminators, # + end_tokens,
-            top_k=1,
-        ).cpu() # type: ignore
-
-        answer_tokens = answer_tokens[0, question_tokens["input_ids"].shape[-1]:] # type: ignore
-        answer = tokenizer.decode(answer_tokens, skip_special_tokens=True)
-        answer = answer[:answer.find("Q:")].strip()
+        # question = question + " If not sure then reply 'I have no comment'."
+        answer = self_refine(question, model, tokenizer, terminators, 4, 200)
 
         dataset.at[idx, "model"] = answer
         dataset.to_csv(f"{path}{model_name}_truthfulqa_gen.csv", index=False)
