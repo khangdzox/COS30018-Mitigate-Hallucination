@@ -1,5 +1,5 @@
 import transformers, peft, warnings
-from ..hallucination_detection.detection import selfcheckgpt
+from ..hallucination_detection import selfcheckgpt
 
 colored = False
 
