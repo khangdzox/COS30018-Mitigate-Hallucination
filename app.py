@@ -1,5 +1,5 @@
 import transformers, torch, peft, gc, gradio as gr
-from Self_refine import self_refine
+from .self_refine.self_refine import self_refine
 
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 lora_ver = "QLoRA/7"
