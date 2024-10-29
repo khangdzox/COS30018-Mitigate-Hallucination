@@ -56,20 +56,18 @@ def generate(message, chat_history, model, method):
 
     return "", chat_history
 
-chat = gr.ChatInterface(
-    generate,
-    type="messages",
-    examples=[{"text": "Why is Canberra the capital of Australia?"}, {"text": "How COVID-19 spreads?"}, {"text": "What can lacking vitamin D cause?"}],
-)
+css = """
+#chatbot { flex-grow: 1;}
+"""
 
-with gr.Blocks(fill_height=True) as app:
+with gr.Blocks(fill_height=True, css=css) as app:
     model_state = gr.State(lambda: model)
     current_model_selection = gr.State("Base model")
 
     with gr.Row(equal_height=True):
-        method = gr.Dropdown(["Self-refine", "No method"], label="Method", container=False)
-        model_selection = gr.Dropdown(["Base model", "Fine-tuned model"], label="Model", container=False)
-        change_model_btn = gr.Button("Change model")
+        method = gr.Dropdown(["Self-refine", "No method"], label="Method", container=False, scale=5)
+        model_selection = gr.Dropdown(["Base model", "Fine-tuned model"], label="Model", container=False, scale=5)
+        change_model_btn = gr.Button("Change model", scale=1)
 
     model_selection.change(
         changee_model_selection, [current_model_selection, model_selection], [change_model_btn]
@@ -79,8 +77,8 @@ with gr.Blocks(fill_height=True) as app:
     )
     change_model_btn.interactive = False
 
-    chatbot = gr.Chatbot(type="messages", height=200)
-    msg = gr.Textbox(submit_btn=True, label="Message", placeholder="Type your message here")
+    chatbot = gr.Chatbot(type="messages", elem_id="chatbot")
+    msg = gr.Textbox(submit_btn=True, show_label=False, placeholder="Type your message here")
     clear = gr.ClearButton(value="Clear Chat")
 
     msg.submit(generate, [msg, chatbot, model_state, method], [msg, chatbot])
