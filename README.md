@@ -5,7 +5,7 @@ COS30018 - Intelligent Systems. Learning and applying hallucination mitigation t
 
 Developers are advised to use a virtual environment to install the required packages. Avoid using Hugging Face with Keras or TensorFlow 3+ as it may cause compatibility issues. You can create a virtual environment with `conda` or `venv`.
 
-This project requires Python 3.12 or later.
+This project run on Python 3.12.3.
 
 ### 1. PyTorch for backend framework
 Using `pip`
@@ -20,15 +20,16 @@ Verify that you install PyTorch correctly with CUDA support by running the follo
 ```bash
 python -c "import torch; print(torch.cuda.is_available())"
 ```
-### 2. 🤗 Transformers for high-level APIs
+### 2. 🤗 Transformers for high-level APIs and other dependencies
+- For Hugging Face: transformers, datasets, evaluate, accelerate, huggingface_hub[cli], bitsandbytes
+- For evaluation: scikit-learn, sacrebleu, rouge-score, git+https://github.com/google-research/bleurt.git, pandas, numpy
+- For fine-tuning: peft, trl
+- For hallucination detection: selfcheckgpt nltk rouge spacy tensorflow
+- For visualization: gradio
 ```bash
-pip install transformers==4.45.1 datasets evaluate accelerate bitsandbytes scikit-learn
+pip install transformers==4.45.1 datasets evaluate accelerate huggingface_hub[cli] bitsandbytes peft trl scikit-learn sacrebleu rouge-score git+https://github.com/google-research/bleurt.git selfcheckgpt nltk rouge spacy tensorflow pandas numpy gradio
 ```
-### 3. Gradio for web interface
-```bash
-pip install gradio
-```
-### 4. IPython for Jupyter Notebook in VSCode
+### 3. IPython for Jupyter Notebook in VSCode
 ```bash
 pip install ipython ipywidgets
 ```
@@ -52,9 +53,8 @@ Llama 3 is a private model, and you need to have access to it.
 
 3. Once you have access, go to your user settings and create a new access token (read token is enough).
 
-4. Copy the access token and save it in a `secret.py` file in the root directory.
+4. Copy the access token, open terminal in your python environment and run the following command:
 
-```python
-# secret.py
-HF_TOKEN = "your_access_token"
+```bash
+huggingface-cli login –token <your-access-token> --add-to-git-credential”
 ```
