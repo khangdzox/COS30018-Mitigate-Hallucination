@@ -37,17 +37,6 @@ def low_confidence_generation(
     answer_probs = compute_log_prob_from_string(model, full_string_tokens, start_idx=full_string_tokens.shape[-1] - len(answer_tokens) - 1)
 
     # get the keywords from the answer
-    # keywords_input_template = [
-    #     {"role": "system", "content": "Identify all the important keyphrases from the provided content and return a comma separated list."},
-    #     {"role": "user", "content": answer},
-    # ]
-
-    # keywords_input_tokens = tokenizer.apply_chat_template(
-    #     keywords_input_template,
-    #     add_generation_prompt=True,
-    #     return_tensors="pt",
-    # ).to(model.device) # type: ignore
-
     keywords_input = f"""Identify all the important keyphrases from the provided sentence and return a comma separated list.
 
 Q: John Russell Reynolds was an English physician and neurologist who made significant contributions to the field of neurology.
