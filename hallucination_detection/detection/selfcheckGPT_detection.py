@@ -1,6 +1,6 @@
 import numpy as np
 import spacy
-from selfcheckgpt.modeling_selfcheck import SelfCheckBERTScore
+from selfcheckgpt.modeling_selfcheck import SelfCheckLLMPrompt
 import torch
 import transformers, peft
 
@@ -9,11 +9,22 @@ model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-#SelfCheckLLMPrompt(model_name): Initializes the hallucination detection class (SelfCheckLLMPrompt) with the model name.
-# selfcheck_prompt = SelfCheckLLMPrompt(model_name, device=device)  # Initialize the hallucination detection mechanism
-selfcheck = SelfCheckBERTScore()
-
 nlp = spacy.load("en_core_web_sm")
+
+class CustomSelfCheckLLMPrompt(SelfCheckLLMPrompt):
+    def __init__(
+        self,
+        model,
+        tokenizer
+    ):
+        self.tokenizer = tokenizer
+        self.model = model
+        self.model.eval()
+        self.device = model.device
+        self.prompt_template = "Context: {context}\n\nSentence: {sentence}\n\nIs the sentence supported by the context above? Answer Yes or No.\n\nAnswer: "
+        self.text_mapping = {'yes': 0.0, 'no': 1.0, 'n/a': 0.5}
+        self.not_defined_text = set()
+        print(f"SelfCheck-LLMPrompt initialized to device {self.device}")
 
 def selfcheckgpt(
         question,
@@ -22,6 +33,8 @@ def selfcheckgpt(
         tokenizer: transformers.PreTrainedTokenizer,
         terminators: list[int],
         num_samples=1) -> bool:
+
+    selfcheck = CustomSelfCheckLLMPrompt(model, tokenizer)  # Initialize the hallucination detection mechanism
 
     # Re-construct the input prompt from the question
     messages = [
@@ -65,4 +78,4 @@ def selfcheckgpt(
     # else:
     #     print("The response is not hallucinated.")
 
-    return hallucination_score
+    return hallucination_score > 0.5
