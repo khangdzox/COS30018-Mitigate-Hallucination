@@ -45,7 +45,7 @@ def changee_model_selection(current_selection, new_selection):
 def generate(message, chat_history, model, method):
     if method == "No method":
         template = [{"role": "user", "content": message}]
-        input_tokens = tokenizer.apply_chat_template(template, return_tensors="pt").to(model.device) # type: ignore
+        input_tokens = tokenizer.apply_chat_template(template, add_generation_prompt=True, return_tensors="pt").to(model.device) # type: ignore
         output_tokens = model.generate(input_tokens, max_new_tokens=200, eos_token_id=terminators, top_k=1) #type: ignore
         response = tokenizer.decode(output_tokens[0, input_tokens.shape[-1]:], skip_special_tokens=True)
     else:
